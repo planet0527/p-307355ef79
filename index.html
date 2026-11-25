@@ -710,6 +710,7 @@ function toExam(){if(!S.exam)return null;const e=new Date(S.exam+"T00:00:00"),t=
 function pill(){const c=S.days[TODAY()]||0,x=toExam();$("pill").textContent=`今日 ${c}/${S.goal} 問・連続 ${streak()} 日${x!=null&&x>=0?`・受験まで ${x} 日`:""}`}
 const catAcc=c=>{let n=0,k=0;QS.filter(x=>x.cat==c).forEach(x=>{const r=S.q[x.id];if(r){n+=r.n;k+=r.c}});return n?k/n:null};
 const isWeak=x=>(S.q[x.id]&&!S.q[x.id].last)||S.f[x.id];
+const REASON_LABEL={knowledge:"知識不足",read:"読み違い",calc:"計算ミス",time:"時間不足",guess:"勘で選んだ"};
 
 /* ---------- 今日 ---------- */
 function home(){
@@ -718,7 +719,7 @@ function home(){
   $("hello").textContent=c>=g?"今日の目標を達成しました":"今日の学習";
   $("gNum").innerHTML=`${c}<small> / ${g} 問</small>`;
   $("gBar").style.width=Math.min(100,c/g*100)+"%";
-  $("facts").innerHTML=`<span>連続 <b>${streak()}</b> 日</span><span>覚えた用語 <b>${G.filter(g=>S.g[g[0]]).length}</b> 語</span><span>学習した日 <b>${Object.keys(S.days).length}</b> 日</span>${x!=null?`<span>受験まで <b>${x>=0?x:"—"}</b> 日</span>`:`<span>受験日を設定すると残り日数が出ます</span>`}`;
+  $("facts").innerHTML=`<span>連続 <b>${streak()}</b> 日</span><span>覚えた用語 <b>${G.filter(g=>S.g[g[0]]).length}</b> 語</span><span>学習した日 <b>${Object.keys(S.days).length}</b> 日</span>${x!=null?`<span>受験まで <b>${x>=0?x:"—"}</b> 日</span>`:`<span>受験日を設定すると残り日数が出ます</span>`}${Object.values(S.q).some(r=>r.reason)?`<span>記録したミス傾向 <b>${Object.entries(Object.values(S.q).reduce((a,r)=>{if(r.reason)a[r.reason]=(a[r.reason]||0)+1;return a},{})).map(([k,n])=>`${REASON_LABEL[k]} ${n}`).join("・")}</b></span>`:""}`;
   // 次にやること
   const T=[];
   const weak=QS.filter(isWeak);
@@ -808,7 +809,8 @@ function answer(b){
   if(!good){b.classList.add("ng");run.wrong.push(x)}else run.ok++;
   const r=S.q[x.id]||{n:0,c:0};r.n++;if(good)r.c++;r.last=good;S.q[x.id]=r;save();tick();
   const last=run.i==run.list.length-1,has=SU.some(s=>s[0]==x.cat),vz=VIS.find(v=>v.re.test(x.q+x.e));
-  $("qExp").innerHTML=`<div class="exp"><b class="${good?"ok":"ng"}">${good?"正解":"不正解"}</b> ― ${esc(x.e)}${has?`<br><button class="link" id="qNote">「${x.cat}」の差分ノートで確認する</button>`:""}${vz?`<br><button class="link" id="qVis">図解「${vz.t}」で動きを見る</button>`:""}</div><div class="row" style="margin-top:12px"><button id="qNext">${last?"結果を見る":"次の問題"}</button></div>`;
+  $("qExp").innerHTML=`<div class="exp"><b class="${good?"ok":"ng"}">${good?"正解":"不正解"}</b> ― ${esc(x.e)}${!good?`<div class="row" style="margin-top:10px"><label class="note">今回のミスの理由 <select id="qReason" aria-label="今回のミスの理由" style="font:inherit;padding:6px;border-radius:8px"><option value="">理由を選ぶ</option>${Object.entries(REASON_LABEL).map(([k,v])=>`<option value="${k}" ${r.reason==k?"selected":""}>${v}</option>`).join("")}</select></label></div>`:""}${has?`<br><button class="link" id="qNote">「${x.cat}」の差分ノートで確認する</button>`:""}${vz?`<br><button class="link" id="qVis">図解「${vz.t}」で動きを見る</button>`:""}</div><div class="row" style="margin-top:12px"><button id="qNext">${last?"結果を見る":"次の問題"}</button></div>`;
+  if(!good)$("qReason").onchange=e=>{const rec=S.q[x.id];if(e.target.value)rec.reason=e.target.value;else delete rec.reason;save();home()};
   if(has)$("qNote").onclick=()=>{sucat=x.cat;go("stepup")};
   if(vz)$("qVis").onclick=()=>{vsel=vz.id;go("visual")};
   $("qNext").focus();
