@@ -444,7 +444,7 @@ mark{background:#ffe36b;color:#0b0f1a;border-radius:2px}
 <section class="view" id="v-words">
   <h2>用語図鑑</h2>
   <p class="lead">略語の正式名と意味を、分野ごとにまとめました。検索して調べる、単語カードで覚える、似た用語を比べる、の3通りで使えます。</p>
-  <div class="seg" id="wMode" role="tablist" style="display:flex"></div>
+  <div class="seg" id="wMode" role="tablist" aria-label="用語学習モード" style="display:flex"></div>
   <div class="sumline" id="wSum"></div>
   <div id="wFil"><input type="search" id="wSearch" placeholder="用語・略語・意味で検索(例:SPF、認可、待ち時間)" aria-label="用語を検索"><div class="chips hs" id="wCats"></div><div class="row" id="wTg"></div></div>
   <div id="wBody"></div>
@@ -998,7 +998,7 @@ const wFilter=()=>G.filter(g=>(!wcat||g[3]==wcat)&&(!wa||g[4].includes("a"))&&(!
 const hl=t=>{const s=esc(t);if(!wq)return s;const q=esc(wq).replace(/[.*+?^${}()|[\]\\]/g,"\\$&");return s.replace(new RegExp(q,"gi"),m=>`<mark>${m}</mark>`)};
 function words(){
   const m=G.filter(g=>S.g[g[0]]).length;
-  $("wMode").innerHTML=CMODE.map(c=>`<button class="${c[0]==wmode?"on":""}" data-w="${c[0]}">${c[1]}</button>`).join("");
+  $("wMode").innerHTML=CMODE.map(c=>`<button type="button" role="tab" aria-selected="${c[0]==wmode}" tabindex="${c[0]==wmode?"0":"-1"}" class="${c[0]==wmode?"on":""}" data-w="${c[0]}">${c[1]}</button>`).join("");
   $("wFil").hidden=!(wmode=="list"||wmode=="card");
   $("wSum").innerHTML=`<span>覚えた用語 <b>${m} / ${G.length}</b></span><div class="meter" style="flex:1;max-width:260px"><div style="width:${m/G.length*100}%"></div></div>`;
   $("wCats").innerHTML=`<button class="chip ${wcat?"":"on"}" data-c="">すべての分野</button>`+CATS.map(c=>`<button class="chip ${c==wcat?"on":""}" data-c="${c}">${c}</button>`).join("");
@@ -1009,7 +1009,8 @@ function wlist(){
   const L=wFilter();
   if(!L.length){$("wBody").innerHTML=`<div class="empty">該当する用語がありません。検索語や絞り込みを変えてみてください。</div>`;return}
   const by={};L.forEach(g=>(by[g[3]]=by[g[3]]||[]).push(g));
-  $("wBody").innerHTML=`<p class="note">${L.length} 語を表示中</p>`+Object.entries(by).map(([c,a])=>`<h3 class="gh">${c}<span>${a.length}</span></h3><div class="gl">${a.map(g=>`<div class="gi ${S.g[g[0]]?"got":""}"><div class="gt"><b>${hl(g[0])}</b>${g[4].includes("k")?'<span class="tag">AP重点</span>':""}${g[4].includes("a")?'<span class="tag s">略語</span>':""}</div><div class="gf">${hl(g[1])}</div><p>${hl(g[2])}</p><button class="ghost mini" data-got="${esc(g[0])}" aria-pressed="${S.g[g[0]]?"true":"false"}">${S.g[g[0]]?"覚えた ✓":"覚えた"}</button></div>`).join("")}</div>`).join("");
+  const learnedInView=L.filter(g=>S.g[g[0]]).length;
+  $("wBody").innerHTML=`<p class="note">表示中 ${L.length} 語 · 覚えた ${learnedInView} 語</p>`+Object.entries(by).map(([c,a])=>`<h3 class="gh">${c}<span>${a.length}</span></h3><div class="gl">${a.map(g=>`<div class="gi ${S.g[g[0]]?"got":""}"><div class="gt"><b>${hl(g[0])}</b>${g[4].includes("k")?'<span class="tag">AP重点</span>':""}${g[4].includes("a")?'<span class="tag s">略語</span>':""}</div><div class="gf">${hl(g[1])}</div><p>${hl(g[2])}</p><button class="ghost mini" data-got="${esc(g[0])}" aria-pressed="${S.g[g[0]]?"true":"false"}">${S.g[g[0]]?"覚えた ✓":"覚えた"}</button></div>`).join("")}</div>`).join("");
 }
 function wcard(reset){
   if(reset||!card){const L=shuffle(wFilter());card={list:L,i:0,open:false,ok:0,dir:card?card.dir:"t"}}
@@ -1021,8 +1022,8 @@ function wcard(reset){
   $("wBody").innerHTML=`<div style="max-width:640px"><div class="qmeta"><span>${card.i+1} / ${card.list.length}</span><span class="row"><button class="chip ${t?"on":""}" data-dir="t">用語→意味</button><button class="chip ${t?"":"on"}" data-dir="m">意味→用語</button></span></div><div class="prog"><div style="width:${card.i/card.list.length*100}%"></div></div><button class="fc" id="fc" aria-label="カードをめくる">${card.open?back:front+'<span class="note tap">タップして答えを見る</span>'}</button><div class="row" style="margin-top:12px">${card.open?`<button class="ghost" id="cNo">まだ</button><button id="cOk">覚えた</button>`:`<button id="cOpen">答えを見る</button>`}</div></div>`;
   $("fc").onclick=()=>{if(!card.open){card.open=true;wcard()}};
   if($("cOpen"))$("cOpen").onclick=()=>{card.open=true;wcard()};
-  if($("cOk"))$("cOk").onclick=()=>{S.g[g[0]]=1;card.ok++;save();tick();card.i++;card.open=false;words2()};
-  if($("cNo"))$("cNo").onclick=()=>{delete S.g[g[0]];save();tick();card.i++;card.open=false;words2()};
+  if($("cOk"))$("cOk").onclick=()=>{S.g[g[0]]=1;card.ok++;save();card.i++;card.open=false;words2()};
+  if($("cNo"))$("cNo").onclick=()=>{delete S.g[g[0]];save();card.i++;card.open=false;words2()};
 }
 function words2(){const m=G.filter(g=>S.g[g[0]]).length;$("wSum").innerHTML=`<span>覚えた用語 <b>${m} / ${G.length}</b></span><div class="meter" style="flex:1;max-width:260px"><div style="width:${m/G.length*100}%"></div></div>`;wcard()}
 function wcmp(){
@@ -1033,6 +1034,7 @@ function wguide(){
 }
 $("wMode").onclick=e=>{const b=e.target.closest("[data-w]");if(b){wmode=b.dataset.w;card=null;words()}};
 $("wCats").onclick=e=>{const b=e.target.closest("[data-c]");if(b){wcat=b.dataset.c;words()}};
+$("wMode").onkeydown=e=>{if(!["ArrowLeft","ArrowRight"].includes(e.key))return;const tabs=[...$("wMode").querySelectorAll("[role=tab]")],i=tabs.indexOf(document.activeElement);if(i<0)return;e.preventDefault();const next=tabs[(i+(e.key=="ArrowRight"?1:-1)+tabs.length)%tabs.length];next.focus();next.click()};
 $("wTg").onchange=e=>{const k=e.target.dataset.tg;if(k=="wa")wa=e.target.checked;if(k=="wk")wk=e.target.checked;if(k=="wu")wu=e.target.checked;words()};
 let wt;$("wSearch").oninput=e=>{clearTimeout(wt);wt=setTimeout(()=>{wq=e.target.value.trim();if(wmode!="list")wmode="list";words()},150)};
 $("wBody").addEventListener("click",e=>{
