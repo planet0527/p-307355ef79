@@ -1926,6 +1926,7 @@ function dead4V(el){
     $("d4C").innerHTML=conditions.map((x,i)=>`<div class="dl4-card ${i===broken?"broken":""}"><b>${i===broken?"✓ ":""}${i+1}. ${x[0]}</b><small>${x[1]}</small></div>`).join("");
     $("d4R").innerHTML=`<b>${c[0]}を防ぐ方法</b><br>${c[3]}。<br><span class="note">この条件を崩すと、4条件がそろわないため、デッドロックの発生を防げます。実際に使える方法は資源の種類やシステムの設計によって異なります。</span>`;
   };
+  $("d4S").value=String(broken);
   $("d4S").onchange=()=>{broken=+$("d4S").value;draw()};draw();
 }
 
