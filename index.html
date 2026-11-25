@@ -1053,7 +1053,7 @@ let wt;$("wSearch").oninput=e=>{clearTimeout(wt);wt=setTimeout(()=>{wq=e.target.
 $("wBody").addEventListener("click",e=>{
   const d=e.target.closest("[data-diag]");if(d){const k=d.dataset.diag;if(WORD_VIS[k]){vsel=WORD_VIS[k];go("visual")}else{wordDiagram=wordDiagram==k?"":k;wlist();if(wordDiagram){const p=$("wBody").querySelector(".wdpanel");if(p)p.scrollIntoView({block:"nearest",behavior:RM?"auto":"smooth"})}}return}
   const b=e.target.closest("[data-got]");if(b){const k=b.dataset.got;S.g[k]?delete S.g[k]:S.g[k]=1;save();const it=b.closest(".gi");it.classList.toggle("got",!!S.g[k]);b.textContent=S.g[k]?"覚えた ✓":"覚えた";b.setAttribute("aria-pressed",S.g[k]?"true":"false");const m=G.filter(g=>S.g[g[0]]).length;$("wSum").querySelector("b").textContent=`${m} / ${G.length}`;$("wSum").querySelector(".meter div").style.width=m/G.length*100+"%";return}
-  const d=e.target.closest("[data-dir]");if(d&&card){card.dir=d.dataset.dir;card.open=false;wcard()}
+  const dirBtn=e.target.closest("[data-dir]");if(dirBtn&&card){card.dir=dirBtn.dataset.dir;card.open=false;wcard()}
 });
 addEventListener("keydown",e=>{
   if(wmode!="card"||!card||!$("v-words").classList.contains("on")||e.target.matches("input,textarea"))return;
