@@ -1303,10 +1303,61 @@ $("shareBtn").onclick=async()=>{
 
 /* ---------- バックアップ ---------- */
 $("bkCopy").onclick=async()=>{const code="AP1:"+btoa(unescape(encodeURIComponent(JSON.stringify(S))));$("bkIn").value=code;try{await navigator.clipboard.writeText(code);$("bkMsg").textContent="コピーしました"}catch(_){$("bkIn").select();$("bkMsg").textContent="下の欄のコードを長押ししてコピーしてください"}};
+const backupObject=x=>x!==null&&typeof x==="object"&&!Array.isArray(x);
+const backupCount=x=>typeof x==="number"&&Number.isFinite(x)&&x>=0;
+function decodeAPBackup(text){
+  if(text.length>200000||!text.startsWith("AP1:"))throw new Error("bad backup");
+  const raw=JSON.parse(decodeURIComponent(escape(atob(text.slice(4)))));
+  if(!backupObject(raw)||!backupObject(raw.q))throw new Error("bad backup");
+  const qids=new Set(QS.map(x=>x.id)),suids=new Set(SU.map(x=>x[1])),gids=new Set(G.map(x=>x[0]));
+  const vids=new Set(VIS.map(x=>x.id)),dkids=new Set(Object.keys(DR));
+  const essayIds=new Set(E.flatMap((_,i)=>[String(i),"d"+i]));
+  const copyMap=(key,allowed,valid,convert=x=>x)=>{
+    const src=raw[key]===undefined?{}:raw[key];
+    if(!backupObject(src))throw new Error("bad backup");
+    const out={};
+    for(const [k,v] of Object.entries(src)){
+      if(!allowed.has(k))continue;
+      if(!valid(v))throw new Error("bad backup");
+      out[k]=convert(v);
+    }
+    return out;
+  };
+  const out={q:{},f:{},d:{ok:0,n:0},dk:{},e:{},su:{},g:{},v:{},days:{},goal:10,exam:""};
+  out.q=copyMap("q",qids,v=>backupObject(v)&&backupCount(v.n)&&backupCount(v.c)&&v.c<=v.n&&(v.last===undefined||typeof v.last==="boolean"),v=>({n:v.n,c:v.c,last:v.last===true}));
+  const flags=v=>v===1||v===true;
+  out.f=copyMap("f",qids,flags,()=>1);
+  if(raw.d!==undefined){
+    if(!backupObject(raw.d)||!backupCount(raw.d.ok)||!backupCount(raw.d.n)||raw.d.ok>raw.d.n)throw new Error("bad backup");
+    out.d={ok:raw.d.ok,n:raw.d.n};
+  }
+  out.dk=copyMap("dk",dkids,v=>backupObject(v)&&backupCount(v.n)&&backupCount(v.ok)&&v.ok<=v.n);
+  out.e=copyMap("e",essayIds,v=>typeof v==="string"?v.length<=20000:(v===0||v===1||typeof v==="boolean"));
+  out.su=copyMap("su",suids,flags,()=>1);
+  out.g=copyMap("g",gids,flags,()=>1);
+  out.v=copyMap("v",vids,flags,()=>1);
+  out.days=copyMap("days",new Set(Object.keys(raw.days||{})),backupCount);
+  for(const k of Object.keys(out.days))if(!/^\d{4}-\d{2}-\d{2}$/.test(k)||out.days[k]>1000000)delete out.days[k];
+  if(raw.days!==undefined&&!backupObject(raw.days))throw new Error("bad backup");
+  if(raw.goal!==undefined){
+    if(typeof raw.goal!=="number"||!Number.isFinite(raw.goal)||raw.goal<1||raw.goal>200)throw new Error("bad backup");
+    out.goal=raw.goal;
+  }
+  if(raw.exam!==undefined){
+    if(typeof raw.exam!=="string"||(raw.exam!==""&&(!/^\d{4}-\d{2}-\d{2}$/.test(raw.exam)||!Number.isFinite(new Date(raw.exam+"T00:00:00").getTime()))))throw new Error("bad backup");
+    out.exam=raw.exam;
+  }
+  return out;
+}
 let bkArm=false;
-$("bkLoad").onclick=()=>{const t=$("bkIn").value.trim();try{if(!t.startsWith("AP1:"))throw 0;const o=JSON.parse(decodeURIComponent(escape(atob(t.slice(4)))));if(typeof o!=="object"||!o.q)throw 0;
-  if(!bkArm){bkArm=true;$("bkMsg").textContent="今の記録は上書きされます。もう一度押すと復元します";setTimeout(()=>bkArm=false,5000);return}
-  S=Object.assign({q:{},f:{},d:{ok:0,n:0},dk:{},e:{},su:{},g:{},v:{},days:{},goal:10,exam:""},o);save();bkArm=false;$("bkMsg").textContent="復元しました";$("bkIn").value="";home()}catch(_){$("bkMsg").textContent="コードを読み取れませんでした"}};
+$("bkLoad").onclick=()=>{
+  const t=$("bkIn").value.trim();
+  try{
+    const imported=decodeAPBackup(t);
+    if(!bkArm){bkArm=true;$("bkMsg").textContent="記録内容を確認しました。今の記録は上書きされます。復元する場合は5秒以内にもう一度押してください";setTimeout(()=>{bkArm=false},5000);return}
+    S=imported;save();bkArm=false;$("bkMsg").textContent="復元しました";$("bkIn").value="";home();
+  }catch(_){bkArm=false;$("bkMsg").textContent="記録コードが無効か壊れています。現在の記録は変更されていません";}
+};
 
 /* ---------- ホーム画面に追加 ---------- */
 {
