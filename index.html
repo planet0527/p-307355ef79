@@ -699,7 +699,7 @@ const DR_GUIDE=[
 ["SLA停止時間","保証稼働率の残りが停止できる割合。先に期間全体を分に直す","停止時間=運用時間×(100%−稼働率)","30日・稼働率99.9% → 30×24×60×0.001=43.2分"]
 ];
 const FM={"稼働率":"稼働率 = MTBF ÷ (MTBF + MTTR)","直列・並列":"直列 = A×B、並列 = 1 − (1−A)(1−B)","待ち行列":"ρ = 到着率 × 平均サービス時間、Wq = ρ ÷ (1−ρ) × 平均サービス時間","キャッシュ":"実効アクセス時間 = ヒット率×キャッシュ + (1−ヒット率)×主記憶","サブネット":"ホスト数 = 2^(32−プレフィックス長) − 2","EVM":"CPI = EV ÷ AC、SPI = EV ÷ PV(1未満なら悪化)","損益分岐点":"損益分岐点売上高 = 固定費 ÷ (1 − 変動費 ÷ 売上高)","SLA停止時間":"許容停止時間 = 運用時間 × (1 − 稼働率)"};
-let S={q:{},f:{},d:{ok:0,n:0},dk:{},e:{},su:{},g:{},v:{},days:{},goal:10,exam:""};
+let S={q:{},f:{},d:{ok:0,n:0},dk:{},e:{},su:{},g:{},w:{},v:{},days:{},goal:10,exam:""};
 try{const t=localStorage.getItem("ap-step-v1");if(t)S=Object.assign(S,JSON.parse(t))}catch(_){}
 const save=()=>{try{localStorage.setItem("ap-step-v1",JSON.stringify(S))}catch(_){}};
 const dkey=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
@@ -1165,7 +1165,7 @@ const CMP_CUE={
 "KGI と KPI":"「最終的な目標値」ならKGI。「目標へ向かう途中の指標」ならKPI。"
 };
 /* ---------- 用語画面 ---------- */
-let wmode="list",wq="",wcat="",wa=false,wk=false,wu=false,card=null,wordDiagram="";
+let wmode="list",wq="",wcat="",wa=false,wk=false,wu=false,wr=false,card=null,wordDiagram="";
 const CMODE=[["list","用語図鑑"],["card","単語カード"],["cmp","混同しやすい用語"],["cues","問題文の合図"]];
 const CUES=[
 ["「誤検知を減らしたい」「当たりと判定した中に間違いが多い」","「陽性」と判定したものが、どれだけ正しかったかを見る場面です。","適合率(Precision)"],
@@ -1222,8 +1222,8 @@ function decodeAPBackup(text){
     }
     return out;
   };
-  const out={q:{},f:{},d:{ok:0,n:0},dk:{},e:{},su:{},g:{},v:{},days:{},goal:10,exam:""};
-  out.q=copyMap("q",qids,v=>backupObject(v)&&backupCount(v.n)&&backupCount(v.c)&&v.c<=v.n&&(v.last===undefined||typeof v.last==="boolean"),v=>({n:v.n,c:v.c,last:v.last===true}));
+  const out={q:{},f:{},d:{ok:0,n:0},dk:{},e:{},su:{},g:{},w:{},v:{},days:{},goal:10,exam:""};
+  out.q=copyMap("q",qids,v=>backupObject(v)&&backupCount(v.n)&&backupCount(v.c)&&v.c<=v.n&&(v.last===undefined||typeof v.last==="boolean")&&(v.reason===undefined||["knowledge","read","calc","time","guess"].includes(v.reason)),v=>({n:v.n,c:v.c,last:v.last===true,...(v.reason?{reason:v.reason}:{})}));
   const flags=v=>v===1||v===true;
   out.f=copyMap("f",qids,flags,()=>1);
   if(raw.d!==undefined){
@@ -1234,6 +1234,7 @@ function decodeAPBackup(text){
   out.e=copyMap("e",essayIds,v=>typeof v==="string"?v.length<=20000:(v===0||v===1||typeof v==="boolean"));
   out.su=copyMap("su",suids,flags,()=>1);
   out.g=copyMap("g",gids,flags,()=>1);
+  out.w=copyMap("w",gids,flags,()=>1);
   out.v=copyMap("v",vids,flags,()=>1);
   out.days=copyMap("days",new Set(Object.keys(raw.days||{})),backupCount);
   for(const k of Object.keys(out.days))if(!/^\d{4}-\d{2}-\d{2}$/.test(k)||out.days[k]>1000000)delete out.days[k];
@@ -1270,23 +1271,23 @@ function wordDiagramControl(g){
   const open=wordDiagram==k;
   return '<div class="wActions"><button type="button" class="ghost mini" data-diag="'+esc(k)+'" aria-expanded="'+open+'">'+(WORD_VIS[k]?'動く図解を見る ↗':open?'図解を閉じる −':'図で解説')+'</button>'+(open&&WORD_DIAGRAMS[k]?renderWordDiagram(k):'')+'</div>';
 }
-const wFilter=()=>G.filter(g=>(!wcat||g[3]==wcat)&&(!wa||g[4].includes("a"))&&(!wk||g[4].includes("k"))&&(!wu||!S.g[g[0]])&&(!wq||(g[0]+" "+g[1]+" "+g[2]).toLowerCase().includes(wq.toLowerCase())));
+const wFilter=()=>G.filter(g=>(!wcat||g[3]==wcat)&&(!wa||g[4].includes("a"))&&(!wk||g[4].includes("k"))&&(!wu||!S.g[g[0]])&&(!wr||S.w[g[0]])&&(!wq||(g[0]+" "+g[1]+" "+g[2]).toLowerCase().includes(wq.toLowerCase())));
 const hl=t=>{const s=esc(t);if(!wq)return s;const q=esc(wq).replace(/[.*+?^${}()|[\]\\]/g,"\\const WORD_PLAIN={");return s.replace(new RegExp(q,"gi"),m=>`<mark>${m}</mark>`)};
 function words(){
   const m=G.filter(g=>S.g[g[0]]).length;
   $("wMode").innerHTML=CMODE.map(c=>`<button type="button" role="tab" aria-selected="${c[0]==wmode}" tabindex="${c[0]==wmode?"0":"-1"}" class="${c[0]==wmode?"on":""}" data-w="${c[0]}">${c[1]}</button>`).join("");
   $("wFil").hidden=!(wmode=="list"||wmode=="card");
-  $("wSum").innerHTML=`<span>覚えた用語 <b>${m} / ${G.length}</b></span><div class="meter" style="flex:1;max-width:260px"><div style="width:${m/G.length*100}%"></div></div>`;
+  $("wSum").innerHTML=`<span>覚えた用語 <b>${m} / ${G.length}</b></span><span>あとで見る <b>${G.filter(g=>S.w[g[0]]).length}</b></span><div class="meter" style="flex:1;max-width:260px"><div style="width:${m/G.length*100}%"></div></div>`;
   $("wCats").innerHTML=`<button class="chip ${wcat?"":"on"}" data-c="">すべての分野</button>`+CATS.map(c=>`<button class="chip ${c==wcat?"on":""}" data-c="${c}">${c}</button>`).join("");
-  $("wTg").innerHTML=[["wa","略語のみ",wa],["wk","AP重点のみ",wk],["wu","まだ覚えていない用語のみ",wu]].map(t=>`<label class="flag"><input type="checkbox" data-tg="${t[0]}" ${t[2]?"checked":""}>${t[1]}</label>`).join("");
+  $("wTg").innerHTML=[["wa","略語のみ",wa],["wk","AP重点のみ",wk],["wu","まだ覚えていない用語のみ",wu],["wr","あとで見る",wr]].map(t=>`<label class="flag"><input type="checkbox" data-tg="${t[0]}" ${t[2]?"checked":""}>${t[1]}</label>`).join("");
   if(wmode=="list")wlist();else if(wmode=="card")wcard(true);else if(wmode=="cmp")wcmp();else if(wmode=="cues")wcues();else wlist();
 }
 function wlist(){
   const L=wFilter();
-  if(!L.length){$("wBody").innerHTML=`<div class="empty">該当する用語がありません。検索語や絞り込みを変えてみてください。</div>`;return}
+  if(!L.length){$("wBody").innerHTML=`<div class="empty">${wr?"「あとで見る」に登録した用語はまだありません。用語カードの「あとで見る ☆」から追加できます。":"該当する用語がありません。検索語や絞り込みを変えてみてください。"}</div>`;return}
   const by={};L.forEach(g=>(by[g[3]]=by[g[3]]||[]).push(g));
   const learnedInView=L.filter(g=>S.g[g[0]]).length;
-  $("wBody").innerHTML=`<p class="note">表示中 ${L.length} 語 · 覚えた ${learnedInView} 語</p>`+Object.entries(by).map(([c,a])=>`<h3 class="gh">${c}<span>${a.length}</span></h3><div class="gl">${a.map(g=>`<div class="gi ${S.g[g[0]]?"got":""}"><div class="gt"><b>${hl(g[0])}</b>${g[4].includes("k")?'<span class="tag">AP重点</span>':""}${g[4].includes("a")?'<span class="tag s">略語</span>':""}</div><div class="gf">${hl(g[1])}</div><p>${hl(g[2])}</p>${renderWordPlain(g[0])}${renderWordUse(g[0])}<div class="wActions"><button type="button" class="ghost mini" data-got="${esc(g[0])}" aria-pressed="${S.g[g[0]]?"true":"false"}">${S.g[g[0]]?"覚えた ✓":"覚えた"}</button></div>${wordDiagramControl(g)}</div>`).join("")}</div>`).join("");
+  $("wBody").innerHTML=`<p class="note">表示中 ${L.length} 語 · 覚えた ${learnedInView} 語</p>`+Object.entries(by).map(([c,a])=>`<h3 class="gh">${c}<span>${a.length}</span></h3><div class="gl">${a.map(g=>`<div class="gi ${S.g[g[0]]?"got":""}"><div class="gt"><b>${hl(g[0])}</b>${g[4].includes("k")?'<span class="tag">AP重点</span>':""}${g[4].includes("a")?'<span class="tag s">略語</span>':""}</div><div class="gf">${hl(g[1])}</div><p>${hl(g[2])}</p>${renderWordPlain(g[0])}${renderWordUse(g[0])}<div class="wActions"><button type="button" class="ghost mini" data-got="${esc(g[0])}" aria-pressed="${S.g[g[0]]?"true":"false"}">${S.g[g[0]]?"覚えた ✓":"覚えた"}</button><button type="button" class="ghost mini" data-wrev="${esc(g[0])}" aria-pressed="${S.w[g[0]]?"true":"false"}">${S.w[g[0]]?"見直しリスト ✓":"あとで見る ☆"}</button></div>${wordDiagramControl(g)}</div>`).join("")}</div>`).join("");
 }
 function wcard(reset){
   if(reset||!card){const L=shuffle(wFilter());card={list:L,i:0,open:false,ok:0,dir:card?card.dir:"t"}}
@@ -1337,10 +1338,11 @@ function wguide(){guidePage()}
 $("wMode").onclick=e=>{const b=e.target.closest("[data-w]");if(b){wmode=b.dataset.w;card=null;words()}};
 $("wCats").onclick=e=>{const b=e.target.closest("[data-c]");if(b){wcat=b.dataset.c;words()}};
 $("wMode").onkeydown=e=>{if(!["ArrowLeft","ArrowRight"].includes(e.key))return;const tabs=[...$("wMode").querySelectorAll("[role=tab]")],i=tabs.indexOf(document.activeElement);if(i<0)return;e.preventDefault();const next=tabs[(i+(e.key=="ArrowRight"?1:-1)+tabs.length)%tabs.length];next.focus();next.click()};
-$("wTg").onchange=e=>{const k=e.target.dataset.tg;if(k=="wa")wa=e.target.checked;if(k=="wk")wk=e.target.checked;if(k=="wu")wu=e.target.checked;words()};
+$("wTg").onchange=e=>{const k=e.target.dataset.tg;if(k=="wa")wa=e.target.checked;if(k=="wk")wk=e.target.checked;if(k=="wu")wu=e.target.checked;if(k=="wr")wr=e.target.checked;words()}};
 let wt;$("wSearch").oninput=e=>{clearTimeout(wt);wt=setTimeout(()=>{wq=e.target.value.trim();if(wmode!="list")wmode="list";words()},150)};
 $("wBody").addEventListener("click",e=>{
   const d=e.target.closest("[data-diag]");if(d){const k=d.dataset.diag;if(WORD_VIS[k]){vsel=WORD_VIS[k];go("visual")}else{wordDiagram=wordDiagram==k?"":k;wlist();if(wordDiagram){const p=$("wBody").querySelector(".wdpanel");if(p)p.scrollIntoView({block:"nearest",behavior:RM?"auto":"smooth"})}}return}
+  const rev=e.target.closest("[data-wrev]");if(rev){const k=rev.dataset.wrev;S.w[k]?delete S.w[k]:S.w[k]=1;save();words();return}
   const b=e.target.closest("[data-got]");if(b){const k=b.dataset.got;S.g[k]?delete S.g[k]:S.g[k]=1;save();const it=b.closest(".gi");it.classList.toggle("got",!!S.g[k]);b.textContent=S.g[k]?"覚えた ✓":"覚えた";b.setAttribute("aria-pressed",S.g[k]?"true":"false");const m=G.filter(g=>S.g[g[0]]).length;$("wSum").querySelector("b").textContent=`${m} / ${G.length}`;$("wSum").querySelector(".meter div").style.width=m/G.length*100+"%";return}
   const dirBtn=e.target.closest("[data-dir]");if(dirBtn&&card){card.dir=dirBtn.dataset.dir;card.open=false;wcard()}
 });
