@@ -1916,7 +1916,7 @@ function dead4V(el){
     ["横取り不可","使用中の資源を途中で強制的に取り上げられない","例:印刷中のプリンタを別の処理に奪えない","対策例:待ちが長いとき資源を解放させる"],
     ["循環待ち","P1→P2→P3→P1のように待ち先が輪になる","例:P1はP2の資源、P2はP1の資源を待つ","対策例:資源に順番を付け、同じ順で要求する"]
   ];
-  let broken=3;
+  let broken=0;
   el.innerHTML=`<p>4つの条件が<strong>すべて同時に成り立つ</strong>と、デッドロックが起きる可能性があります。対策では、どれか1つが成立しないようにします。</p>
     <div class="dl4-flow" id="d4C"></div>
     <div class="ctl"><label for="d4S">対策を選ぶ</label><select id="d4S">${conditions.map((c,i)=>`<option value="${i}">${c[0]}を防ぐ</option>`).join("")}</select></div>
