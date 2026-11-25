@@ -1115,7 +1115,7 @@ function wcard(reset){
   if(card.i>=card.list.length){$("wBody").innerHTML=`<div class="panel" style="max-width:640px"><h3>${card.list.length} 枚を一巡しました</h3><p>今回「覚えた」にしたのは ${card.ok} 枚です。</p><div class="row"><button id="cAgain">まだの用語でもう一巡</button><button class="ghost" id="cAll">条件どおりにもう一巡</button></div></div>`;$("cAgain").onclick=()=>{wu=true;words()};$("cAll").onclick=()=>wcard(true);return}
   const g=card.list[card.i],t=card.dir=="t";
   const front=t?`<div class="cf-t">${esc(g[0])}</div><div class="note">${g[3]}</div>`:`<p class="cf-m">${esc(g[2])}</p><div class="note">${g[3]}</div>`;
-  const back=`<div class="cf-t sm">${esc(g[0])}</div><div class="gf">${esc(g[1])}</div><p>${esc(g[2])}</p>`;
+  const back=`<div class="cf-t sm">${esc(g[0])}</div><div class="gf">${esc(g[1])}</div><p>${esc(g[2])}</p><div class="usecase-card"><b>問題ではどう使う？</b><p>${esc(WORD_USE[g[0]])}</p></div>`;
   $("wBody").innerHTML=`<div style="max-width:640px"><div class="qmeta"><span>${card.i+1} / ${card.list.length}</span><span class="row"><button class="chip ${t?"on":""}" data-dir="t">用語→意味</button><button class="chip ${t?"":"on"}" data-dir="m">意味→用語</button></span></div><div class="prog"><div style="width:${card.i/card.list.length*100}%"></div></div><button class="fc" id="fc" aria-label="カードをめくる">${card.open?back:front+'<span class="note tap">タップして答えを見る</span>'}</button><div class="row" style="margin-top:12px">${card.open?`<button class="ghost" id="cNo">まだ</button><button id="cOk">覚えた</button>`:`<button id="cOpen">答えを見る</button>`}</div></div>`;
   $("fc").onclick=()=>{if(!card.open){card.open=true;wcard()}};
   if($("cOpen"))$("cOpen").onclick=()=>{card.open=true;wcard()};
@@ -1124,7 +1124,7 @@ function wcard(reset){
 }
 function words2(){const m=G.filter(g=>S.g[g[0]]).length;$("wSum").innerHTML=`<span>覚えた用語 <b>${m} / ${G.length}</b></span><div class="meter" style="flex:1;max-width:260px"><div style="width:${m/G.length*100}%"></div></div>`;wcard()}
 function wcmp(){
-  $("wBody").innerHTML=`<p class="note">試験の選択肢でよく並べられる、似た用語の組合せです。最後の行の「見分け方」を一言で言えるようにしましょう。</p><div class="cards">${CMP.map(c=>`<article class="card"><header><div><h3>${esc(c[0])}</h3></div></header><div class="diff cmpd">${c[1].map(r=>`<span class="t ap">${esc(r[0])}</span><span>${esc(r[1])}</span>`).join("")}</div><footer><b>見分け方:</b>${esc(c[2])}</footer></article>`).join("")}</div>`;
+  $("wBody").innerHTML=`<p class="note">問題文の合図を見つけたら、似た用語を切り分けます。「これが出たらどれ？」を先に確認してから違いを読みましょう。</p><div class="cards">${CMP.map(c=>`<article class="card"><header><div><h3>${esc(c[0])}</h3></div></header><div class="cmpcue"><b>問題文にこの合図が出たら</b><p>${esc(CMP_CUE[c[0]]||c[2])}</p></div><div class="diff cmpd">${c[1].map(r=>`<span class="t ap">${esc(r[0])}</span><span>${esc(r[1])}</span>`).join("")}</div><footer><b>見分け方:</b>${esc(c[2])}</footer></article>`).join("")}</div>`;
 }
 function wguide(){
   $("wBody").innerHTML=`<div class="guide">${GUIDE.map(s=>`<section class="panel"><h3>${esc(s[0])}</h3><ul>${s[1].map(l=>`<li>${esc(l)}</li>`).join("")}</ul></section>`).join("")}</div><p class="note">制度や日程は変わることがあります。受験前に必ず IPA(情報処理推進機構)の公式サイトで最新情報を確認してください。</p>`;
