@@ -382,6 +382,51 @@ mark{background:#ffe36b;color:#0b0f1a;border-radius:2px}
  #wSum{flex-wrap:wrap}.voice-setting{flex-basis:100%}
  #hint p{font-size:13px}
 }
+/* ---- 追加の図解(10テーマ) ---- */
+.bitrow{display:flex;gap:6px;flex-wrap:wrap}
+.bit{width:44px;min-height:56px;padding:0;display:grid;place-items:center;border-radius:8px;font-size:20px;font-weight:700;background:var(--bg);color:var(--ink);border:2px solid var(--line);line-height:1.1}
+.bit small{font-size:10px;font-weight:500;color:var(--mute)}
+.bit.par{border-color:var(--fl);background:var(--flz)}.bit.dat{border-color:var(--co2)}
+.bit.err{background:var(--ngz);border-color:var(--ng);color:var(--ng)}.bit.fix{background:var(--okz);border-color:var(--ok);color:var(--ok)}
+.chk{display:grid;gap:6px;margin:12px 0}.chk div{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 10px;padding:8px 10px;border-radius:8px;background:var(--zone);font-size:14px}.chk .bad{background:var(--ngz);color:var(--ng);font-weight:700}
+.cpm .cpl{stroke:var(--mute);stroke-width:2}.cpm .cpl.crit{stroke:var(--ng);stroke-width:3.5}.cpah{fill:var(--mute)}.cpahr{fill:var(--ng)}
+.cpb{cursor:pointer}.cpb rect{fill:var(--zone);stroke:var(--line);stroke-width:2}.cpb.sel rect{stroke:var(--co2);stroke-width:3}.cpb.crit rect{stroke:var(--ng);stroke-width:3;fill:var(--ngz)}
+.vsvg .cpb .cpn{fill:var(--ink);font-weight:700;font-size:17px}.vsvg .cpb .cps{fill:var(--ink);font-size:14px}
+table.ctab{border-collapse:collapse;width:100%;font-size:14px}.scroll table.ctab{min-width:420px}
+.ctab th,.ctab td{border-bottom:1px solid var(--line);padding:7px 8px;text-align:center}.ctab th{color:var(--mute);font-weight:500;font-size:13px}
+.ctab tr.crit td{color:var(--ng);font-weight:700}.ctab td.hl{background:var(--flz);outline:2px solid var(--fl);font-weight:700}.ctab tr.hlr td{background:var(--flz);font-weight:700}
+.bprof{fill:var(--ok);opacity:.2}.bloss{fill:var(--ng);opacity:.2}
+.rpn{display:grid;grid-template-columns:minmax(0,1fr) 118px;gap:14px;align-items:start}
+.tokens{display:flex;gap:6px;flex-wrap:wrap}.tok{min-width:42px;height:46px;border:1px solid var(--line);border-radius:8px;display:grid;place-items:center;font-weight:700;font-size:19px;padding:0 6px}
+.tok.op{color:var(--co2)}.tok.done{opacity:.35}.tok.cur{border:2px solid var(--fl);background:var(--flz)}
+.stackbox{display:flex;flex-direction:column-reverse;gap:4px;min-height:210px;border:3px solid var(--mute);border-top:0;border-radius:0 0 12px 12px;padding:6px}
+.stackbox div{min-height:40px;border-radius:6px;background:var(--co);color:#fff;display:grid;place-items:center;font-weight:700;font-size:18px}.stackbox div.new{background:var(--ok)}
+.dfa .fae{fill:none;stroke:var(--mute);stroke-width:2}.dfa .fae.on{stroke:var(--fl);stroke-width:3.5}
+.vsvg .fal{font-size:17px;font-weight:700;fill:var(--ink)}.vsvg .fal.on{fill:var(--fl)}
+.fas circle{fill:var(--zone);stroke:var(--co2);stroke-width:2.5}.fas .acc{fill:none}.fas.cur circle:first-child{fill:var(--co2)}.fas.cur .acc{stroke:#fff}
+.vsvg .fas text{font-size:16px;font-weight:700;fill:var(--ink)}.vsvg .fas.cur text{fill:#fff}
+.okc{color:var(--ok)}.ngc{color:var(--ng)}
+.dl .dle{stroke-width:3}.dle.a{stroke:var(--co2)}.dle.r{stroke:var(--fl);stroke-dasharray:7 5}.dle.d{stroke:var(--ng);stroke-width:4}
+.dlha{fill:var(--co2)}.dlhr{fill:var(--fl)}.dlhd{fill:var(--ng)}
+.dln circle{fill:var(--zone);stroke:var(--co2);stroke-width:2.5}.dln rect{fill:var(--flz);stroke:var(--fl);stroke-width:2.5}
+.vsvg .dln text{font-size:17px;font-weight:700;fill:var(--ink)}.vsvg .dlw{fill:var(--ng);font-size:19px;font-weight:700}
+.legend i.ldash{border:0;border-top:3px dashed var(--fl);height:0;border-radius:0}
+pre.sql{background:#0b1433;color:#e8ecf8;padding:12px 14px;border-radius:10px;font-size:14px;white-space:pre-wrap;word-break:break-all;font-family:ui-monospace,Menlo,Consolas,monospace;margin:6px 0 10px}
+pre.sql mark{color:#0b0f1a;border-radius:3px;padding:0 2px}pre.sql mark.inj{background:#ff9a8a}pre.sql mark.ph{background:#9fb4ff}pre.sql mark.val{background:#7ee0b0}pre.sql .note{color:#9aa3ba}
+#sqC code{font-size:13px;overflow-wrap:anywhere}
+.nap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.nap>b{text-align:center;background:var(--zone);border-radius:8px;padding:8px 4px;font-size:13px}
+.napc{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;min-height:100px;align-items:center}
+.pkt{border:2px solid var(--co2);border-radius:10px;padding:6px;font-size:12px;background:var(--bg);overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.pkt small{display:block;color:var(--mute);font-size:11px}.pkt div{padding:2px 4px;border-radius:4px}.pkt .chg{background:var(--flz);font-weight:700}
+.cmw{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:start;margin-top:10px}
+@media(max-width:700px){.cmw{grid-template-columns:minmax(0,1fr)}}
+table.cmx{border-collapse:separate;border-spacing:4px;width:100%;font-size:13px}.cmx th{color:var(--mute);font-weight:500}
+.cmx td{text-align:center;border-radius:8px;padding:10px 4px;font-weight:700;font-size:15px}.cmx td small{display:block;font-weight:500;font-size:11px}
+.cmx .tp,.cmx .tn{background:var(--okz);color:var(--ok)}.cmx .fp,.cmx .fn{background:var(--ngz);color:var(--ng)}
+.cmreg{fill:var(--co2);opacity:.08}.cmd{stroke:var(--bg);stroke-width:1}.cmd.p{fill:var(--ng)}.cmd.n{fill:var(--co2);opacity:.6}.cmd.in{stroke:var(--ink);stroke-width:1.5}
+.dt .dtl{fill:none;stroke:var(--line);stroke-width:2.5}.dt .dtl.best{stroke:var(--ok);stroke-width:4}.dtd{fill:var(--co2)}.dtc{fill:var(--flz);stroke:var(--fl);stroke-width:2}
+.vsvg .dto{fill:var(--ink);font-weight:700;font-size:15px}.vsvg .dte{fill:var(--ink);font-weight:700}.vsvg .dto.best,.vsvg .dte.best{fill:var(--ok)}.vsvg .dtv{fill:var(--ink);font-weight:700;font-size:15px}
+@media(max-width:600px){.bit{width:40px}.rpn{grid-template-columns:minmax(0,1fr) 96px}.pkt{font-size:11px}}
 </style>
 </head>
 <body>
@@ -561,7 +606,7 @@ mark{background:#ffe36b;color:#0b0f1a;border-radius:2px}
 </section>
 <section class="view" id="v-visual">
   <h2>図解で理解する</h2>
-  <p class="lead">文章だけではイメージしにくい仕組みを、動かして確かめます。初心者がつまずきやすい21のテーマを選びました。スライダーやボタンを操作してみてください。</p>
+  <p class="lead">文章だけではイメージしにくい仕組みを、動かして確かめます。初心者がつまずきやすい<span id="vCount">31</span>のテーマを選びました。スライダーやボタンを操作してみてください。</p>
   <div class="vwrap"><div class="vlist" id="vList" aria-label="図解の一覧"></div><div id="vStage"></div></div>
 </section>
 <section class="view" id="v-words">
@@ -1462,7 +1507,7 @@ const VIS=[
 ];
 
 function visual(){
-  stopT();
+  stopT();const vc=$("vCount");if(vc)vc.textContent=VIS.length;
   const v=VIS.find(x=>x.id==vsel)||VIS[0];vsel=v.id;S.v[v.id]=1;save();
   $("vList").innerHTML=VIS.map(x=>`<button class="vi ${x.id==vsel?"on":""}" data-vid="${x.id}"><small>${x.cat}</small><span>${x.t}</span>${S.v[x.id]?'<i class="ck" aria-label="見た">✓</i>':""}</button>`).join("");
   const i=VIS.indexOf(v);
@@ -1831,6 +1876,277 @@ function csrfV(el){
 }
 $("vList").onclick=e=>{const b=e.target.closest("[data-vid]");if(b){vsel=b.dataset.vid;visual()}};
 
+
+/* ---------- 追加の図解(10テーマ) ---------- */
+VIS.push(
+{id:"hamming",t:"ハミング符号で誤りを直す",cat:"基礎理論",re:/ハミング/,q:"基礎理論",
+ trip:"「検査ビットを付けると、なぜ誤りの位置までわかるのか」がつまずきどころです。3つの検査ビットがそれぞれ別の組を見張っていて、どの組が合わないかの組合せが、そのまま誤りの位置番号になります。",
+ key:["(7,4)ハミング符号はデータ4ビット+検査ビット3ビット","検査ビットは位置1・2・4。位置1は1,3,5,7、位置2は2,3,6,7、位置4は4,5,6,7を見張る","合わなかった検査の位置を足すと誤りの位置になる(例:1と4が不一致→位置5)","1ビットの誤りは訂正できる。2ビット同時の誤りは正しく訂正できない"],r:hammingV},
+{id:"cpm",t:"クリティカルパスと余裕日数",cat:"マネジメント",re:/クリティカルパス|最短所要日数|アローダイアグラム/,q:"マネジメント",
+ trip:"最早開始日は「前から、合流点では最大」、最遅開始日は「後ろから、分岐点では最小」を取ります。この向きと max/min を取り違えるミスが非常に多い部分です。",
+ key:["最早開始日(ES):前の作業がすべて終わる日。合流点では最も遅いものに合わせる(最大)","最遅開始日(LS):全体を遅らせずに始められる最後の日。後ろから計算し、分岐点では最小を取る","余裕日数 = 最遅開始日 − 最早開始日。0の作業を結んだ経路がクリティカルパス","クリティカルパス上の作業が1日遅れると、全体も1日遅れる"],r:cpmV},
+{id:"bep",t:"損益分岐点のグラフ",cat:"ストラテジ",re:/損益分岐点|変動費|限界利益/,q:"ストラテジ",
+ trip:"式だけ覚えても、問題文の数値をどこに当てはめるか迷いがちです。売上高の線と総費用の線が交わる点が損益分岐点、という図のイメージを持つと迷いません。",
+ key:["総費用 = 固定費 + 変動費(販売数量に比例)","限界利益 = 売上高 − 変動費。1個あたりでは 単価 − 単位変動費","損益分岐点販売数量 = 固定費 ÷ 1個あたりの限界利益","損益分岐点売上高 = 固定費 ÷ (1 − 変動費率)。固定費が下がるか、限界利益が増えると分岐点は下がる"],r:bepV},
+{id:"rpn",t:"逆ポーランド記法とスタック",cat:"基礎理論",re:/逆ポーランド|スタック|後置記法/,q:"基礎理論",
+ trip:"演算子が来たときにスタックから2つ取り出しますが、「先に取り出した方が右側」になる点で引き算・割り算の順序を間違えやすい部分です。",
+ key:["数(被演算子)はスタックに積む","演算子が来たら2つ取り出し、計算結果を積む","後から取り出した方が左、先に取り出した方が右(a − b なら b が先に出る)","最後にスタックに1つだけ残った値が答え"],r:rpnV},
+{id:"dfa",t:"有限オートマトン(状態遷移)",cat:"基礎理論",re:/オートマトン|状態遷移|受理/,q:"基礎理論",
+ trip:"状態遷移図と状態遷移表を行き来できないと、どの文字列が受理されるかを判断できません。1文字ずつ「今の状態」と「読んだ文字」から次の状態を表で引く練習が効きます。",
+ key:["状態遷移表は「今の状態 × 入力」から次の状態を引く表","最初は開始状態から始め、1文字ずつ遷移する","最後に受理状態(二重丸)にいれば受理","この例は「末尾が 01 で終わる2進数の文字列」だけを受理する"],r:dfaV},
+{id:"deadlock",t:"デッドロックが起きるしくみ",cat:"OS",re:/デッドロック|循環待ち/,q:"OS",
+ trip:"「お互いが相手の持っている資源を待っている」状態を頭の中だけで追うのは難しい部分です。誰が何を持ち、何を待っているかを矢印で描くと、輪(循環)ができた瞬間がデッドロックだとわかります。",
+ key:["発生条件:相互排除・保持と待ち・横取り不可・循環待ちの4つがすべてそろう","資源を持ったまま別の資源を待つと、循環待ちが生まれやすい","対策:全プロセスで資源の獲得順序をそろえる(循環待ちを防ぐ)","ほかに、必要な資源を最初にまとめて確保する方法もある"],r:deadlockV},
+{id:"sqli",t:"SQLインジェクションとプレースホルダ",cat:"セキュリティ",re:/SQL ?インジェクション|プレースホルダ/,q:"セキュリティ",
+ trip:"入力した文字が「データ」ではなく「SQL文の一部」として解釈されてしまうのが原因です。文字列をつないで SQL を組み立てると、引用符 ' で文の構造を変えられてしまいます。",
+ key:["原因:利用者の入力をそのまま連結して SQL 文を組み立てること","根本対策:プレースホルダ(バインド機構)で、入力を必ず値として扱う","補助策:エスケープ処理、入力値の検証、エラーメッセージを画面に出さない","被害を小さくする:データベースのアカウント権限を必要最小限にする"],r:sqliV},
+{id:"napt",t:"NAPT(アドレスとポートの変換)",cat:"ネットワーク",re:/NAPT|NAT|アドレス変換/,q:"ネットワーク",
+ trip:"複数の端末が1つのグローバル IP アドレスを共有できる理由が見えにくい部分です。ルータが送信元のポート番号まで書き換えて対応表に記録するので、戻ってきた通信を正しい端末へ返せます。",
+ key:["NAPT は送信元の IP アドレスとポート番号をまとめて変換する","変換の対応はルータの変換表に記録される","応答は変換表を逆に引いて、元の端末とポートへ戻す","社内の端末が同じポート番号を使っていても、変換後のポート番号で区別できる"],r:naptV},
+{id:"cm",t:"適合率と再現率(混同行列)",cat:"基礎理論",re:/適合率|再現率|混同行列|F値/,q:"基礎理論",
+ trip:"適合率と再現率は分母が違うだけなので混同しがちです。判定のしきい値を動かすと、片方が上がればもう片方が下がるトレードオフの関係が見えてきます。",
+ key:["適合率 = TP ÷ (TP + FP):陽性と判定したうち、本当に陽性の割合","再現率 = TP ÷ (TP + FN):本当の陽性のうち、見つけられた割合","しきい値を上げると適合率は上がりやすく、再現率は下がりやすい","F値は適合率と再現率の調和平均。両方のバランスを見る"],r:cmV},
+{id:"dtree",t:"デシジョンツリーと期待値",cat:"ストラテジ",re:/期待値|デシジョンツリー|意思決定/,q:"ストラテジ",
+ trip:"木を左から順に計算しようとして混乱しがちです。期待値は右端(結果)から左へ計算し、確率の分岐では「確率×利益」を合計、自分で選ぶ分岐では大きい方を選びます。",
+ key:["○(確率ノード):確率 × 利益 を足して期待値を出す","□(意思決定ノード):期待値が最も大きい選択肢を選ぶ","計算は右端から左へ進める","確率が変わると最適な選択も変わる。分岐点となる確率を求める問題もある"],r:dtreeV}
+);
+
+/* ハミング符号 */
+function hammingV(el){
+  let d=[1,0,1,1],recv=null,fixed=false;
+  const enc=()=>{const [d1,d2,d3,d4]=d;const p1=d1^d2^d4,p2=d1^d3^d4,p4=d2^d3^d4;return[p1,p2,d1,p4,d2,d3,d4]};
+  const GR=[[1,[1,3,5,7]],[2,[2,3,6,7]],[4,[4,5,6,7]]];
+  el.innerHTML=`<p class="note">① 送りたいデータ4ビットを押して変えられます。</p><div class="bitrow" id="hmD"></div><p class="note" style="margin-top:12px">② 送信する符号(7ビット)。橙が検査ビット、青がデータです。<b>受信側のビットを押すと、通信中の誤り(反転)を起こせます。</b></p><div class="bitrow" id="hmC"></div><div class="chk" id="hmK"></div><div class="row"><button id="hmFix">誤りを訂正する</button><button class="ghost" id="hmR">誤りを消す</button></div><p class="out" id="hmO"></p>`;
+  const draw=()=>{
+    const c=enc();if(!recv)recv=c.slice();
+    $("hmD").innerHTML=d.map((b,i)=>`<button class="bit dat" data-d="${i}" aria-label="データビット${i+1}">${b}<small>d${i+1}</small></button>`).join("");
+    const err=recv.map((b,i)=>b!==c[i]);
+    $("hmC").innerHTML=recv.map((b,i)=>{const pos=i+1,par=[1,2,4].includes(pos);return`<button class="bit ${par?"par":"dat"} ${err[i]?"err":""} ${fixed&&fixed===pos?"fix":""}" data-c="${i}" aria-label="位置${pos}のビット">${b}<small>位置${pos}</small></button>`}).join("");
+    let syn=0;
+    $("hmK").innerHTML=GR.map(([p,ms])=>{const x=ms.reduce((a,m)=>a^recv[m-1],0);if(x)syn+=p;return`<div class="${x?"bad":""}"><span>検査${p}:位置 ${ms.join("・")} の1の数</span><span>${x?"奇数 → 不一致":"偶数 → OK"}</span></div>`}).join("");
+    const nerr=err.filter(Boolean).length;
+    $("hmO").innerHTML=syn==0?(nerr?`検査はすべて OK ですが、実際には ${nerr} ビット誤っています。2ビット以上の誤りは見逃すことがあります。`:`誤りはありません。${fixed?`位置 ${fixed} を訂正しました。`:"受信側のビットを1つ押して、誤りを起こしてみましょう。"}`)
+      :`不一致の検査の番号を足すと <b>${syn}</b> → 位置 ${syn} のビットが誤っていると判定します。${nerr>1?"<br><span class=\"note\">ただし実際は2ビット以上誤っているため、この訂正は間違いです。</span>":""}`;
+    $("hmFix").disabled=syn==0;$("hmFix").dataset.syn=syn;
+  };
+  $("hmD").onclick=e=>{const b=e.target.closest("[data-d]");if(!b)return;d[+b.dataset.d]^=1;recv=null;fixed=false;draw()};
+  $("hmC").onclick=e=>{const b=e.target.closest("[data-c]");if(!b)return;recv[+b.dataset.c]^=1;fixed=false;draw()};
+  $("hmFix").onclick=()=>{const p=+$("hmFix").dataset.syn;if(p){recv[p-1]^=1;fixed=p;draw()}};
+  $("hmR").onclick=()=>{recv=null;fixed=false;draw()};
+  draw();
+}
+
+/* クリティカルパス */
+function cpmV(el){
+  const A=[{n:"A",d:3,p:[]},{n:"B",d:4,p:["A"]},{n:"C",d:5,p:["A"]},{n:"D",d:2,p:["B"]},{n:"E",d:3,p:["C"]},{n:"F",d:2,p:["D","E"]}];
+  const POS={A:[4,95],B:[110,30],C:[110,160],D:[216,30],E:[216,160],F:[322,95]};
+  let phase=0,sel="C";
+  el.innerHTML=`${seg("cpP",[["0","① 最早開始日(前から)"],["1","② 最遅開始日(後ろから)"],["2","③ 余裕とクリティカルパス"]],"0")}<svg viewBox="0 0 420 240" class="vsvg cpm" id="cpS" role="img" aria-label="作業の順序関係の図"></svg><div class="row" style="align-items:center;margin:6px 0"><span class="note">日数を変える作業</span><div class="seg" id="cpSel" style="margin:0"></div><button class="ghost" id="cpM" aria-label="日数を減らす">−1日</button><button class="ghost" id="cpPl" aria-label="日数を増やす">+1日</button></div><div class="scroll"><table class="ctab" id="cpT"></table></div><p class="out" id="cpO"></p>`;
+  const calc=()=>{const m={};A.forEach(a=>{const es=a.p.length?Math.max(...a.p.map(p=>m[p].ef)):0;m[a.n]={...a,es,ef:es+a.d}});const T=m.F.ef;[...A].reverse().forEach(a=>{const succ=A.filter(b=>b.p.includes(a.n));const lf=succ.length?Math.min(...succ.map(b=>m[b.n].ls)):T;m[a.n].lf=lf;m[a.n].ls=lf-a.d;m[a.n].sl=m[a.n].ls-m[a.n].es});return{m,T}};
+  const draw=()=>{
+    const {m,T}=calc();
+    const ar=(a,b)=>{const [x1,y1]=POS[a],[x2,y2]=POS[b];const cr=phase==2&&m[a].sl==0&&m[b].sl==0;return`<line class="cpl ${cr?"crit":""}" x1="${x1+92}" y1="${y1+28}" x2="${x2-4}" y2="${y2+28}" marker-end="url(#cpA${cr?"r":""})"/>`};
+    let svg=`<defs><marker id="cpA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" class="cpah"/></marker><marker id="cpAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" class="cpahr"/></marker></defs>`;
+    A.forEach(b=>b.p.forEach(a=>svg+=ar(a,b.n)));
+    A.forEach(a=>{const [x,y]=POS[a.n],v=m[a.n],cr=phase==2&&v.sl==0;const sub=phase==0?`ES ${v.es} → EF ${v.ef}`:phase==1?`LS ${v.ls} ・ LF ${v.lf}`:`余裕 ${v.sl} 日`;svg+=`<g class="cpb ${cr?"crit":""} ${a.n==sel?"sel":""}" data-n="${a.n}"><rect x="${x}" y="${y}" width="92" height="60" rx="9"/><text x="${x+46}" y="${y+24}" text-anchor="middle" class="cpn">${a.n}(${a.d}日)</text><text x="${x+46}" y="${y+47}" text-anchor="middle" class="cps">${sub}</text></g>`});
+    $("cpS").innerHTML=svg;
+    $("cpSel").innerHTML=A.map(a=>`<button class="${a.n==sel?"on":""}" data-s="${a.n}">${a.n}</button>`).join("");
+    $("cpT").innerHTML=`<tr><th>作業</th><th>日数</th><th>先行作業</th><th>最早開始</th><th>最遅開始</th><th>余裕</th></tr>`+A.map(a=>{const v=m[a.n];return`<tr class="${phase==2&&v.sl==0?"crit":""}"><td>${a.n}</td><td>${a.d}</td><td>${a.p.join("・")||"なし"}</td><td>${v.es}</td><td>${phase>=1?v.ls:"?"}</td><td>${phase>=2?v.sl:"?"}</td></tr>`}).join("");
+    const cp=A.filter(a=>m[a.n].sl==0).map(a=>a.n).join(" → ");
+    $("cpO").innerHTML=phase==0?`前から順に計算します。F は D と E の両方が終わるまで始められないので、<b>EF(D)=${m.D.ef}</b> と <b>EF(E)=${m.E.ef}</b> の<b>大きい方</b> ${m.F.es} 日目から始まります。全体の所要日数は <b>${T} 日</b>。`
+      :phase==1?`全体の ${T} 日から後ろへ計算します。A の後は B と C に分かれるので、<b>LS(B)=${m.B.ls}</b> と <b>LS(C)=${m.C.ls}</b> の<b>小さい方</b> ${m.A.lf} 日目までに A を終える必要があります。`
+      :`余裕が0の作業をつなぐと、クリティカルパスは <b>${cp}</b>(${T} 日)。余裕のある作業は、その日数までなら遅れても全体は延びません。日数を変えて、経路が入れ替わる様子も見てみましょう。`;
+  };
+  $("cpP").onclick=e=>{const b=e.target.closest("[data-s]");if(!b)return;phase=+b.dataset.s;$("cpP").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x==b));draw()};
+  $("cpSel").onclick=e=>{const b=e.target.closest("[data-s]");if(b){sel=b.dataset.s;draw()}};
+  $("cpS").onclick=e=>{const g=e.target.closest("[data-n]");if(g){sel=g.dataset.n;draw()}};
+  const ch=k=>{const a=A.find(x=>x.n==sel);a.d=Math.min(9,Math.max(1,a.d+k));draw()};
+  $("cpM").onclick=()=>ch(-1);$("cpPl").onclick=()=>ch(1);
+  draw();
+}
+
+/* 損益分岐点 */
+function bepV(el){
+  el.innerHTML=`<div class="ctl"><label>販売単価 <b id="bePv"></b><input type="range" id="beP" min="500" max="2000" step="50" value="1000" aria-label="販売単価"></label><label>1個あたりの変動費 <b id="beVv"></b><input type="range" id="beV" min="100" max="1500" step="50" value="600" aria-label="1個あたりの変動費"></label><label>固定費 <b id="beFv"></b><input type="range" id="beF" min="100" max="1000" step="20" value="400" aria-label="固定費"></label><label>販売数量 <b id="beQv"></b><input type="range" id="beQ" min="0" max="2000" step="50" value="1300" aria-label="販売数量"></label></div><svg viewBox="0 0 420 260" class="vsvg" id="beS" role="img" aria-label="売上高と総費用のグラフ"></svg><div class="legend"><span><i class="lev"></i>売上高</span><span><i class="lac"></i>総費用(固定費+変動費)</span><span><i class="lpv"></i>固定費</span></div><div class="kpi4" id="beO"></div>`;
+  const draw=()=>{
+    const p=+$("beP").value,v=+$("beV").value,F=+$("beF").value*1000,q=+$("beQ").value,Q=2000;
+    $("bePv").textContent=p.toLocaleString()+" 円";$("beVv").textContent=v.toLocaleString()+" 円";$("beFv").textContent=(F/10000).toLocaleString()+" 万円";$("beQv").textContent=q.toLocaleString()+" 個";
+    const ymax=Math.max(p*Q,F+v*Q)*1.05,X=x=>50+x/Q*350,Y=y=>220-y/ymax*200;
+    const mu=p-v,bq=mu>0?F/mu:Infinity;
+    let svg=`<line class="ax" x1="50" y1="220" x2="405" y2="220"/><line class="ax" x1="50" y1="15" x2="50" y2="220"/><text x="405" y="240" text-anchor="end">販売数量</text><text x="56" y="13">金額</text>`;
+    const pr=p*q-(F+v*q);
+    svg+=`<polygon class="${pr>=0?"bprof":"bloss"}" points="${X(Math.min(bq,Q))},${Y(p*Math.min(bq,Q))} ${X(q)},${Y(p*q)} ${X(q)},${Y(F+v*q)}"/>`;
+    svg+=`<line class="cpv" x1="${X(0)}" y1="${Y(F)}" x2="${X(Q)}" y2="${Y(F)}"/><line class="cev" x1="${X(0)}" y1="${Y(0)}" x2="${X(Q)}" y2="${Y(p*Q)}"/><line class="cac" x1="${X(0)}" y1="${Y(F)}" x2="${X(Q)}" y2="${Y(F+v*Q)}"/><line class="now" x1="${X(q)}" x2="${X(q)}" y1="15" y2="220"/>`;
+    if(bq<=Q)svg+=`<circle class="pt" cx="${X(bq)}" cy="${Y(p*bq)}" r="8"/><text class="pl" x="${X(bq)-10}" y="${Y(p*bq)-14}" text-anchor="end">損益分岐点</text>`;
+    $("beS").innerHTML=svg;
+    const sales=p*q,bs=mu>0?F/(1-v/p):Infinity;
+    const man=x=>(Math.round(x/1000)/10).toLocaleString()+" 万円";
+    $("beO").innerHTML=mu<=0?`<div class="kc bad" style="grid-column:1/-1"><b>1個あたりの限界利益が ${mu.toLocaleString()} 円</b><span>単価が変動費以下なので、何個売っても赤字が増えるだけです。</span></div>`
+      :[["1個あたり限界利益",`${p} − ${v} = ${mu.toLocaleString()} 円`,`限界利益率 ${f2(mu/p)}`,false],["損益分岐点 販売数量",`${(F/10000).toLocaleString()}万 ÷ ${mu} ≒ ${Math.ceil(bq).toLocaleString()} 個`,"これより多く売れば黒字",false],["損益分岐点 売上高",man(bs),`固定費 ÷ (1 − ${f2(v/p)})`,false],["今の利益",man(pr),pr>=0?"黒字":"赤字",pr<0]].map(k=>`<div class="kc ${k[3]?"bad":"good"}"><small>${k[0]}</small><b>${k[1]}</b><span>${k[2]}</span></div>`).join("")+(sales>0&&mu>0?`<p class="note" style="grid-column:1/-1">安全余裕率 = (売上高 − 損益分岐点売上高) ÷ 売上高 = ${Math.round((sales-bs)/sales*100)}%(大きいほど赤字になりにくい)</p>`:"");
+  };
+  ["beP","beV","beF","beQ"].forEach(i=>$(i).oninput=draw);draw();
+}
+
+/* 逆ポーランド記法 */
+function rpnV(el){
+  const PRE=[{inf:"(3 + 5) × (8 − 2)",rpn:["3","5","+","8","2","−","×"]},{inf:"2 + 3 × 4",rpn:["2","3","4","×","+"]},{inf:"(9 − 4) ÷ 5 + 6",rpn:["9","4","−","5","÷","6","+"]}];
+  let pi=0,t=0;
+  el.innerHTML=`${seg("rpP",PRE.map((p,i)=>[String(i),p.inf]),"0")}<div class="rpn"><div><p class="note">逆ポーランド記法(後置記法)</p><div class="tokens" id="rpT"></div><div class="row" style="margin-top:12px"><button id="rpN">次の記号を読む</button><button class="ghost" id="rpR">最初から</button></div><p class="out" id="rpO"></p></div><div><p class="note" style="text-align:center">スタック</p><div class="stackbox" id="rpS"></div></div></div>`;
+  const run=n=>{const st=[];let msg="",nw=-1;const ex=PRE[pi].rpn;for(let i=0;i<n;i++){const k=ex[i];if(/^\d+$/.test(k)){st.push(+k);msg=`数 ${k} はスタックに積みます。`;nw=st.length-1}else{const b=st.pop(),a=st.pop();const r=k=="+"?a+b:k=="−"?a-b:k=="×"?a*b:a/b;st.push(r);msg=`演算子 ${k}:先に取り出した <b>${b}</b> が右、後から取り出した <b>${a}</b> が左。${a} ${k} ${b} = <b>${r}</b> を積みます。`;nw=st.length-1}}return{st,msg,nw}};
+  const draw=()=>{
+    const ex=PRE[pi].rpn,{st,msg,nw}=run(t);
+    $("rpT").innerHTML=ex.map((k,i)=>`<span class="tok ${/^\d+$/.test(k)?"":"op"} ${i<t-1?"done":""} ${i==t-1?"cur":""}">${k}</span>`).join("");
+    $("rpS").innerHTML=st.map((v,i)=>`<div class="${i==nw?"new":""}">${v}</div>`).join("");
+    $("rpO").innerHTML=t==0?`元の式は <b>${PRE[pi].inf}</b>。左から1つずつ読み進めます。`:t==ex.length?`${msg}<br>読み終わり、スタックに残った <b>${st[0]}</b> が答えです。`:msg;
+    $("rpN").disabled=t>=ex.length;
+  };
+  $("rpN").onclick=()=>{t++;draw()};$("rpR").onclick=()=>{t=0;draw()};
+  $("rpP").onclick=e=>{const b=e.target.closest("[data-s]");if(!b)return;pi=+b.dataset.s;t=0;$("rpP").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x==b));draw()};
+  draw();
+}
+
+/* 有限オートマトン */
+function dfaV(el){
+  const TR={q0:{"0":"q1","1":"q0"},q1:{"0":"q1","1":"q2"},q2:{"0":"q1","1":"q0"}};
+  let str="10101",t=0;
+  el.innerHTML=`<div class="ctl"><label>入力する文字列(0 と 1)<input type="text" id="faIn" value="${str}" inputmode="numeric" autocomplete="off" maxlength="16"></label></div><div class="row" style="margin-bottom:8px">${["10101","0110","1001","111"].map(x=>`<button class="chip" data-p="${x}">${x}</button>`).join("")}</div><svg viewBox="0 0 420 250" class="vsvg dfa" id="faS" role="img" aria-label="状態遷移図"></svg><div class="row"><button id="faN">1文字読む</button><button class="ghost" id="faA">最後まで読む</button><button class="ghost" id="faR">最初から</button></div><div class="scroll" style="margin-top:10px"><table class="ctab" id="faT"></table></div><p class="out" id="faO"></p>`;
+  const P={q0:[80,130],q1:[210,130],q2:[340,130]};
+  const E=[["q0-0","M104,130 L184,130",144,120,"0"],["q1-1","M234,130 L314,130",274,120,"1"],["q2-0","M328,151 Q275,198 222,151",275,192,"0"],["q2-1","M338,154 Q210,268 82,154",210,236,"1"],["q0-1","M68,109 C48,58 112,58 92,109",80,62,"1"],["q1-0","M198,109 C178,58 242,58 222,109",210,62,"0"]];
+  const draw=()=>{
+    const s=str.slice(0,t);let cur="q0",last=null;for(const ch of s){last=cur+"-"+ch;cur=TR[cur][ch]}
+    let svg=`<defs><marker id="faA1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" class="cpah"/></marker><marker id="faA2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" class="cpahr"/></marker></defs><path class="fae" d="M18,130 L54,130" marker-end="url(#faA1)"/><text x="16" y="120">開始</text>`;
+    E.forEach(([k,d,lx,ly,lab])=>{const on=k==last;svg+=`<path class="fae ${on?"on":""}" d="${d}" marker-end="url(#faA${on?2:1})"/><text class="fal ${on?"on":""}" x="${lx}" y="${ly}" text-anchor="middle">${lab}</text>`});
+    Object.entries(P).forEach(([k,[x,y]])=>{svg+=`<g class="fas ${k==cur?"cur":""}"><circle cx="${x}" cy="${y}" r="24"/>${k=="q2"?`<circle cx="${x}" cy="${y}" r="18" class="acc"/>`:""}<text x="${x}" y="${y+6}" text-anchor="middle">${k}</text></g>`});
+    $("faS").innerHTML=svg;
+    $("faT").innerHTML=`<tr><th>今の状態</th><th>0 を読む</th><th>1 を読む</th></tr>`+Object.keys(TR).map(k=>`<tr><th>${k}${k=="q2"?"(受理)":k=="q0"?"(開始)":""}</th>${["0","1"].map(c=>`<td class="${last==k+"-"+c?"hl":""}">${TR[k][c]}</td>`).join("")}</tr>`).join("");
+    const done=t>=str.length;
+    $("faO").innerHTML=!str.length?"0 と 1 だけで文字列を入力してください。":`読んだ文字:<b>${s||"(まだなし)"}</b><span class="note"> ${str.slice(t)}</span><br>今の状態は <b>${cur}</b>。${done?(cur=="q2"?`最後に受理状態 q2 にいるので<b class="okc">受理</b>します(末尾が 01)。`:`最後の状態が q2 ではないので<b class="ngc">受理しません</b>。`):""}`;
+    $("faN").disabled=done;
+  };
+  const setStr=v=>{str=v.replace(/[^01]/g,"").slice(0,16);t=0;draw()};
+  $("faIn").oninput=e=>setStr(e.target.value);
+  el.querySelector(".row").onclick=e=>{const b=e.target.closest("[data-p]");if(b){$("faIn").value=b.dataset.p;setStr(b.dataset.p)}};
+  $("faN").onclick=()=>{t++;draw()};$("faA").onclick=()=>{t=str.length;draw()};$("faR").onclick=()=>{t=0;draw()};
+  draw();
+}
+
+/* デッドロック */
+function deadlockV(el){
+  const SC={bad:[["P1 が R1 を獲得する",[["R1","P1","a"]]],["P2 が R2 を獲得する",[["R1","P1","a"],["R2","P2","a"]]],["P1 が R2 を要求する。P2 が使用中なので待つ",[["R1","P1","a"],["R2","P2","a"],["P1","R2","r"]]],["P2 が R1 を要求する。P1 が使用中なので待つ → 矢印が輪になり、どちらも永久に進めない(デッドロック)",[["R1","P1","a"],["R2","P2","a"],["P1","R2","r"],["P2","R1","r"]],true]],
+    good:[["P1 が R1 を獲得する",[["R1","P1","a"]]],["P2 も R1 から獲得しようとするが、P1 が使用中なので待つ(まだ何も持っていない)",[["R1","P1","a"],["P2","R1","r"]]],["P1 が R2 も獲得し、処理を進める",[["R1","P1","a"],["R2","P1","a"],["P2","R1","r"]]],["P1 が処理を終えて R1・R2 を解放。P2 が R1 を獲得する",[["R1","P2","a"]]],["P2 が R2 も獲得して処理を終える。輪ができないのでデッドロックは起きない",[["R1","P2","a"],["R2","P2","a"]]]]};
+  const N={P1:[90,60,"p"],R1:[330,60,"r"],P2:[330,200,"p"],R2:[90,200,"r"]};
+  let mode="bad",t=0;
+  el.innerHTML=`${seg("dlM",[["bad","獲得順序がばらばら"],["good","獲得順序をそろえる(R1→R2)"]],"bad")}<svg viewBox="0 0 420 260" class="vsvg dl" id="dlS" role="img" aria-label="資源割当てグラフ"></svg><div class="legend"><span><i class="lev"></i>使用中(資源→プロセス)</span><span><i class="ldash"></i>要求して待ち(プロセス→資源)</span></div><div class="row" style="margin-top:8px"><button id="dlN">次へ</button><button class="ghost" id="dlR">最初から</button></div><p class="out" id="dlO"></p>`;
+  const draw=()=>{
+    const st=SC[mode],cur=t?st[t-1]:["",[]],dead=!!cur[2];
+    let svg=`<defs>${["a","r","d"].map(k=>`<marker id="dlA${k}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" class="dlh${k}"/></marker>`).join("")}</defs>`;
+    cur[1].forEach(([a,b,k])=>{const [x1,y1]=N[a],[x2,y2]=N[b],dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy),o=34;const cls=dead?"d":k;svg+=`<line class="dle ${cls}" x1="${x1+dx/L*o}" y1="${y1+dy/L*o}" x2="${x2-dx/L*o}" y2="${y2-dy/L*o}" marker-end="url(#dlA${cls})"/>`});
+    Object.entries(N).forEach(([k,[x,y,ty]])=>{svg+=ty=="p"?`<g class="dln p"><circle cx="${x}" cy="${y}" r="28"/><text x="${x}" y="${y+6}" text-anchor="middle">${k}</text></g>`:`<g class="dln r"><rect x="${x-28}" y="${y-24}" width="56" height="48" rx="6"/><text x="${x}" y="${y+6}" text-anchor="middle">${k}</text></g>`});
+    if(dead)svg+=`<text x="210" y="138" text-anchor="middle" class="dlw">循環待ち</text>`;
+    $("dlS").innerHTML=svg;
+    $("dlO").innerHTML=t==0?"○ はプロセス、□ は資源(1つずつしかない)です。「次へ」で進めます。":`${t}. ${cur[0]}`;
+    $("dlN").disabled=t>=st.length;
+  };
+  $("dlN").onclick=()=>{t++;draw()};$("dlR").onclick=()=>{t=0;draw()};
+  $("dlM").onclick=e=>{const b=e.target.closest("[data-s]");if(!b)return;mode=b.dataset.s;t=0;$("dlM").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x==b));draw()};
+  draw();
+}
+
+/* SQLインジェクション */
+function sqliV(el){
+  const U=[["suzuki","一般"],["tanaka","一般"],["admin","管理者"]];
+  let mode="cat";
+  el.innerHTML=`${seg("sqM",[["cat","文字列をつなげて組み立てる"],["ph","プレースホルダを使う"]],"cat")}<div class="ctl"><label>ログイン画面の「利用者名」に入力する文字<input type="text" id="sqIn" value="suzuki" autocomplete="off" spellcheck="false"></label></div><div class="row" style="margin-bottom:10px">${["suzuki","' OR '1'='1","tanaka'"].map(x=>`<button class="chip" data-p="${esc(x)}">${esc(x)}</button>`).join("")}</div><p class="note" id="sqC"></p><pre class="sql" id="sqQ"></pre><div id="sqR"></div>`;
+  const draw=()=>{
+    const v=$("sqIn").value;let rows=[],msg="",bad=false;
+    if(mode=="cat"){
+      $("sqC").innerHTML=`プログラム:<code>"SELECT * FROM users WHERE name = '" + 入力 + "'"</code>`;
+      $("sqQ").innerHTML=`SELECT * FROM users WHERE name = '<mark class="inj">${esc(v)}</mark>'`;
+      if(/'\s*or\s*'?(\w+)'?\s*=\s*'?\1'?/i.test(v)||/'\s*or\s+1\s*=\s*1/i.test(v)){rows=U;bad=true;msg="入力した ' で文字列が閉じられ、<b>OR '1'='1'(常に真)</b>という条件が SQL 文の一部になりました。<b>全利用者のデータが返ってしまいます。</b>"}
+      else if((v.match(/'/g)||[]).length%2==1){bad=true;msg="' の数が合わず、SQL 文の構造が壊れて<b>構文エラー</b>になります。エラーメッセージを画面に出すと、攻撃者に手がかりを与えてしまいます。"}
+      else{rows=U.filter(u=>u[0]==v);msg=rows.length?"入力がそのまま条件になり、該当する1件が返ります。普通の入力なら問題は起きません。":"該当する利用者はいません。"}
+    }else{
+      $("sqC").innerHTML=`プログラム:<code>"SELECT * FROM users WHERE name = ?"</code> に、入力を<b>値として</b>結び付ける`;
+      $("sqQ").innerHTML=`SELECT * FROM users WHERE name = <mark class="ph">?</mark>\n<span class="note">? に入る値 → </span><mark class="val">${esc(v)}</mark>`;
+      rows=U.filter(u=>u[0]==v);msg=v.includes("'")?`' を含んでいても、ただの文字として扱われます。「${esc(v)}」という名前の利用者を探すだけなので、${rows.length?"該当する1件だけ":"0件"}が返ります。<b>SQL 文の構造は変えられません。</b>`:rows.length?"該当する1件が返ります。":"該当する利用者はいません。";
+    }
+    $("sqR").innerHTML=`<p class="verdict ${bad?"ng":"ok"}">${msg}</p><table class="ctab"><tr><th>name</th><th>権限</th></tr>${rows.length?rows.map(r=>`<tr class="${bad?"crit":""}"><td>${r[0]}</td><td>${r[1]}</td></tr>`).join(""):`<tr><td colspan="2" class="note">(結果なし)</td></tr>`}</table>`;
+  };
+  $("sqIn").oninput=draw;
+  el.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{$("sqIn").value=b.dataset.p;draw()});
+  $("sqM").onclick=e=>{const b=e.target.closest("[data-s]");if(!b)return;mode=b.dataset.s;$("sqM").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x==b));draw()};
+  draw();
+}
+
+/* NAPT */
+function naptV(el){
+  const G="203.0.113.5",S="198.51.100.20:443";
+  const ST=[
+    [0,"PC-A(192.168.1.10)が Web サーバへ送信する",{s:"192.168.1.10:50001",d:S},null,0],
+    [2,"ルータが送信元を自分のグローバルアドレスとポート 61001 に書き換え、変換表に記録する",{s:G+":61001",d:S,ch:"s"},null,1],
+    [2,"PC-B(192.168.1.11)も同じポート 50001 で送信。ルータは別のポート 61002 を割り当てるので区別できる",{s:G+":61002",d:S,ch:"s"},null,2],
+    [2,"Web サーバから PC-B への応答が届く。宛先はルータのグローバルアドレス:61002",{s:S,d:G+":61002"},null,2],
+    [0,"ルータが変換表で 61002 を引き、宛先を 192.168.1.11:50001 に戻して PC-B へ届ける",{s:S,d:"192.168.1.11:50001",ch:"d"},1,2]];
+  const TB=[["192.168.1.10:50001",G+":61001"],["192.168.1.11:50001",G+":61002"]];
+  let t=0;
+  el.innerHTML=`<div class="nap"><b>社内 LAN</b><b>ルータ(NAPT)</b><b>インターネット</b><div class="napc" id="naP"></div></div><div class="row" style="margin:8px 0"><button id="naN">次へ</button><button class="ghost" id="naR">最初から</button></div><p class="out" id="naO"></p><p class="note" style="margin-top:12px">ルータの変換表</p><div class="scroll"><table class="ctab" id="naT"></table></div>`;
+  const draw=()=>{
+    const s=t?ST[t-1]:null;
+    $("naP").innerHTML=s?`<div class="pkt" style="grid-column:${s[0]+1}"><div class="${s[2].ch=="s"?"chg":""}"><small>送信元</small>${s[2].s}</div><div class="${s[2].ch=="d"?"chg":""}"><small>宛先</small>${s[2].d}</div></div>`:`<p class="note" style="grid-column:1/-1;text-align:center;margin:18px 0">「次へ」でパケットの流れを追います。</p>`;
+    const n=s?s[4]:0;
+    $("naT").innerHTML=`<tr><th>社内側(変換前)</th><th>インターネット側(変換後)</th></tr>`+(n?TB.slice(0,n).map((r,i)=>`<tr class="${s&&s[3]===i?"hlr":""}"><td>${r[0]}</td><td>${r[1]}</td></tr>`).join(""):`<tr><td colspan="2" class="note">(まだ記録なし)</td></tr>`);
+    $("naO").innerHTML=s?`${t}. ${s[1]}`:"社内の2台の PC が、1つのグローバル IP アドレス "+G+" を共有しています。";
+    $("naN").disabled=t>=ST.length;
+  };
+  $("naN").onclick=()=>{t++;draw()};$("naR").onclick=()=>{t=0;draw()};
+  draw();
+}
+
+/* 混同行列 */
+function cmV(el){
+  let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return(seed-1)/2147483646};
+  const nrm=(m,s)=>{let x=0;for(let i=0;i<6;i++)x+=rnd();return Math.min(.99,Math.max(.01,m+(x-3)*s/1.0))};
+  const D=[];for(let i=0;i<30;i++)D.push({y:1,s:nrm(.66,.17),j:rnd()});for(let i=0;i<70;i++)D.push({y:0,s:nrm(.36,.17),j:rnd()});
+  let sc="spam";
+  el.innerHTML=`${seg("cmS",[["spam","迷惑メールの判定"],["med","病気の検査"]],"spam")}<div class="ctl"><label>しきい値(この値以上を「陽性」と判定) <b id="cmTv"></b><input type="range" id="cmT" min="0.05" max="0.95" step="0.05" value="0.5" aria-label="しきい値"></label></div><svg viewBox="0 0 420 200" class="vsvg" id="cmG" role="img" aria-label="判定スコアの分布"></svg><div class="cmw"><table class="cmx" id="cmX"></table><div class="kpi4" id="cmO" style="margin:0"></div></div><p class="out" id="cmA"></p>`;
+  const draw=()=>{
+    const th=+$("cmT").value;$("cmTv").textContent=th.toFixed(2);
+    const X=s=>40+s*360;
+    let svg=`<rect class="cmreg" x="${X(th)}" y="10" width="${400-X(th)}" height="160"/><text x="${X(th)+6}" y="24">陽性と判定 →</text><text x="${X(th)-6}" y="24" text-anchor="end">← 陰性と判定</text><text x="36" y="62" text-anchor="end">陽性</text><text x="36" y="132" text-anchor="end">陰性</text><text x="210" y="192" text-anchor="middle">モデルが出したスコア(0〜1)</text><line class="ax" x1="40" y1="172" x2="400" y2="172"/>`;
+    let TP=0,FP=0,FN=0,TN=0;
+    D.forEach(d=>{const pos=d.s>=th;if(d.y&&pos)TP++;else if(d.y)FN++;else if(pos)FP++;else TN++;const cy=(d.y?58:128)+(d.j-.5)*36;svg+=`<circle class="cmd ${d.y?"p":"n"} ${pos?"in":""}" cx="${X(d.s)}" cy="${cy}" r="5"/>`});
+    svg+=`<line class="now" x1="${X(th)}" x2="${X(th)}" y1="10" y2="172"/>`;
+    $("cmG").innerHTML=svg;
+    $("cmX").innerHTML=`<tr><th></th><th>陽性と判定</th><th>陰性と判定</th></tr><tr><th>実際は陽性</th><td class="tp">TP ${TP}</td><td class="fn">FN ${FN}<small>見逃し</small></td></tr><tr><th>実際は陰性</th><td class="fp">FP ${FP}<small>誤検知</small></td><td class="tn">TN ${TN}</td></tr>`;
+    const P=TP+FP?TP/(TP+FP):0,Rc=TP/(TP+FN),F=P+Rc?2*P*Rc/(P+Rc):0;
+    $("cmO").innerHTML=[["適合率",`${TP} ÷ (${TP}+${FP}) = ${f2(P)}`],["再現率",`${TP} ÷ (${TP}+${FN}) = ${f2(Rc)}`],["F値",f2(F)],["正解率",`${TP+TN} ÷ 100 = ${f2((TP+TN)/100)}`]].map(k=>`<div class="kc good"><small>${k[0]}</small><b>${k[1]}</b></div>`).join("");
+    $("cmA").innerHTML=sc=="spam"?`迷惑メールの判定では、普通のメールを迷惑メールと誤判定(FP=${FP})すると大事な連絡を見落とします。<b>適合率</b>を重視し、しきい値を高めにします。`:`病気の検査では、病気の人を見逃す(FN=${FN})と治療が遅れます。<b>再現率</b>を重視し、しきい値を低めにします(再検査で確かめる前提)。`;
+  };
+  $("cmT").oninput=draw;
+  $("cmS").onclick=e=>{const b=e.target.closest("[data-s]");if(!b)return;sc=b.dataset.s;$("cmS").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x==b));draw()};
+  draw();
+}
+
+/* デシジョンツリー */
+function dtreeV(el){
+  const O=[["大規模に投資",100,-40],["小規模に投資",50,5],["投資しない",0,0]];
+  el.innerHTML=`<div class="ctl"><label>好況になる確率 <b id="dtPv"></b><input type="range" id="dtP" min="0" max="1" step="0.05" value="0.6" aria-label="好況になる確率"></label></div><svg viewBox="0 0 420 300" class="vsvg dt" id="dtS" role="img" aria-label="デシジョンツリー"></svg><p class="out" id="dtO"></p>`;
+  const draw=()=>{
+    const p=+$("dtP").value;$("dtPv").textContent=Math.round(p*100)+"%(不況 "+Math.round((1-p)*100)+"%)";
+    const ev=O.map(o=>o[0]=="投資しない"?0:p*o[1]+(1-p)*o[2]),best=ev.indexOf(Math.max(...ev));
+    const Y=[55,160,262];
+    let svg=`<rect class="dtd" x="8" y="142" width="34" height="34" rx="4"/><text x="25" y="198" text-anchor="middle">決定</text>`;
+    O.forEach((o,i)=>{const y=Y[i],b=i==best;svg+=`<path class="dtl ${b?"best":""}" d="M42,159 L80,159 L80,${y} L150,${y}"/><text class="dto ${b?"best":""}" x="86" y="${y-8}">${o[0]}</text>`;
+      if(o[0]=="投資しない"){svg+=`<text class="dtv" x="160" y="${y+5}">利益 0</text>`;return}
+      svg+=`<path class="dtl ${b?"best":""}" d="M150,${y} L183,${y}"/><circle class="dtc" cx="200" cy="${y}" r="17"/><text class="dte ${b?"best":""}" x="200" y="${y+38}" text-anchor="middle">期待値 ${ev[i].toFixed(1)}</text><path class="dtl ${b?"best":""}" d="M217,${y} L245,${y} L245,${y-28} L325,${y-28} M245,${y} L245,${y+28} L325,${y+28}"/><text x="252" y="${y-34}">好況 ${p.toFixed(2)}</text><text x="252" y="${y+22}">不況 ${(1-p).toFixed(2)}</text><text class="dtv" x="332" y="${y-23}">${o[1]>0?"+":""}${o[1]}</text><text class="dtv" x="332" y="${y+33}">${o[2]>0?"+":""}${o[2]}</text>`});
+    $("dtS").innerHTML=svg;
+    $("dtO").innerHTML=O.slice(0,2).map((o,i)=>`${o[0]}:${p.toFixed(2)} × ${o[1]} + ${(1-p).toFixed(2)} × (${o[2]}) = <b>${ev[i].toFixed(1)}</b>`).join("<br>")+`<br>投資しない:0<br>→ 期待値が最大の<b>「${O[best][0]}」</b>を選びます。<span class="note">好況の確率が約47%を超えると、大規模投資が有利になります(100p − 40(1−p) = 50p + 5(1−p) より p ≒ 0.47)。</span>`;
+  };
+  $("dtP").oninput=draw;draw();
+}
+
+Object.assign(WORD_VIS,{"ハミング符号":"hamming","限界利益":"bep","LIFO":"rpn","有限オートマトン":"dfa","NAPT":"napt","SQLインジェクション":"sqli","適合率":"cm","再現率":"cm","F値":"cm"});
+Object.assign(SUV,{"情報理論・符号":"hamming","AI・機械学習":"cm","経営・会計":"bep"});
 /* ---------- 共有 ---------- */
 let toastT;const toast=m=>{let t=$("toast");if(!t){t=document.createElement("div");t.id="toast";t.className="toast";t.setAttribute("role","status");document.body.appendChild(t)}t.textContent=m;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>t.hidden=true,2600)};
 $("shareBtn").onclick=async()=>{
