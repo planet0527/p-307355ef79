@@ -182,6 +182,7 @@ footer.site{padding-bottom:calc(110px + env(safe-area-inset-bottom))}
 @media(prefers-reduced-motion:no-preference){.track div,.meter div,.prog div{transition:width .5s ease}.exp{animation:in .25s ease}@keyframes in{from{opacity:0;transform:translateY(4px)}}}
 .cuegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px;margin:14px 0}.cueitem{padding:14px 16px}.cueitem p{margin:8px 0;color:var(--mute);font-size:14px}.cuephrase{display:block;color:var(--co2);line-height:1.45}.cueitem .kw{margin:8px 0 0}.cueitem .kw span{background:var(--bg);font-weight:600}
 .study-plan{margin:0 0 20px}.study-plan>summary{font-weight:700;cursor:pointer}.study-plan .eg-card a{font-size:13px;font-weight:600;color:var(--co2)}.qreview{margin:12px 0 16px}.qreview>summary{font-weight:700;cursor:pointer}.qguide{margin:12px 0 16px}.qguide>summary{font-weight:700;cursor:pointer}.essay-guide{margin:12px 0 16px}.essay-guide>summary{font-weight:700;cursor:pointer}.essay-guide-body{margin-top:14px}.eg-steps{margin:0 0 14px;padding-left:1.5em}.eg-steps li{padding:5px 0}.eg-steps li span{display:block;color:var(--mute);font-size:14px}.eg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:10px}.eg-card{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px}.eg-card b{color:var(--co2)}.eg-card p{margin:6px 0;color:var(--mute);font-size:14px}.eg-card span{font-size:13px;font-weight:600}.calc-guide{margin:12px 0 16px}.calc-guide>summary{font-weight:700;cursor:pointer}.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:10px;margin-top:14px}.calc-step{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px}.calc-step b{color:var(--co2)}.calc-step p{margin:6px 0;color:var(--mute);font-size:14px;line-height:1.5}.calc-step p.calc-formula{color:var(--ink);font-weight:700}.calc-step p:last-child{margin-bottom:0}
+.week-panel{margin:0 0 20px}.week-panel h3{margin-bottom:2px}.week-bars{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin:12px 0 0;padding:0;list-style:none}.week-bars li{display:grid;justify-items:center;gap:3px;font-size:12px;color:var(--mute)}.week-bars .week-date{font-size:11px}.week-bars .week-track{height:68px;width:min(100%,42px);border-radius:6px;background:var(--bg);border:1px solid var(--line);display:flex;align-items:flex-end;overflow:hidden}.week-bars .week-track i{display:block;width:100%;min-height:0;background:var(--co2);border-radius:5px 5px 0 0}.week-bars li.today{color:var(--ink);font-weight:700}.week-bars li.today .week-track{border-color:var(--co2)}.week-bars li em{font-style:normal;font-variant-numeric:tabular-nums;color:var(--ink)}
 /* ---- 追加:ナビ・図解・用語 ---- */
 [hidden]{display:none!important}
 .hs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}.hs .chip{flex:none}
@@ -407,6 +408,7 @@ mark{background:#ffe36b;color:#0b0f1a;border-radius:2px}
     </div>
     <p class="note"><b>終わりの一言：</b>「今日は＿＿がわかった。次は＿＿を確かめる。」短く残すだけでも、次の学習を始めやすくなります。</p>
   </details>
+  <section class="panel week-panel" aria-labelledby="weekTitle"><h3 id="weekTitle">直近7日間の学習リズム</h3><p class="note" id="weekSummary"></p><ul class="week-bars" id="weekBars" aria-label="日ごとの学習問題数"></ul></section>
   <div class="grid2">
     <div class="panel">
       <h3>習熟マップ</h3>
@@ -720,6 +722,9 @@ function home(){
   $("gNum").innerHTML=`${c}<small> / ${g} 問</small>`;
   $("gBar").style.width=Math.min(100,c/g*100)+"%";
   $("facts").innerHTML=`<span>連続 <b>${streak()}</b> 日</span><span>覚えた用語 <b>${G.filter(g=>S.g[g[0]]).length}</b> 語</span><span>学習した日 <b>${Object.keys(S.days).length}</b> 日</span>${x!=null?`<span>受験まで <b>${x>=0?x:"—"}</b> 日</span>`:`<span>受験日を設定すると残り日数が出ます</span>`}${Object.values(S.q).some(r=>r.reason)?`<span>記録したミス傾向 <b>${Object.entries(Object.values(S.q).reduce((a,r)=>{if(r.reason)a[r.reason]=(a[r.reason]||0)+1;return a},{})).map(([k,n])=>`${REASON_LABEL[k]} ${n}`).join("・")}</b></span>`:""}`;
+  const weekDays=Array.from({length:7},(_,i)=>{const d=new Date();d.setDate(d.getDate()-(6-i));const key=dkey(d);return{d,key,n:S.days[key]||0}});const weekTotal=weekDays.reduce((a,x)=>a+x.n,0),weekActive=weekDays.filter(x=>x.n>0).length,weekMax=Math.max(1,...weekDays.map(x=>x.n));
+  $("weekSummary").textContent=`${weekTotal} 問 · ${weekActive}/7 日学習`;
+  $("weekBars").innerHTML=weekDays.map(x=>`<li class="${x.key==TODAY()?"today":""}" aria-label="${x.d.getMonth()+1}月${x.d.getDate()}日 ${x.n}問"><span class="week-date">${x.d.getMonth()+1}/${x.d.getDate()}</span><b>${"日月火水木金土"[x.d.getDay()]}</b><span class="week-track" aria-hidden="true"><i style="height:${x.n?Math.max(8,x.n/weekMax*100):0}%"></i></span><em>${x.n}</em></li>`).join("");
   // 次にやること
   const T=[];
   const weak=QS.filter(isWeak);
