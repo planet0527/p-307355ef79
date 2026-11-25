@@ -15,7 +15,22 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<title>応用情報 ステップアップ</title>
+<title>応用情報 ステップアップ演習</title>
+<meta name="description" content="基本情報の次は応用情報。動かして学ぶ図解、用語図鑑、科目A演習・計算ドリル・科目B記述。無料・登録不要・オフライン対応。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="応用情報 ステップアップ演習">
+<meta property="og:title" content="応用情報 ステップアップ演習|基本情報の次の一歩">
+<meta property="og:description" content="動かして学ぶ図解9テーマ・用語220語の図鑑・科目A演習・計算ドリル・科目B記述。スマホでそのまま使えて、無料・登録不要・オフライン対応。">
+<meta property="og:url" content="https://planet0527.github.io/p-307355ef79/">
+<meta property="og:image" content="https://planet0527.github.io/p-307355ef79/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="応用情報 ステップアップ演習のタイトル画像">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="応用情報 ステップアップ演習">
+<meta name="twitter:description" content="図解・用語図鑑・演習・計算ドリル・記述練習。無料・登録不要・オフライン対応。">
+<meta name="twitter:image" content="https://planet0527.github.io/p-307355ef79/og.png">
 <style>
 /* VOICE: 落ち着いた技術資料。励ますが軽くない、毎日の短い学習に寄り添う口調
    IDEA: エンジニアリング・データシート — 今日の作業指示書と、FE→AP の仕様差分
@@ -165,23 +180,178 @@ footer.site{padding-bottom:calc(110px + env(safe-area-inset-bottom))}
   .goal{grid-template-columns:minmax(0,1fr)}.qtext{font-size:17px}.kbd{display:none}
 }
 @media(prefers-reduced-motion:no-preference){.track div,.meter div,.prog div{transition:width .5s ease}.exp{animation:in .25s ease}@keyframes in{from{opacity:0;transform:translateY(4px)}}}
+/* ---- 追加:ナビ・図解・用語 ---- */
+[hidden]{display:none!important}
+.hs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}.hs .chip{flex:none}
+.lru td.rs{font-size:11px;font-weight:600;background:transparent}.lru td.rs.h{color:var(--ok)}.lru td.rs.f{color:var(--ng)}
+table.iso{min-width:540px}
+nav a svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.share{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.5);min-height:38px;font-size:14px;padding:0 14px;margin-bottom:12px;display:inline-flex;gap:6px;align-items:center}
+.share svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2}
+.topr{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:calc(90px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:22px;font-size:14px;z-index:20;box-shadow:0 4px 18px rgba(0,0,0,.25);max-width:90vw}
+.subnav{display:flex;gap:8px;margin:0 0 24px;overflow-x:auto;padding-bottom:2px}
+.subnav a{flex:1 1 0;min-width:128px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--bg);display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 10px;align-items:center}
+.subnav a i{grid-row:span 2;font-style:normal;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--co2);color:var(--co2);font-weight:700;font-size:14px}
+.subnav a b{font-size:15px;line-height:1.3}.subnav a small{color:var(--mute);font-size:12px;line-height:1.3}
+.subnav a.on{border-color:var(--co2);background:var(--zone);box-shadow:inset 0 -3px 0 var(--co2)}
+.subnav a.on i{background:var(--co2);color:var(--bg)}
+.seg{display:inline-flex;flex-wrap:wrap;gap:4px;background:var(--zone);border:1px solid var(--line);border-radius:12px;padding:4px;margin:0 8px 12px 0}
+.seg button{background:transparent;color:var(--ink);border:0;min-height:40px;font-size:14px;padding:0 14px}
+.seg button.on{background:var(--co);color:#fff}
+.vwrap{display:grid;grid-template-columns:250px minmax(0,1fr);gap:20px;align-items:start}
+.vlist{display:grid;gap:6px;position:sticky;top:12px}
+.vi{text-align:left;background:var(--bg);color:var(--ink);border:1px solid var(--line);font-weight:600;display:grid;grid-template-columns:minmax(0,1fr) auto;padding:8px 12px;line-height:1.35;min-height:54px;font-size:15px}
+.vi small{grid-column:1;color:var(--mute);font-weight:400;font-size:12px}.vi span{grid-column:1}
+.vi .ck{grid-column:2;grid-row:1/3;align-self:center;color:var(--ok);font-style:normal;font-weight:700}
+.vi.on{border-color:var(--co2);background:var(--zone);box-shadow:inset 4px 0 0 var(--co2)}
+.stage{border:1px solid var(--line);border-radius:14px;padding:clamp(16px,2.4vw,26px);background:var(--bg)}
+.stage header small{color:var(--co2);font-weight:600;font-size:13px}
+.stage h3{font-size:clamp(20px,2.6vw,26px);margin:2px 0 12px}
+.trip{background:var(--flz);border-left:4px solid var(--fl);border-radius:8px;padding:10px 14px;margin-bottom:16px}
+.trip b{color:var(--fl);font-size:13px}.trip p{margin:2px 0 0}
+.keyp{background:var(--zone);border-radius:10px;padding:12px 16px;margin:18px 0 14px}
+.keyp b{color:var(--co2);font-size:13px}.keyp ul{margin:4px 0 0;padding-left:1.2em}.keyp li{margin:3px 0}
+.ctl{display:flex;flex-wrap:wrap;gap:10px 24px;margin-bottom:10px}
+.ctl label{display:grid;gap:2px;font-size:14px;min-width:190px;flex:1}
+.ctl b{font-size:18px;color:var(--co2)}
+input[type=range]{width:100%;accent-color:var(--co);height:30px}
+.two{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:18px;align-items:center}
+@media(max-width:700px){.two{grid-template-columns:minmax(0,1fr)}}
+.vsvg{width:100%;height:auto;display:block;max-height:340px}
+.vsvg text{fill:var(--mute);font-size:13px}
+.vsvg .ax{stroke:var(--mute);stroke-width:1}.vsvg .gd{stroke:var(--line);stroke-dasharray:4 4}.vsvg .gd.hl{stroke:var(--co2)}
+.vsvg .cv{fill:none;stroke:var(--co2);stroke-width:3}
+.vsvg .pt{fill:var(--co2);stroke:var(--bg);stroke-width:3}
+.vsvg .pl{fill:var(--ink);font-weight:700;font-size:16px}
+.qline{display:flex;align-items:flex-start;gap:10px;min-height:90px}
+.srv{flex:none;background:var(--co);color:#fff;border-radius:10px;padding:10px 12px;font-weight:700;text-align:center;line-height:1.3}
+.srv small{display:block;font-weight:400;font-size:12px;opacity:.9}
+.ppl{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.ppl i{width:16px;height:16px;border-radius:50%;background:var(--fl)}
+.ppl em{font-size:13px;color:var(--mute);font-style:normal}
+@media(prefers-reduced-motion:no-preference){.ppl i{animation:pop .3s ease both}@keyframes pop{from{transform:scale(0)}}
+ .vsvg .pt,.vsvg .gd.hl{transition:all .25s ease}.env{transition:left .8s ease}.msg.cur{animation:in .3s ease}}
+.out{font-size:16px;background:var(--zone);border-radius:10px;padding:10px 14px;margin:12px 0 0}
+.out b{color:var(--co2);font-size:19px}
+.net .ln{fill:none;stroke:var(--line);stroke-width:5;stroke-dasharray:8 6}
+.net .ln.on{stroke:var(--ok);stroke-dasharray:none}
+.net .dev{cursor:pointer}.net .dev rect{fill:var(--zone);stroke:var(--co2);stroke-width:2}
+.net .dev.bad rect{fill:var(--ngz);stroke:var(--ng)}.net .dev .dn{fill:var(--ink);font-weight:700;font-size:15px}.net .dev .ds{font-size:12px}
+.net .dev:focus{outline:none}.net .dev:focus rect{stroke-width:4}
+.net .xx{stroke:var(--ng);stroke-width:3}
+.status{font-weight:700;margin:6px 0 0;padding:6px 12px;border-radius:8px;display:inline-block}
+.status.ok{background:var(--okz);color:var(--ok)}.status.ng{background:var(--ngz);color:var(--ng)}
+table.pipe,table.lru,table.iso{border-collapse:separate;border-spacing:3px;font-size:13px;min-width:100%}
+.pipe th,.pipe td{min-width:44px;height:36px;text-align:center;border-radius:6px;padding:0 4px;white-space:nowrap}
+.pipe thead th{color:var(--mute);font-weight:500}.pipe tbody th{text-align:left;font-weight:600}
+.pipe th small{display:block;color:var(--ng);font-size:11px}
+.pipe td{background:var(--zone);font-weight:700;color:#fff}
+.pipe .now{outline:2px solid var(--fl)}
+.st0{background:#1240e0!important}.st1{background:#2f5cf0!important}.st2{background:#4f78f5!important}.st3{background:#7393f7!important}.st4{background:#96aefa!important;color:#0b0f1a!important}
+.bub{background:repeating-linear-gradient(45deg,var(--ngz),var(--ngz) 5px,var(--zone) 5px,var(--zone) 10px)!important;color:var(--ng)!important;text-decoration:line-through}
+.legend i.st0,.legend i.st1,.legend i.st2,.legend i.st3,.legend i.st4,.legend i.bub{border:0}
+.lru th,.lru td{min-width:40px;height:40px;text-align:center;border-radius:6px;font-size:16px;font-weight:700}
+.lru td{background:var(--zone)}.lru th{color:var(--mute);font-size:13px;font-weight:500}.lru th.now{color:var(--co2);font-size:17px;font-weight:700}
+.lru td.hit{background:var(--okz);outline:2px solid var(--ok)}.lru td.flt{background:var(--ngz);outline:2px solid var(--ng)}
+.lru td s{display:block;font-size:11px;color:var(--ng);font-weight:400}
+.lru td.res{font-size:11px;font-weight:600;background:transparent}.lru td.res.h{color:var(--ok)}.lru td.res.f{color:var(--ng)}
+.bits{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}
+.oct{border-radius:8px;padding:4px}.oct.edge{outline:2px dashed var(--fl)}
+.bs{display:flex;gap:2px}.bs span{width:20px;height:28px;display:grid;place-items:center;border-radius:4px;font-weight:700;font-size:14px}
+.bs .n{background:var(--co);color:#fff}.bs .h{background:var(--zone);color:var(--ink);border:1px solid var(--line)}
+.dv{font-size:12px;color:var(--mute);text-align:center;margin-top:3px}
+.legend i.bn{background:var(--co);border:0}.legend i.bh{background:var(--zone)}
+table.kv{border-collapse:collapse;width:100%;margin-top:8px;font-size:15px}
+.kv th{text-align:left;font-weight:500;color:var(--mute);padding:7px 10px 7px 0;border-bottom:1px solid var(--line);width:42%}
+.kv td{padding:7px 0;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.pki{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) minmax(0,1fr);gap:10px;align-items:center;margin:8px 0 14px}
+.who{display:grid;gap:6px;justify-items:start}.who b{font-size:14px}
+.key{display:inline-flex;gap:6px;align-items:center;font-size:13px;padding:5px 9px;border-radius:16px;border:1.5px solid;transition:all .25s}
+.key svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2}
+.key.a{color:var(--co2);border-color:var(--co2)}.key.b{color:var(--fl);border-color:var(--fl)}
+.key.pri svg circle{fill:currentColor}
+.key.use{box-shadow:0 0 0 4px var(--zone),0 0 0 6px currentColor;font-weight:700}.key.dim{opacity:.35}
+.wire{position:relative;height:74px;text-align:center}
+.wire .line{position:absolute;left:0;right:0;top:30px;border-top:2px dashed var(--line)}
+.wire small{position:absolute;left:0;right:0;top:44px;color:var(--mute);font-size:12px}
+.env{position:absolute;top:10px;left:0;width:92px;height:40px;border-radius:8px;background:var(--co);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:700;z-index:1}
+.steps{padding-left:1.4em;margin:0 0 12px}.steps li{margin:6px 0;color:var(--mute)}
+.steps li.done{color:var(--ink)}.steps li.cur{font-weight:700}
+.steps li b{color:var(--co2)}
+@media(max-width:600px){.pki{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.wire{grid-column:1/-1;grid-row:2}}
+table.iso{font-size:14px}.iso th,.iso td{padding:0;border-radius:6px;text-align:center}
+.iso button{background:transparent;color:var(--ink);border:1px solid var(--line);font-size:13px;min-height:40px;padding:0 10px;width:100%;font-weight:600}
+.iso th button.on{background:var(--co);color:#fff;border-color:var(--co)}
+.iso td{height:40px;font-weight:600;font-size:13px}.iso td.oc{background:var(--ngz);color:var(--ng)}.iso td.pv{background:var(--okz);color:var(--ok)}
+.iso tr.sel th button{background:var(--zone);border-color:var(--co2);color:var(--co2)}
+.iso tr.sel td{outline:2px solid var(--co2)}.iso td.col{box-shadow:inset 0 0 0 2px var(--fl)}
+.scn{margin-top:14px}.scn h4{margin:0 0 8px;font-size:16px}
+.lanes{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px}
+.lanes>b{text-align:center;background:var(--zone);border-radius:8px;padding:4px;font-size:14px}
+.lc{border-radius:8px;padding:8px 10px;font-size:14px;border:1px solid var(--line)}
+.lc.l1{grid-column:1;border-left:4px solid var(--co2)}.lc.l2{grid-column:2;border-left:4px solid var(--fl)}
+.lc.last{background:var(--ngz);border-color:var(--ng)}
+.verdict{font-size:15px;margin:10px 0 0;padding:8px 12px;border-radius:8px}.verdict.ok{background:var(--okz)}.verdict.ng{background:var(--ngz)}
+.vsvg .cpv{fill:none;stroke:var(--mute);stroke-width:2.5;stroke-dasharray:6 5}.vsvg .cev{fill:none;stroke:var(--co2);stroke-width:3.5}.vsvg .cac{fill:none;stroke:var(--ng);stroke-width:3}
+.vsvg .now{stroke:var(--fl);stroke-width:2}
+.vsvg .dtpv{fill:var(--mute)}.vsvg .dtev{fill:var(--co2)}.vsvg .dtac{fill:var(--ng)}
+.vsvg .tpv{fill:var(--mute);font-weight:700}.vsvg .tev{fill:var(--co2);font-weight:700}.vsvg .tac{fill:var(--ng);font-weight:700}
+.legend i.lpv{border:0;border-top:3px dashed var(--mute);height:0;border-radius:0}.legend i.lev{background:var(--co2);border:0;height:4px}.legend i.lac{background:var(--ng);border:0;height:4px}
+.kpi4{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:12px}
+.kc{border-radius:10px;padding:10px 12px;border:1px solid var(--line)}
+.kc small{display:block;color:var(--mute);font-size:12px}.kc b{display:block;font-size:16px;margin:2px 0}.kc span{font-size:13px;font-weight:700}
+.kc.bad{background:var(--ngz)}.kc.bad span{color:var(--ng)}.kc.good{background:var(--okz)}.kc.good span{color:var(--ok)}
+.seq{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 6px;margin:6px 0 14px;position:relative}
+.lane{text-align:center;font-weight:700;font-size:13px;background:var(--zone);border-radius:8px;padding:8px 4px;margin-bottom:8px}
+.msgs{grid-column:1/-1;display:grid;gap:10px;background:linear-gradient(90deg,transparent calc(16.6% - 1px),var(--line) calc(16.6% - 1px),var(--line) calc(16.6% + 1px),transparent calc(16.6% + 1px),transparent calc(50% - 1px),var(--line) calc(50% - 1px),var(--line) calc(50% + 1px),transparent calc(50% + 1px),transparent calc(83.3% - 1px),var(--line) calc(83.3% - 1px),var(--line) calc(83.3% + 1px),transparent calc(83.3% + 1px));min-height:120px;padding:6px 0}
+.msg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 6px}
+.arr{background:var(--bg);border:2px solid var(--co2);border-radius:10px;padding:6px 10px;position:relative;font-size:13px;line-height:1.4}
+.arr b{display:block;font-size:14px}.arr small{color:var(--mute)}
+.arr.r::after,.arr.l::after{content:"";position:absolute;top:50%;margin-top:-7px;border:7px solid transparent}
+.arr.r::after{right:-15px;border-left-color:var(--co2)}.arr.l::after{left:-15px;border-right-color:var(--co2)}
+.arr.self{border-style:dashed}.arr.ok{border-color:var(--ok);background:var(--okz)}.arr.ng{border-color:var(--ng);background:var(--ngz)}
+.msg.cur .arr{box-shadow:0 0 0 3px var(--zone),0 0 0 5px var(--fl)}
+input[type=search]{font:inherit;font-size:16px;width:100%;padding:12px 14px;border-radius:12px;border:2px solid var(--co2);background:var(--bg);color:var(--ink)}
+.gh{display:flex;align-items:center;gap:8px;margin:22px 0 10px;font-size:18px;border-bottom:2px solid var(--co2);padding-bottom:4px}
+.gh span{font-size:13px;color:var(--mute);font-weight:500}
+.gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px}
+.gi{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column}
+.gi.got{background:var(--okz);border-color:var(--ok)}
+.gt{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.gt b{font-size:18px}
+.tag{font-size:11px;padding:1px 8px;border-radius:10px;background:var(--co);color:#fff;font-weight:600}.tag.s{background:transparent;color:var(--co2);border:1px solid var(--co2)}
+.gf{font-size:13px;color:var(--co2);margin-top:2px;overflow-wrap:anywhere}
+.gi p{margin:6px 0 8px;font-size:15px}
+.mini{min-height:36px;font-size:13px;padding:0 12px;margin-top:auto;align-self:flex-start}
+.gi.got .mini{background:var(--ok);border-color:var(--ok);color:#fff}
+mark{background:#ffe36b;color:#0b0f1a;border-radius:2px}
+.fc{width:100%;min-height:230px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;text-align:center;background:var(--bg);color:var(--ink);border:2px solid var(--co2);border-radius:16px;padding:20px;font-weight:400;box-shadow:0 6px 0 var(--zone)}
+.cf-t{font-size:clamp(28px,6vw,40px);font-weight:700;line-height:1.15;overflow-wrap:anywhere}.cf-t.sm{font-size:26px}
+.cf-m{font-size:18px;margin:0}.fc p{margin:4px 0 0;font-size:16px}.fc .tap{margin-top:10px}
+.guide{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr));gap:14px;margin-bottom:14px}
+.guide ul{margin:0;padding-left:1.2em}.guide li{margin:6px 0}
+.cmpd{grid-template-columns:minmax(5.5em,auto) minmax(0,1fr)}.cmpd .t{font-size:14px}
+#wFil{display:grid;gap:4px;margin-bottom:6px}#wFil .chips{margin:6px 0}
+@media(max-width:860px){.vwrap{grid-template-columns:minmax(0,1fr)}.vlist{display:flex;overflow-x:auto;position:static;padding-bottom:4px}.vi{flex:none;width:168px}}
+@media(max-width:600px){.subnav{margin-bottom:16px}.subnav a{min-width:112px;padding:8px 10px}.subnav a small{display:none}.share span{display:none}.share{padding:0 10px;margin-bottom:10px}
+ .strip h1{font-size:22px}.top{align-items:center}.pipe th,.pipe td{min-width:38px}.lru th,.lru td{min-width:32px}}
 </style>
 </head>
 <body>
 <div class="strip">
   <div class="top">
     <div><h1>応用情報 ステップアップ演習</h1><p>基本情報で身につけた知識を、応用情報で問われる深さまで引き上げる</p></div>
-    <span class="pill" id="pill"></span>
+    <div class="topr"><span class="pill" id="pill"></span><button class="share" id="shareBtn" aria-label="このアプリを共有"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span>共有</span></button></div>
   </div>
-  <nav id="nav">
-    <a href="#home" data-v="home"><span class="n">0</span>今日</a>
-    <a href="#stepup" data-v="stepup"><span class="n">1</span>差分ノート</a>
-    <a href="#quiz" data-v="quiz"><span class="n">2</span>科目A演習</a>
-    <a href="#drill" data-v="drill"><span class="n">3</span>計算ドリル</a>
-    <a href="#essay" data-v="essay"><span class="n">4</span>科目B記述</a>
+  <nav id="nav" aria-label="メインメニュー">
+    <a href="#home" data-g="home"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>今日</a>
+    <a href="#stepup" data-g="learn"><svg viewBox="0 0 24 24"><path d="M2 5h7a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H2zM22 5h-7a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h8z"/></svg>学ぶ</a>
+    <a href="#quiz" data-g="solve"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/></svg>解く</a>
+    <a href="#words" data-g="words"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>用語</a>
   </nav>
 </div>
 <main>
+<div class="subnav" id="sub" hidden></div>
 <section class="view" id="v-home">
   <div class="panel hint" id="hint" hidden><div><b>ホーム画面に追加するとアプリのように使えます</b><p id="hintTx"></p><div class="row" style="margin-top:8px" id="hintBtn"></div></div><button class="x" id="hintX" aria-label="閉じる">閉じる</button></div>
   <div class="grid2">
@@ -265,6 +435,19 @@ footer.site{padding-bottom:calc(110px + env(safe-area-inset-bottom))}
   <p class="lead">知っていることを、決められた字数で、本文の条件を根拠に書く練習です。書いてから模範解答と照らし合わせ、採点キーワードが入っているかを確認しましょう。</p>
   <div class="chips" id="eChips"></div>
   <div class="qbox" id="eBox"></div>
+</section>
+<section class="view" id="v-visual">
+  <h2>図解で理解する</h2>
+  <p class="lead">文章だけではイメージしにくい仕組みを、動かして確かめます。初心者がつまずきやすい9つのテーマを選びました。スライダーやボタンを操作してみてください。</p>
+  <div class="vwrap"><div class="vlist" id="vList" aria-label="図解の一覧"></div><div id="vStage"></div></div>
+</section>
+<section class="view" id="v-words">
+  <h2>用語図鑑</h2>
+  <p class="lead">略語の正式名と意味を、分野ごとにまとめました。検索して調べる、単語カードで覚える、似た用語を比べる、の3通りで使えます。</p>
+  <div class="seg" id="wMode" role="tablist" style="display:flex"></div>
+  <div class="sumline" id="wSum"></div>
+  <div id="wFil"><input type="search" id="wSearch" placeholder="用語・略語・意味で検索(例:SPF、認可、待ち時間)" aria-label="用語を検索"><div class="chips hs" id="wCats"></div><div class="row" id="wTg"></div></div>
+  <div id="wBody"></div>
 </section>
 </main>
 <footer class="site">問題と解説は学習用に独自に作成したものです。試験の最新情報は IPA(情報処理推進機構)の公式サイトで確認してください。</footer>
@@ -381,7 +564,7 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"
 const $=id=>document.getElementById(id);
 
 const FM={"稼働率":"稼働率 = MTBF ÷ (MTBF + MTTR)","直列・並列":"直列 = A×B、並列 = 1 − (1−A)(1−B)","待ち行列":"ρ = 到着率 × 平均サービス時間、Wq = ρ ÷ (1−ρ) × 平均サービス時間","キャッシュ":"実効アクセス時間 = ヒット率×キャッシュ + (1−ヒット率)×主記憶","サブネット":"ホスト数 = 2^(32−プレフィックス長) − 2","EVM":"CPI = EV ÷ AC、SPI = EV ÷ PV(1未満なら悪化)","損益分岐点":"損益分岐点売上高 = 固定費 ÷ (1 − 変動費 ÷ 売上高)","SLA停止時間":"許容停止時間 = 運用時間 × (1 − 稼働率)"};
-let S={q:{},f:{},d:{ok:0,n:0},dk:{},e:{},su:{},days:{},goal:10,exam:""};
+let S={q:{},f:{},d:{ok:0,n:0},dk:{},e:{},su:{},g:{},v:{},days:{},goal:10,exam:""};
 try{const t=localStorage.getItem("ap-step-v1");if(t)S=Object.assign(S,JSON.parse(t))}catch(_){}
 const save=()=>{try{localStorage.setItem("ap-step-v1",JSON.stringify(S))}catch(_){}};
 const dkey=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
@@ -400,7 +583,7 @@ function home(){
   $("hello").textContent=c>=g?"今日の目標を達成しました":"今日の学習";
   $("gNum").innerHTML=`${c}<small> / ${g} 問</small>`;
   $("gBar").style.width=Math.min(100,c/g*100)+"%";
-  $("facts").innerHTML=`<span>連続 <b>${streak()}</b> 日</span><span>学習した日 <b>${Object.keys(S.days).length}</b> 日</span>${x!=null?`<span>受験まで <b>${x>=0?x:"—"}</b> 日</span>`:`<span>受験日を設定すると残り日数が出ます</span>`}`;
+  $("facts").innerHTML=`<span>連続 <b>${streak()}</b> 日</span><span>覚えた用語 <b>${G.filter(g=>S.g[g[0]]).length}</b> 語</span><span>学習した日 <b>${Object.keys(S.days).length}</b> 日</span>${x!=null?`<span>受験まで <b>${x>=0?x:"—"}</b> 日</span>`:`<span>受験日を設定すると残り日数が出ます</span>`}`;
   // 次にやること
   const T=[];
   const weak=QS.filter(isWeak);
@@ -411,17 +594,19 @@ function home(){
   if(tgt){const has=SU.some(s=>s[0]==tgt.c),und=SU.filter(s=>s[0]==tgt.c).every(s=>S.su[s[1]]);
     if(has&&!und)T.push([`「${tgt.c}」の差分ノートを読む`,tgt.a==null?"未着手の分野。先に FE との違いを確認しましょう":`正答率 ${Math.round(tgt.a*100)}%。知識の穴を先に埋めましょう`,()=>{sucat=tgt.c;go("stepup")}]);
     else T.push([`「${tgt.c}」を集中演習`,tgt.a==null?"まだ解いていない分野です":`正答率 ${Math.round(tgt.a*100)}%。分野を絞って解きましょう`,()=>{qcat=new Set([tgt.c]);go("quiz");start("all")}]);}
+  if(T.length<3){const vt=VIS.find(v=>!S.v[v.id]&&tgt&&v.cat==tgt.c)||(T.length<2?VIS.find(v=>!S.v[v.id]):null);if(vt)T.push([`図解「${vt.t}」を動かしてみる`,"文章だけではわかりにくい仕組みを、操作しながら理解します",()=>{vsel=vt.id;go("visual")}])}
   const kinds=Object.keys(DR).map(k=>({k,n:(S.dk[k]||{}).n||0})).sort((a,b)=>a.n-b.n);
   if(T.length<3)T.push([`計算ドリル「${kinds[0].k}」`,kinds[0].n?`これまで ${kinds[0].n} 問。手を動かして公式を定着させます`:"まだ解いていない計算です",()=>{dk=kinds[0].k;cur=null;go("drill")}]);
   const ne=E.findIndex((_,i)=>!S.e[i]);
   if(T.length<3&&ne>=0)T.push([`科目Bの記述「${E[ne][0]}」を1問`,"字数内で書く練習。模範解答とキーワードで照合します",()=>{ei=ne;go("essay");essay()}]);
+  if(T.length<3&&G.some(g=>!S.g[g[0]]))T.push(["単語カードで略語を覚える",`覚えた用語 ${G.filter(g=>S.g[g[0]]).length}/${G.length} 語。1日10枚から`,()=>{wmode="card";wu=true;card=null;go("words")}]);
   if(T.length<3)T.push(["ランダム10問","全分野から出題します",()=>{qcat=new Set();go("quiz");start("rand")}]);
   todoFns=T.map(t=>t[2]);
   $("todo").innerHTML=T.slice(0,3).map((t,i)=>`<li><button data-t="${i}"><span class="ix">${i+1}</span><span>${esc(t[0])}<small>${esc(t[1])}</small></span><span class="go">→</span></button></li>`).join("");
   // ロードマップ
   const su=SU.filter(s=>S.su[s[1]]).length,qa=QS.filter(x=>S.q[x.id]&&S.q[x.id].last).length,
     dka=Object.keys(DR).filter(k=>(S.dk[k]||{}).ok).length,ea=E.filter((_,i)=>S.e[i]).length;
-  const R=[["stepup","差分ノートを読む",`理解した論点 ${su}/${SU.length}`,su/SU.length],["quiz","科目Aを解く",`直近正解 ${qa}/${QS.length} 問`,qa/QS.length],["drill","計算に慣れる",`正解できた計算 ${dka}/${Object.keys(DR).length} 種類`,dka/Object.keys(DR).length],["essay","科目Bを書く",`取り組んだ記述 ${ea}/${E.length} 問`,ea/E.length]];
+  const vv=VIS.filter(v=>S.v[v.id]).length;const R=[["stepup","差分ノートを読む",`理解した論点 ${su}/${SU.length}`,su/SU.length],["visual","図解で確かめる",`見た図解 ${vv}/${VIS.length}`,vv/VIS.length],["quiz","科目Aを解く",`直近正解 ${qa}/${QS.length} 問`,qa/QS.length],["drill","計算に慣れる",`正解できた計算 ${dka}/${Object.keys(DR).length} 種類`,dka/Object.keys(DR).length],["essay","科目Bを書く",`取り組んだ記述 ${ea}/${E.length} 問`,ea/E.length]];
   $("road").innerHTML=R.map((r,i)=>`<li><span class="st ${r[3]>=1?"full":""}">${r[3]>=1?"✓":i+1}</span><a href="#${r[0]}">${r[1]}</a><div><div class="sub">${r[2]}</div><div class="meter"><div style="width:${Math.round(r[3]*100)}%"></div></div></div></li>`).join("");
   $("goalIn").value=S.goal;$("examIn").value=S.exam||"";
   // マップと分野別
@@ -435,7 +620,7 @@ $("map").onclick=e=>{const b=e.target.closest("[data-id]");if(!b)return;const x=
 $("goalIn").onchange=()=>{const v=parseInt($("goalIn").value,10);if(v>0){S.goal=Math.min(200,v);save();home()}};
 $("examIn").onchange=()=>{S.exam=$("examIn").value;save();home()};
 let resetArm=false;
-$("reset").onclick=()=>{if(!resetArm){resetArm=true;$("resetMsg").textContent="もう一度押すと、すべての記録を消去します";setTimeout(()=>{resetArm=false;$("resetMsg").textContent=""},4000);return}const g=S.goal,ex=S.exam;S={q:{},f:{},d:{ok:0,n:0},dk:{},e:{},su:{},days:{},goal:g,exam:ex};save();resetArm=false;$("resetMsg").textContent="リセットしました";home()};
+$("reset").onclick=()=>{if(!resetArm){resetArm=true;$("resetMsg").textContent="もう一度押すと、すべての記録を消去します";setTimeout(()=>{resetArm=false;$("resetMsg").textContent=""},4000);return}const g=S.goal,ex=S.exam;S={q:{},f:{},d:{ok:0,n:0},dk:{},e:{},su:{},g:{},v:{},days:{},goal:g,exam:ex};save();resetArm=false;$("resetMsg").textContent="リセットしました";home()};
 function go(v){if(location.hash!=="#"+v)location.hash=v;else route()}
 
 /* ---------- 差分ノート ---------- */
@@ -445,10 +630,11 @@ function stepup(){
   const n=SU.filter(s=>S.su[s[1]]).length;
   $("suSum").innerHTML=`<span>理解した論点 <b>${n} / ${SU.length}</b></span><div class="meter" style="flex:1;max-width:260px"><div style="width:${n/SU.length*100}%"></div></div>`;
   $("suChips").innerHTML=cs.map(c=>`<button class="chip ${c==sucat?"on":""}" data-c="${c}">${c}</button>`).join("");
-  $("suCards").innerHTML=SU.filter(x=>sucat=="すべて"||x[0]==sucat).map(x=>{const a=catAcc(x[0]),d=S.su[x[1]];return`<article class="card ${d?"done":""}"><header><div><small>${x[0]}</small><h3>${x[1]}</h3></div><div class="acc"><b>${a==null?"—":Math.round(a*100)+"%"}</b>分野の正答率</div></header><div class="diff"><span class="t fe">FE</span><span>${x[2]}</span><span class="t ap">AP</span><span>${x[3]}</span></div><footer><b>狙われる点:</b>${x[4]}<div class="row"><button class="ghost und" data-u="${esc(x[1])}" aria-pressed="${d?"true":"false"}">${d?"理解した ✓":"理解した"}</button><button class="ghost" data-go="${x[0]}">この分野の問題を解く</button></div></footer></article>`}).join("");
+  $("suCards").innerHTML=SU.filter(x=>sucat=="すべて"||x[0]==sucat).map(x=>{const a=catAcc(x[0]),d=S.su[x[1]];return`<article class="card ${d?"done":""}"><header><div><small>${x[0]}</small><h3>${x[1]}</h3></div><div class="acc"><b>${a==null?"—":Math.round(a*100)+"%"}</b>分野の正答率</div></header><div class="diff"><span class="t fe">FE</span><span>${x[2]}</span><span class="t ap">AP</span><span>${x[3]}</span></div><footer><b>狙われる点:</b>${x[4]}<div class="row"><button class="ghost und" data-u="${esc(x[1])}" aria-pressed="${d?"true":"false"}">${d?"理解した ✓":"理解した"}</button>${SUV[x[1]]?`<button class="ghost" data-vis="${SUV[x[1]]}">図解で見る</button>`:""}<button class="ghost" data-go="${x[0]}">この分野の問題を解く</button></div></footer></article>`}).join("");
 }
 $("suChips").onclick=e=>{const b=e.target.closest("[data-c]");if(b){sucat=b.dataset.c;stepup()}};
-$("suCards").onclick=e=>{
+const SUV={"待ち行列(M/M/1)":"queue","信頼性・性能":"avail","プロセッサ・キャッシュ":"pipe","仮想記憶・並行処理":"lru","IP・ルーティング":"subnet","暗号・PKI":"pki","トランザクション":"iso","プロジェクトマネジメント":"evm","Web アプリの攻撃":"csrf"};
+$("suCards").onclick=e=>{const vb=e.target.closest("[data-vis]");if(vb){vsel=vb.dataset.vis;go("visual");return}
   const u=e.target.closest("[data-u]");if(u){const k=u.dataset.u;S.su[k]?delete S.su[k]:S.su[k]=1;save();stepup();return}
   const b=e.target.closest("[data-go]");if(b){qcat=new Set([b.dataset.go]);go("quiz");start("all")}
 };
@@ -486,9 +672,10 @@ function answer(b){
   document.querySelectorAll("#qPlay .opt").forEach(o=>{o.disabled=true;if(o.dataset.o=="0")o.classList.add("ok")});
   if(!good){b.classList.add("ng");run.wrong.push(x)}else run.ok++;
   const r=S.q[x.id]||{n:0,c:0};r.n++;if(good)r.c++;r.last=good;S.q[x.id]=r;save();tick();
-  const last=run.i==run.list.length-1,has=SU.some(s=>s[0]==x.cat);
-  $("qExp").innerHTML=`<div class="exp"><b class="${good?"ok":"ng"}">${good?"正解":"不正解"}</b> ― ${esc(x.e)}${has?`<br><button class="link" id="qNote">「${x.cat}」の差分ノートで確認する</button>`:""}</div><div class="row" style="margin-top:12px"><button id="qNext">${last?"結果を見る":"次の問題"}</button></div>`;
+  const last=run.i==run.list.length-1,has=SU.some(s=>s[0]==x.cat),vz=VIS.find(v=>v.re.test(x.q+x.e));
+  $("qExp").innerHTML=`<div class="exp"><b class="${good?"ok":"ng"}">${good?"正解":"不正解"}</b> ― ${esc(x.e)}${has?`<br><button class="link" id="qNote">「${x.cat}」の差分ノートで確認する</button>`:""}${vz?`<br><button class="link" id="qVis">図解「${vz.t}」で動きを見る</button>`:""}</div><div class="row" style="margin-top:12px"><button id="qNext">${last?"結果を見る":"次の問題"}</button></div>`;
   if(has)$("qNote").onclick=()=>{sucat=x.cat;go("stepup")};
+  if(vz)$("qVis").onclick=()=>{vsel=vz.id;go("visual")};
   $("qNext").focus();
   $("qNext").onclick=next;
 }
@@ -551,12 +738,559 @@ function essay(){
 }
 $("eChips").onclick=e=>{const b=e.target.closest("[data-i]");if(b){ei=+b.dataset.i;essay()}};
 
+/* ---------- 用語データ ---------- */
+// [用語, 正式名・別名, 意味, 分野, フラグ(a=略語 k=AP重点)]
+const G=[
+["M/M/1","ケンドール記号による表記","到着がポアソン分布、サービス時間が指数分布、窓口が1つの待ち行列モデル。平均待ち時間は ρ/(1−ρ)×平均サービス時間","基礎理論","k"],
+["ハミング符号","Hamming code","データに検査ビットを付け、1ビットの誤りの位置を特定して訂正できる符号","基礎理論","k"],
+["CRC","Cyclic Redundancy Check","データを生成多項式で割った余りを付けて誤りを検出する方式。連続したビット誤り(バースト誤り)に強い","基礎理論","a"],
+["エントロピー","平均情報量","情報源が出す情報量の期待値。結果の予測がつきにくいほど大きくなる","基礎理論",""],
+["ハフマン符号","Huffman coding","出現確率の高い記号ほど短い符号を割り当て、平均符号長を最小にする可変長符号","基礎理論",""],
+["BNF","Backus-Naur Form","プログラム言語などの構文規則を ::= と | で定義する記法","基礎理論","a"],
+["有限オートマトン","Finite Automaton","有限個の状態と、入力による状態遷移で表すモデル。正規表現と同じ表現力をもつ","基礎理論",""],
+["CNN","Convolutional Neural Network","畳み込み層とプーリング層で特徴を抽出するニューラルネットワーク。画像認識で使われる","基礎理論","a"],
+["RNN","Recurrent Neural Network","前の時刻の出力を次の入力に戻して使い、時系列データを扱うニューラルネットワーク","基礎理論","a"],
+["LLM","Large Language Model","大量のテキストで事前学習した大規模言語モデル。生成AIの中核技術","基礎理論","ak"],
+["RAG","Retrieval-Augmented Generation","質問に関係する文書を検索し、その内容をもとに生成AIに回答させる手法。誤った回答を減らす","基礎理論","ak"],
+["ハルシネーション","Hallucination","生成AIが事実と異なる内容を、もっともらしく出力してしまう現象","基礎理論","k"],
+["過学習","Overfitting","訓練データに適合しすぎて、未知のデータに対する性能(汎化性能)が落ちる状態","基礎理論","k"],
+["強化学習","Reinforcement Learning","試行錯誤の結果として得られる報酬が最大になるような行動を学習する手法","基礎理論",""],
+["適合率","Precision","陽性と予測したもののうち、本当に陽性だった割合。誤検知を減らしたい場面で重視する","基礎理論","k"],
+["再現率","Recall","実際に陽性のもののうち、陽性と予測できた割合。見逃しを減らしたい場面で重視する","基礎理論","k"],
+["F値","F-measure","適合率と再現率の調和平均。両者のバランスを1つの指標で表す","基礎理論",""],
+["オーダ記法","O記法","入力サイズ n に対して処理量がどう増えるかを表す。O(1) < O(log n) < O(n) < O(n log n) < O(n²)","アルゴリズム","k"],
+["LIFO","Last In, First Out","後から入れたものを先に取り出す方式。スタックの性質","アルゴリズム","a"],
+["FIFO","First In, First Out","先に入れたものを先に取り出す方式。キューの性質。ページ置換方式の名前でもある","アルゴリズム","a"],
+["ヒープ","Heap","親の値が子の値以上(または以下)になる完全二分木。優先度付きキューやヒープソートに使う","アルゴリズム",""],
+["B+木","B+ tree","データをすべて葉に置き、葉同士をつないだ多分木。範囲検索に強く、データベースの索引に使われる","アルゴリズム","k"],
+["シノニム","同義語(ハッシュ)","異なるキーから同じハッシュ値が得られること。衝突とも呼ぶ","アルゴリズム",""],
+["動的計画法","Dynamic Programming","問題を部分問題に分け、その結果を記録して再利用することで計算量を減らす手法","アルゴリズム",""],
+["再帰","Recursion","関数が自分自身を呼び出す処理。終了条件が必要で、スタックを消費する","アルゴリズム",""],
+["CPI","Cycles Per Instruction","1命令の実行に必要な平均クロック数。CPU の実行時間=命令数×CPI÷クロック周波数","コンピュータ","a"],
+["MIPS","Million Instructions Per Second","1秒間に実行できる命令数を百万単位で表した性能指標","コンピュータ","a"],
+["FLOPS","Floating-point Operations Per Second","1秒間に実行できる浮動小数点演算の回数","コンピュータ","a"],
+["SIMD","Single Instruction, Multiple Data","1つの命令で複数のデータを同時に処理する方式。画像処理や GPU で使われる","コンピュータ","a"],
+["GPGPU","General-Purpose computing on GPU","GPU の並列演算能力を、画像処理以外の汎用計算(機械学習など)に使うこと","コンピュータ","a"],
+["DMA","Direct Memory Access","CPU を介さずに、周辺装置と主記憶の間でデータを直接転送する方式","コンピュータ","a"],
+["TLB","Translation Lookaside Buffer","仮想アドレスから物理アドレスへの変換結果を保持するキャッシュ","コンピュータ","ak"],
+["RISC","Reduced Instruction Set Computer","単純な命令を少数そろえ、パイプラインで高速に実行する設計。命令長が固定","コンピュータ","a"],
+["CISC","Complex Instruction Set Computer","複雑で高機能な命令を多数そろえた設計。命令長が可変","コンピュータ","a"],
+["スーパースカラ","Superscalar","複数のパイプラインを備え、複数の命令を同時に実行する方式","コンピュータ",""],
+["FPGA","Field Programmable Gate Array","製造後に利用者が論理回路を書き換えられる集積回路","コンピュータ","a"],
+["ウェアレベリング","Wear leveling","SSD などのフラッシュメモリで、書込みが特定のブロックに偏らないよう平準化する技術","コンピュータ",""],
+["MTBF","Mean Time Between Failures","平均故障間隔。故障してから次に故障するまでの平均稼働時間。長いほど信頼性が高い","システム構成","ak"],
+["MTTR","Mean Time To Repair","平均修復時間。短いほど保守性が高い","システム構成","ak"],
+["SPOF","Single Point Of Failure","単一障害点。そこが故障するとシステム全体が止まる箇所","システム構成","ak"],
+["RPO","Recovery Point Objective","目標復旧時点。障害時に、どの時点までのデータを復旧するかの目標","システム構成","ak"],
+["RTO","Recovery Time Objective","目標復旧時間。障害発生から業務を再開するまでに許される時間の目標","システム構成","ak"],
+["フェールオーバ","Failover","障害が起きたとき、自動的に待機系へ処理を切り替えること","システム構成",""],
+["ホットスタンバイ","Hot standby","待機系を常に起動・同期させておく方式。切替えが速い","システム構成",""],
+["コールドスタンバイ","Cold standby","待機系を停止状態で用意しておく方式。安価だが切替えに時間がかかる","システム構成",""],
+["SAN","Storage Area Network","専用ネットワークで複数のサーバとストレージをつなぎ、ブロック単位でアクセスする方式","システム構成","a"],
+["NAS","Network Attached Storage","LAN に接続し、ファイル単位で共有するストレージ","システム構成","a"],
+["IaaS","Infrastructure as a Service","サーバやストレージなどの基盤をサービスとして提供。OS 以上は利用者が管理する","システム構成","ak"],
+["PaaS","Platform as a Service","OS やミドルウェアまで含めた実行環境を提供。利用者はアプリケーションを管理する","システム構成","ak"],
+["SaaS","Software as a Service","アプリケーションそのものをサービスとして提供する","システム構成","ak"],
+["FaaS","Function as a Service","サーバを意識せず、イベントに応じて関数単位でコードを実行するサーバレスの形態","システム構成","a"],
+["コンテナ","Container","OS のカーネルを共有し、アプリケーションの実行環境を分離する仮想化技術。仮想マシンより軽い","システム構成","k"],
+["CDN","Content Delivery Network","利用者に近いサーバからコンテンツを配信し、応答を速め負荷を分散する仕組み","システム構成","a"],
+["TCO","Total Cost of Ownership","導入費用だけでなく運用・保守まで含めた総保有コスト","システム構成","a"],
+["ページフォールト","Page fault","参照したページが主記憶になく、補助記憶から読み込む必要が生じること","OS","k"],
+["LRU","Least Recently Used","最後に参照されてから最も長い時間がたったページを追い出す置換方式","OS","ak"],
+["LFU","Least Frequently Used","参照された回数が最も少ないページを追い出す置換方式","OS","a"],
+["スラッシング","Thrashing","ページの入れ替えが頻発し、CPU が処理をほとんど進められなくなる状態","OS",""],
+["セマフォ","Semaphore","共有資源を同時に使えるプロセス数を管理する変数と、P操作・V操作による排他制御の仕組み","OS",""],
+["コンテキストスイッチ","Context switch","実行するプロセスを切り替える際に、レジスタなどの実行状態を退避・復元すること","OS",""],
+["ラウンドロビン","Round robin","一定時間ごとに実行権を順番に切り替えるスケジューリング方式","OS",""],
+["リエントラント","Reentrant(再入可能)","複数のタスクから同時に呼び出されても正しく動作するプログラムの性質","OS",""],
+["RTOS","Real-Time Operating System","決められた時間内に処理を終えることを重視した OS。組込み機器で使われる","OS","a"],
+["ACID","Atomicity, Consistency, Isolation, Durability","トランザクションに求められる原子性・一貫性・独立性・耐久性","データベース","ak"],
+["DBMS","DataBase Management System","データベースを管理するソフトウェア","データベース","a"],
+["候補キー","Candidate key","行を一意に識別でき、余分な属性を含まない属性の組。そのうち1つを主キーにする","データベース","k"],
+["外部キー","Foreign key","他の表の主キーを参照する属性。参照整合性を保つ","データベース",""],
+["関数従属","Functional dependency","属性 A の値が決まれば属性 B の値が一意に決まる関係(A→B)","データベース","k"],
+["BCNF","Boyce-Codd Normal Form","すべての関数従属の決定項が候補キーになっている状態。第3正規形より厳しい","データベース","a"],
+["2相ロック","Two-Phase Locking","ロックをかける段階と解除する段階を分け、解除を始めたら新たにロックしない方式。直列化可能性を保証する","データベース","k"],
+["2相コミット","Two-Phase Commit","分散トランザクションで、全参加者にコミット可否を確認してから一斉に確定させる方式","データベース","k"],
+["WAL","Write-Ahead Logging","データを更新する前にログを書き出しておくことで、障害時の回復を保証する方式","データベース","a"],
+["チェックポイント","Checkpoint","バッファの内容を定期的にディスクに書き出す時点。障害回復時に処理を始める位置になる","データベース",""],
+["NoSQL","Not only SQL","関係データベース以外のデータベースの総称。キーバリュー型、ドキュメント型など","データベース","a"],
+["KVS","Key-Value Store","キーと値の組でデータを格納する単純なデータベース。高速で拡張しやすい","データベース","a"],
+["BASE","Basically Available, Soft state, Eventually consistent","可用性を優先し、一時的な不整合を許して最終的に整合させる考え方。NoSQL で使われる","データベース","a"],
+["結果整合性","Eventual consistency","更新直後は複製間で値が異なっても、時間がたてば一致する性質","データベース",""],
+["CAP定理","CAP theorem","分散システムは一貫性・可用性・分断耐性の3つを同時には満たせないという定理","データベース",""],
+["データレイク","Data lake","構造化・非構造化を問わず、生のデータをそのまま大量に蓄積する保存場所","データベース",""],
+["ETL","Extract, Transform, Load","データを抽出・変換して、データウェアハウスなどに読み込む処理","データベース","a"],
+["OLAP","OnLine Analytical Processing","大量のデータを多次元で集計・分析する処理。ドリルダウンやスライスなどの操作がある","データベース","a"],
+["CIDR","Classless Inter-Domain Routing","クラスにとらわれず、プレフィックス長(/24 など)でネットワーク部を表す方式","ネットワーク","ak"],
+["NAPT","Network Address Port Translation","IP アドレスとポート番号を変換し、1つのグローバルアドレスを複数の端末で共用する方式","ネットワーク","a"],
+["DHCP","Dynamic Host Configuration Protocol","IP アドレスなどのネットワーク設定を端末に自動で割り当てるプロトコル","ネットワーク","a"],
+["ARP","Address Resolution Protocol","IP アドレスから MAC アドレスを求めるプロトコル","ネットワーク","a"],
+["ICMP","Internet Control Message Protocol","IP 通信のエラー通知や疎通確認(ping)に使うプロトコル","ネットワーク","a"],
+["TCP","Transmission Control Protocol","コネクション型で、到達確認・順序制御・再送により信頼性を確保するプロトコル","ネットワーク","a"],
+["UDP","User Datagram Protocol","コネクションを張らずに送る軽いプロトコル。音声・動画や DNS で使う","ネットワーク","a"],
+["OSPF","Open Shortest Path First","リンクの状態(コスト)をもとに最短経路を計算するルーティングプロトコル。AS 内部で使う","ネットワーク","ak"],
+["BGP","Border Gateway Protocol","AS(組織のネットワーク)間の経路制御に使うパスベクトル型のプロトコル","ネットワーク","ak"],
+["RIP","Routing Information Protocol","ホップ数(経由するルータの数)で経路を選ぶ距離ベクトル型のプロトコル","ネットワーク","a"],
+["VLAN","Virtual LAN","物理的な配線と関係なく、論理的に LAN を分割する技術。IEEE 802.1Q でタグを付ける","ネットワーク","ak"],
+["VRRP","Virtual Router Redundancy Protocol","複数のルータを1つの仮想ルータに見せ、障害時に自動で切り替える冗長化プロトコル","ネットワーク","ak"],
+["QoS","Quality of Service","通信の種類に応じて帯域や優先度を制御し、品質を保証する仕組み","ネットワーク","a"],
+["MTU","Maximum Transmission Unit","1回に送信できるデータの最大サイズ。イーサネットでは通常1,500バイト","ネットワーク","a"],
+["SDN","Software-Defined Networking","ネットワーク機器の制御をソフトウェアで集中的に行う考え方。制御とデータ転送を分離する","ネットワーク","ak"],
+["PoE","Power over Ethernet","LAN ケーブルで通信と同時に電力を供給する技術","ネットワーク","a"],
+["LPWA","Low Power Wide Area","少ない電力で広い範囲を通信できる無線通信方式。IoT で使われる","ネットワーク","a"],
+["IMAP4","Internet Message Access Protocol 4","メールをサーバ上に保存したまま閲覧・管理する受信プロトコル","ネットワーク","a"],
+["SNMP","Simple Network Management Protocol","ネットワーク機器の状態を監視・管理するプロトコル","ネットワーク","a"],
+["NTP","Network Time Protocol","ネットワーク上の機器の時刻を同期させるプロトコル。ログの時刻合わせに重要","ネットワーク","a"],
+["CIA","機密性・完全性・可用性","Confidentiality, Integrity, Availability。情報セキュリティの3要素","セキュリティ","ak"],
+["PKI","Public Key Infrastructure","認証局が発行するディジタル証明書で、公開鍵の持ち主を保証する仕組み","セキュリティ","ak"],
+["CA","Certificate Authority","ディジタル証明書を発行・失効する認証局","セキュリティ","a"],
+["CRL","Certificate Revocation List","有効期限前に失効した証明書の一覧","セキュリティ","a"],
+["OCSP","Online Certificate Status Protocol","証明書が失効していないかをオンラインで問い合わせるプロトコル","セキュリティ","a"],
+["TLS","Transport Layer Security","通信の暗号化・改ざん検知・サーバ認証を行うプロトコル。HTTPS で使われる","セキュリティ","ak"],
+["IPsec","IP security","IP 層で暗号化と認証を行うプロトコル群。VPN で使われる","セキュリティ","a"],
+["WAF","Web Application Firewall","Web アプリケーションへの通信の中身を検査し、SQL インジェクションなどの攻撃を防ぐ","セキュリティ","ak"],
+["IDS","Intrusion Detection System","不正な通信を検知して通知する侵入検知システム","セキュリティ","a"],
+["IPS","Intrusion Prevention System","不正な通信を検知し、遮断までを行う侵入防止システム","セキュリティ","a"],
+["SIEM","Security Information and Event Management","さまざまな機器のログを集めて相関分析し、攻撃の兆候を検知する仕組み","セキュリティ","ak"],
+["EDR","Endpoint Detection and Response","PC などの端末の挙動を監視し、侵入後の不審な動きを検知・対応する仕組み","セキュリティ","ak"],
+["CSIRT","Computer Security Incident Response Team","セキュリティインシデントに対応する組織内のチーム","セキュリティ","ak"],
+["SOC","Security Operation Center","セキュリティ機器のログなどを常時監視し、攻撃を検知・分析する組織","セキュリティ","a"],
+["DMZ","DeMilitarized Zone","インターネットと社内 LAN の間に設ける区域。公開サーバを置く","セキュリティ","a"],
+["XSS","Cross-Site Scripting","利用者のブラウザで悪意あるスクリプトを実行させる攻撃。出力時のエスケープで防ぐ","セキュリティ","ak"],
+["CSRF","Cross-Site Request Forgery","ログイン中の利用者に意図しないリクエストを送らせる攻撃。トークンの照合で防ぐ","セキュリティ","ak"],
+["SQLインジェクション","SQL injection","入力値に SQL の一部を混ぜて不正な操作をさせる攻撃。プレースホルダで防ぐ","セキュリティ","k"],
+["DDoS","Distributed Denial of Service","多数の機器から大量の通信を送り、サービスを停止させる攻撃","セキュリティ","a"],
+["APT","Advanced Persistent Threat","特定の組織を狙い、長期間にわたって潜伏しながら行う高度な攻撃","セキュリティ","a"],
+["BEC","Business Email Compromise","取引先や経営者になりすまして偽の送金指示を送る、ビジネスメール詐欺","セキュリティ","a"],
+["SPF","Sender Policy Framework","送信元メールサーバの IP アドレスを DNS で照合する送信ドメイン認証","セキュリティ","ak"],
+["DKIM","DomainKeys Identified Mail","送信側でメールに電子署名を付け、受信側が DNS 上の公開鍵で検証する送信ドメイン認証","セキュリティ","ak"],
+["DMARC","Domain-based Message Authentication, Reporting and Conformance","SPF と DKIM の結果をもとに、認証失敗メールの扱いを送信側が宣言する仕組み","セキュリティ","ak"],
+["DNSSEC","DNS Security Extensions","DNS の応答に電子署名を付け、改ざんやキャッシュポイズニングを防ぐ","セキュリティ","a"],
+["OAuth 2.0","Open Authorization","利用者の同意にもとづき、アプリにリソースへのアクセス権を委譲する「認可」の仕組み","セキュリティ","ak"],
+["OIDC","OpenID Connect","OAuth 2.0 を拡張し、ID トークンで「認証」の結果を連携する仕組み","セキュリティ","ak"],
+["SAML","Security Assertion Markup Language","XML で認証情報を受け渡し、異なるサービス間でシングルサインオンを実現する標準","セキュリティ","a"],
+["SSO","Single Sign-On","一度の認証で複数のサービスを利用できるようにする仕組み","セキュリティ","a"],
+["MFA","Multi-Factor Authentication","知識・所持・生体のうち、異なる2つ以上の要素を組み合わせる多要素認証","セキュリティ","ak"],
+["FIDO2","Fast IDentity Online 2","パスワードを使わず、端末内の秘密鍵と生体認証などでログインする認証規格","セキュリティ","ak"],
+["CVE","Common Vulnerabilities and Exposures","公開された脆弱性に付けられる一意の識別番号","セキュリティ","a"],
+["CVSS","Common Vulnerability Scoring System","脆弱性の深刻度をベンダーに依存せず数値化する評価手法","セキュリティ","ak"],
+["ISMS","Information Security Management System","情報セキュリティマネジメントシステム。JIS Q 27001 で要求事項を定める","セキュリティ","ak"],
+["ゼロトラスト","Zero trust","社内外を区別せず、すべてのアクセスを都度検証するセキュリティの考え方","セキュリティ","k"],
+["サンドボックス","Sandbox","隔離された環境でプログラムを動かし、挙動を観察したり被害を閉じ込めたりする仕組み","セキュリティ",""],
+["PFS","Perfect Forward Secrecy","前方秘匿性。秘密鍵が漏えいしても、過去の通信内容が解読されない性質","セキュリティ","a"],
+["ソルト","Salt","パスワードごとに異なるランダム値を加えてハッシュ化し、事前計算による解析を防ぐ","セキュリティ",""],
+["ストレッチング","Stretching","ハッシュ計算を何度も繰り返し、総当たりの解析に時間がかかるようにする","セキュリティ",""],
+["ファジング","Fuzzing","想定外のデータを大量に入力し、脆弱性や不具合を見つけるテスト手法","セキュリティ","k"],
+["SBOM","Software Bill of Materials","ソフトウェアを構成する部品(ライブラリなど)の一覧。脆弱性の影響範囲の把握に使う","セキュリティ","ak"],
+["TPM","Trusted Platform Module","鍵の生成・保管や暗号処理を行う、改ざん耐性のあるセキュリティチップ","セキュリティ","a"],
+["耐タンパ性","Tamper resistance","内部の情報を不正に読み出されたり改ざんされたりしにくい性質","セキュリティ",""],
+["UML","Unified Modeling Language","オブジェクト指向の設計に使う図の表記法。クラス図・シーケンス図・状態マシン図など","開発技術","a"],
+["DFD","Data Flow Diagram","データの流れと処理を、プロセス・データストア・外部実体・データフローで表す図","開発技術","a"],
+["MVC","Model-View-Controller","アプリケーションを、データ処理・表示・入力制御の3つに分ける設計","開発技術","a"],
+["REST","REpresentational State Transfer","URI で資源を表し、HTTP のメソッドで操作する API の設計方式","開発技術","a"],
+["CI/CD","Continuous Integration / Continuous Delivery","変更を頻繁に統合して自動テストし、いつでもリリースできる状態を保つ手法","開発技術","ak"],
+["DevOps","Development and Operations","開発チームと運用チームが協力し、迅速で安定したリリースを目指す考え方","開発技術","k"],
+["TDD","Test-Driven Development","先にテストを書き、それを通す最小限のコードを書いてから改善するテスト駆動開発","開発技術","a"],
+["XP","eXtreme Programming","ペアプログラミング、テスト駆動開発、リファクタリングなどを実践するアジャイル開発手法","開発技術","a"],
+["リファクタリング","Refactoring","外部から見た動作を変えずに、プログラムの内部構造を改善すること","開発技術",""],
+["回帰テスト","Regression test","変更によって、それまで正常だった部分に不具合が出ていないかを確かめるテスト","開発技術","k"],
+["スタブ","Stub","トップダウンテストで、まだ完成していない下位モジュールの代わりに使う仮のモジュール","開発技術",""],
+["ドライバ","Driver","ボトムアップテストで、下位モジュールを呼び出すために使う仮の上位モジュール","開発技術",""],
+["インスペクション","Inspection","モデレータが主導し、役割を決めて成果物を検査する正式なレビュー","開発技術",""],
+["CMMI","Capability Maturity Model Integration","組織のプロセスの成熟度を5段階で評価するモデル","開発技術","a"],
+["共通フレーム","SLCP-JCF","ソフトウェアの企画から廃棄までの作業内容と用語を標準化した枠組み","開発技術",""],
+["PMBOK","Project Management Body of Knowledge","プロジェクトマネジメントの知識体系。第7版は原理・原則とパフォーマンス領域で構成","マネジメント","ak"],
+["WBS","Work Breakdown Structure","プロジェクトの成果物や作業を階層的に細かく分解した図。最下位はワークパッケージ","マネジメント","ak"],
+["EVM","Earned Value Management","計画価値(PV)・出来高(EV)・実コスト(AC)で進捗とコストを管理する手法","マネジメント","ak"],
+["SPI","Schedule Performance Index","スケジュール効率指数。EV÷PV。1未満なら遅れ","マネジメント","ak"],
+["CPI(EVM)","Cost Performance Index","コスト効率指数。EV÷AC。1未満ならコスト超過","マネジメント","ak"],
+["EAC","Estimate At Completion","完成時総コスト見積り。今の効率が続く場合は BAC÷CPI","マネジメント","a"],
+["RACI","Responsible, Accountable, Consulted, Informed","作業ごとに実行責任・説明責任・相談先・報告先を割り当てる責任分担表","マネジメント","a"],
+["PMO","Project Management Office","組織内の複数のプロジェクトを横断的に支援・管理する部門","マネジメント","a"],
+["ファンクションポイント法","FP法","入出力や内部ファイルなどの機能の数と複雑さから、ソフトウェアの規模を見積もる手法","マネジメント","k"],
+["COCOMO","COnstructive COst MOdel","プログラムの規模(行数)などから開発工数を見積もるモデル","マネジメント","a"],
+["ITIL","Information Technology Infrastructure Library","IT サービスマネジメントのベストプラクティス集。現行は ITIL 4","マネジメント","ak"],
+["SLA","Service Level Agreement","サービス提供者と利用者の間で、サービスの品質水準を合意した文書","マネジメント","ak"],
+["OLA","Operational Level Agreement","SLA を守るために、サービス提供者の内部の部門間で結ぶ合意","マネジメント","a"],
+["BCP","Business Continuity Plan","災害などが起きても重要な業務を継続・早期復旧するための事業継続計画","マネジメント","ak"],
+["監査証拠","Audit evidence","監査意見の根拠となる事実。監査手続を実施して入手する","マネジメント",""],
+["監査調書","Working papers","監査人が実施した手続や入手した証拠を記録した文書","マネジメント",""],
+["ITガバナンス","IT governance","経営陣が IT の利活用を評価・指示・モニタする仕組み","マネジメント",""],
+["内部統制","Internal control","業務の有効性・効率性、財務報告の信頼性、法令遵守、資産の保全を目的とする社内の仕組み","マネジメント",""],
+["SWOT","Strengths, Weaknesses, Opportunities, Threats","自社の強み・弱み(内部環境)と、機会・脅威(外部環境)を整理する分析手法","ストラテジ","ak"],
+["PPM","Product Portfolio Management","市場成長率と相対的市場シェアで事業を4つに分類し、資源配分を決める手法","ストラテジ","ak"],
+["3C","Customer, Competitor, Company","市場・顧客、競合、自社の3つの視点で事業環境を分析する手法","ストラテジ","a"],
+["4P","Product, Price, Place, Promotion","企業側から見たマーケティングミックスの要素。顧客側から見たものは4C","ストラテジ","a"],
+["STP","Segmentation, Targeting, Positioning","市場を分け、狙う市場を決め、競合との位置づけを明確にするマーケティングの手順","ストラテジ","a"],
+["BSC","Balanced Scorecard","財務・顧客・業務プロセス・学習と成長の4つの視点で戦略を評価する手法","ストラテジ","ak"],
+["KGI","Key Goal Indicator","最終的な目標の達成度を測る指標","ストラテジ","a"],
+["KPI","Key Performance Indicator","目標達成に向けた過程の進み具合を測る指標","ストラテジ","ak"],
+["CSF","Critical Success Factor","目標を達成するために特に重要な成功要因","ストラテジ","a"],
+["ROI","Return On Investment","投資額に対してどれだけの利益が得られたかを示す投資利益率","ストラテジ","ak"],
+["ROE","Return On Equity","自己資本に対する当期純利益の割合","ストラテジ","a"],
+["NPV","Net Present Value","将来のキャッシュフローを現在価値に割り引いた合計から投資額を引いた正味現在価値","ストラテジ","a"],
+["限界利益","Marginal profit","売上高から変動費を引いた利益。限界利益率=1−変動費率","ストラテジ","k"],
+["ERP","Enterprise Resource Planning","会計・人事・生産・販売など基幹業務を統合して管理するシステム","ストラテジ","a"],
+["CRM","Customer Relationship Management","顧客との関係を管理し、満足度と収益の向上を図る仕組み","ストラテジ","a"],
+["SCM","Supply Chain Management","調達から生産・物流・販売までの流れを全体最適化する管理手法","ストラテジ","a"],
+["SFA","Sales Force Automation","営業活動の情報を共有・管理して効率化する仕組み","ストラテジ","a"],
+["DX","Digital Transformation","デジタル技術でビジネスモデルや組織を変革し、競争上の優位を確立すること","ストラテジ","ak"],
+["BPR","Business Process Re-engineering","業務プロセスを根本から見直し、抜本的に再設計すること","ストラテジ","a"],
+["RPA","Robotic Process Automation","定型的なパソコン作業をソフトウェアのロボットで自動化すること","ストラテジ","a"],
+["PoC","Proof of Concept","新しい技術や考え方が実現可能かを、小規模に試して検証すること","ストラテジ","ak"],
+["CPS","Cyber-Physical System","現実世界のデータを集めて仮想空間で分析し、その結果を現実世界に戻して活用する仕組み","ストラテジ","a"],
+["EA","Enterprise Architecture","業務とシステムを、ビジネス・データ・アプリケーション・技術の階層で全体最適化する手法","ストラテジ","a"],
+["RFI","Request For Information","調達先の候補に、技術や製品の情報の提供を求める文書","ストラテジ","ak"],
+["RFP","Request For Proposal","調達先の候補に、要件を示して具体的な提案を求める文書","ストラテジ","ak"],
+["コアコンピタンス","Core competence","他社がまねしにくい、自社の中核的な強み","ストラテジ",""],
+["ブルーオーシャン","Blue ocean","競争のない未開拓の市場。競争の激しい既存市場はレッドオーシャン","ストラテジ",""],
+["キャズム","Chasm","新製品が初期市場から主流市場へ広がる際に存在する、越えにくい溝","ストラテジ","k"],
+["イノベーションのジレンマ","Innovator's dilemma","優良企業が既存顧客を重視するあまり、破壊的イノベーションに対応できず地位を失う現象","ストラテジ",""],
+["請負契約","Contract for work","仕事の完成を約束する契約。作業者への指揮命令は受注者が行う","法務","k"],
+["準委任契約","Quasi-mandate contract","事務の処理を委託する契約。完成義務はなく、善管注意義務を負う","法務","k"],
+["労働者派遣","Worker dispatch","派遣元が雇用する労働者を、派遣先の指揮命令のもとで働かせる形態","法務",""],
+["偽装請負","Disguised contracting","請負契約なのに、発注者が受注者の作業者に直接指揮命令している違法な状態","法務","k"],
+["職務著作","Work made for hire","法人の発意で従業員が職務上作成し、法人名義で公表するものの著作者は法人になる","法務",""],
+["要配慮個人情報","Special care-required personal information","人種、信条、病歴、犯罪歴など、取得に原則として本人の同意が必要な個人情報","法務",""],
+["仮名加工情報","Pseudonymously processed information","他の情報と照合しない限り個人を識別できないよう加工した情報。主に社内分析で使う","法務","k"],
+["匿名加工情報","Anonymously processed information","個人を識別できず、元に復元もできないよう加工した情報。一定の条件で第三者に提供できる","法務","k"],
+["不正アクセス禁止法","不正アクセス行為の禁止等に関する法律","他人の ID・パスワードの無断使用や、その助長行為などを禁止する法律","法務",""],
+["営業秘密","Trade secret","秘密管理性・有用性・非公知性を満たす情報。不正競争防止法で保護される","法務","k"],
+["下請法","下請代金支払遅延等防止法","親事業者による代金の支払遅延や減額、買いたたきなどを禁止する法律","法務",""],
+["PL法","製造物責任法","製造物の欠陥で損害が生じた場合、製造業者は過失がなくても賠償責任を負う","法務","a"],
+["GDPR","General Data Protection Regulation","EU の一般データ保護規則。EU 域外の事業者にも適用されることがある","法務","a"],
+["コピーレフト","Copyleft","改変・再配布したものにも同じライセンスの適用を求める考え方。GPL が代表例","法務",""]
+];
+// 混同しやすい用語
+const CMP=[
+["フェールセーフ と フェールソフト",[["フェールセーフ","障害時に安全な側に倒して止める(信号を赤にする)"],["フェールソフト","機能を落としてでも運転を続ける(縮退運転)"]],"「止めて安全」か「続けて運用」か"],
+["RPO と RTO",[["RPO","どの時点のデータまで戻すか(データの損失許容量)"],["RTO","どれだけの時間で再開するか(停止の許容時間)"]],"P は Point(時点)、T は Time(時間)"],
+["OAuth 2.0 と OpenID Connect",[["OAuth 2.0","アクセスしてよいかを委ねる「認可」。アクセストークン"],["OpenID Connect","誰であるかを伝える「認証」。ID トークン"]],"OIDC は OAuth 2.0 の上に認証を足したもの"],
+["IDS と IPS",[["IDS","不正な通信を検知して知らせる"],["IPS","検知したうえで遮断する"]],"D は Detection(検知)、P は Prevention(防止)"],
+["SPF・DKIM・DMARC",[["SPF","送信元サーバの IP アドレスを DNS で確認"],["DKIM","メールの電子署名を DNS の公開鍵で確認"],["DMARC","上の2つが失敗したときの扱いを送信側が宣言"]],"IP か、署名か、ポリシーか"],
+["IaaS・PaaS・SaaS",[["IaaS","ハードウェア・ネットワークまで提供。OS から上は利用者"],["PaaS","OS・ミドルウェアまで提供。アプリは利用者"],["SaaS","アプリケーションまですべて提供"]],"利用者が管理する範囲が I→P→S の順に狭くなる"],
+["ライトスルー と ライトバック",[["ライトスルー","キャッシュと主記憶に同時に書く。常に一致"],["ライトバック","キャッシュだけに書き、追い出すときに主記憶へ。速いが一時的に不一致"]],"書込みの速さと一貫性のトレードオフ"],
+["ロールバック と ロールフォワード",[["ロールバック","更新前ログで取り消す(トランザクション障害)"],["ロールフォワード","バックアップに更新後ログを当て直す(媒体障害)"]],"戻すか、進めるか"],
+["インシデント管理 と 問題管理",[["インシデント管理","まずサービスを回復させる(暫定対応も可)"],["問題管理","根本原因を突き止め、再発を防ぐ"]],"速さ優先か、原因究明か"],
+["請負・準委任・派遣",[["請負","完成義務あり。指揮命令は受注者"],["準委任","完成義務なし(善管注意義務)。指揮命令は受注者"],["派遣","指揮命令は派遣先"]],"誰が作業者に指示するか"],
+["仮名加工情報 と 匿名加工情報",[["仮名加工情報","照合すれば個人を識別できる。原則、第三者提供は不可"],["匿名加工情報","個人を識別できず復元もできない。条件付きで第三者提供が可能"]],"元に戻せるかどうか"],
+["クラッシング と ファストトラッキング",[["クラッシング","要員追加などコストをかけて期間を縮める"],["ファストトラッキング","順番に行う作業を並行させて縮める(手戻りのリスク)"]],"お金で縮めるか、並べて縮めるか"],
+["スケールアップ と スケールアウト",[["スケールアップ","1台の性能を上げる(垂直)"],["スケールアウト","台数を増やす(水平)"]],"上に伸ばすか、横に並べるか"],
+["ホットスタンバイ と コールドスタンバイ",[["ホットスタンバイ","待機系を起動・同期しておく。切替えが速い"],["コールドスタンバイ","待機系を止めておく。安いが切替えが遅い"]],"待機系が温まっているかどうか"],
+["適合率 と 再現率",[["適合率","陽性と予測したうち、本当に陽性の割合(誤検知の少なさ)"],["再現率","本当の陽性のうち、見つけられた割合(見逃しの少なさ)"]],"迷惑メール判定なら適合率、病気の検査なら再現率を重視"],
+["TCP と UDP",[["TCP","接続して確認・再送する。信頼性重視"],["UDP","接続せずに送る。速さ・リアルタイム性重視"]],"確実さか、速さか"],
+["ブラックボックステスト と ホワイトボックステスト",[["ブラックボックス","内部を見ずに仕様から入力と出力を確かめる(同値分割・限界値分析)"],["ホワイトボックス","内部の構造に着目して経路を網羅する(命令網羅・判定条件網羅)"]],"仕様を見るか、コードを見るか"],
+["KGI と KPI",[["KGI","最終目標の達成度(売上高など)"],["KPI","過程の進み具合(訪問件数など)"]],"ゴールか、途中経過か"]
+];
+const GUIDE=[
+["試験の全体像",["科目A(旧午前):四肢択一80問・150分。テクノロジ系が約50問、マネジメント系が約10問、ストラテジ系が約20問の構成です。","科目B(旧午後):記述式・150分。問1(情報セキュリティ)は必須で、問2〜11から4問を選び、合計5問を解きます。","合格基準はどちらも100点満点中60点以上。片方だけ高得点でも合格できません。"]],
+["科目Aの解き方",["1問あたりの持ち時間は平均約1分50秒。計算問題で詰まったら印を付けて先に進み、最後に戻りましょう。","知らない用語が出ても、選択肢の言葉の組み立てから推測できることがあります。用語図鑑で正式名を覚えておくと有利です。","基本情報と共通の論点も多く出ます。差分ノートの FE 欄があやふやなら、そこから固めましょう。"]],
+["科目Bの選び方",["問1 のセキュリティは必須なので、Web 攻撃の対策と暗号・認証を最優先で固めましょう。","残り4問は、得意分野を3つと予備を1つ決めておくのが定石です。本番で問題を読み比べてから選べるようにしておくと安心です。","計算が中心の分野(経営戦略、プロジェクトマネジメントなど)は、答えが一つに決まるので得点が安定しやすい一方、計算ミスに注意が必要です。","文章を読む分野(サービスマネジメント、システム監査など)は、専門知識が少なくても本文から答えを探せることがあります。","1問あたりの持ち時間は約30分。最初の数分で設問をすべて見て、取れるところから解きましょう。"]],
+["記述の書き方",["問われたことにだけ答える。「理由」を問われたら「〜のため」、「目的」なら「〜するため」で終える。","答えの根拠は本文の中にあります。本文の言葉をそのまま使うと、採点者に伝わりやすくなります。","指定字数の8割程度を目安に書く。少なすぎると要素が足りず、多すぎると字数オーバーで減点されます。","主語と目的語を省かない。「何が」「何を」がないと、正しい内容でも点にならないことがあります。"]],
+["学習の進め方の例",["1. 差分ノートで、FE からの伸びしろを確認する。","2. 科目A演習で分野ごとに解き、苦手を見つける。誤答は解説と用語図鑑で確認する。","3. 計算ドリルで公式を手に覚えさせる。","4. 単語カードで略語を毎日少しずつ覚える。","5. 科目Bの記述で、書いて答える練習をする。最後は IPA の公開過去問で本番形式に慣れる。"]]
+];
+
+/* ---------- 用語画面 ---------- */
+let wmode="list",wq="",wcat="",wa=false,wk=false,wu=false,card=null;
+const CMODE=[["list","用語図鑑"],["card","単語カード"],["cmp","混同しやすい用語"],["guide","試験ガイド"]];
+const wFilter=()=>G.filter(g=>(!wcat||g[3]==wcat)&&(!wa||g[4].includes("a"))&&(!wk||g[4].includes("k"))&&(!wu||!S.g[g[0]])&&(!wq||(g[0]+" "+g[1]+" "+g[2]).toLowerCase().includes(wq.toLowerCase())));
+const hl=t=>{const s=esc(t);if(!wq)return s;const q=esc(wq).replace(/[.*+?^${}()|[\]\\]/g,"\\$&");return s.replace(new RegExp(q,"gi"),m=>`<mark>${m}</mark>`)};
+function words(){
+  const m=G.filter(g=>S.g[g[0]]).length;
+  $("wMode").innerHTML=CMODE.map(c=>`<button class="${c[0]==wmode?"on":""}" data-w="${c[0]}">${c[1]}</button>`).join("");
+  $("wFil").hidden=!(wmode=="list"||wmode=="card");
+  $("wSum").innerHTML=`<span>覚えた用語 <b>${m} / ${G.length}</b></span><div class="meter" style="flex:1;max-width:260px"><div style="width:${m/G.length*100}%"></div></div>`;
+  $("wCats").innerHTML=`<button class="chip ${wcat?"":"on"}" data-c="">すべての分野</button>`+CATS.map(c=>`<button class="chip ${c==wcat?"on":""}" data-c="${c}">${c}</button>`).join("");
+  $("wTg").innerHTML=[["wa","略語のみ",wa],["wk","AP重点のみ",wk],["wu","まだ覚えていない用語のみ",wu]].map(t=>`<label class="flag"><input type="checkbox" data-tg="${t[0]}" ${t[2]?"checked":""}>${t[1]}</label>`).join("");
+  if(wmode=="list")wlist();else if(wmode=="card")wcard(true);else if(wmode=="cmp")wcmp();else wguide();
+}
+function wlist(){
+  const L=wFilter();
+  if(!L.length){$("wBody").innerHTML=`<div class="empty">該当する用語がありません。検索語や絞り込みを変えてみてください。</div>`;return}
+  const by={};L.forEach(g=>(by[g[3]]=by[g[3]]||[]).push(g));
+  $("wBody").innerHTML=`<p class="note">${L.length} 語を表示中</p>`+Object.entries(by).map(([c,a])=>`<h3 class="gh">${c}<span>${a.length}</span></h3><div class="gl">${a.map(g=>`<div class="gi ${S.g[g[0]]?"got":""}"><div class="gt"><b>${hl(g[0])}</b>${g[4].includes("k")?'<span class="tag">AP重点</span>':""}${g[4].includes("a")?'<span class="tag s">略語</span>':""}</div><div class="gf">${hl(g[1])}</div><p>${hl(g[2])}</p><button class="ghost mini" data-got="${esc(g[0])}" aria-pressed="${S.g[g[0]]?"true":"false"}">${S.g[g[0]]?"覚えた ✓":"覚えた"}</button></div>`).join("")}</div>`).join("");
+}
+function wcard(reset){
+  if(reset||!card){const L=shuffle(wFilter());card={list:L,i:0,open:false,ok:0,dir:card?card.dir:"t"}}
+  if(!card.list.length){$("wBody").innerHTML=`<div class="empty">${wu?"この条件の用語はすべて覚えました。":"該当する用語がありません。"}</div>`;return}
+  if(card.i>=card.list.length){$("wBody").innerHTML=`<div class="panel" style="max-width:640px"><h3>${card.list.length} 枚を一巡しました</h3><p>今回「覚えた」にしたのは ${card.ok} 枚です。</p><div class="row"><button id="cAgain">まだの用語でもう一巡</button><button class="ghost" id="cAll">条件どおりにもう一巡</button></div></div>`;$("cAgain").onclick=()=>{wu=true;words()};$("cAll").onclick=()=>wcard(true);return}
+  const g=card.list[card.i],t=card.dir=="t";
+  const front=t?`<div class="cf-t">${esc(g[0])}</div><div class="note">${g[3]}</div>`:`<p class="cf-m">${esc(g[2])}</p><div class="note">${g[3]}</div>`;
+  const back=`<div class="cf-t sm">${esc(g[0])}</div><div class="gf">${esc(g[1])}</div><p>${esc(g[2])}</p>`;
+  $("wBody").innerHTML=`<div style="max-width:640px"><div class="qmeta"><span>${card.i+1} / ${card.list.length}</span><span class="row"><button class="chip ${t?"on":""}" data-dir="t">用語→意味</button><button class="chip ${t?"":"on"}" data-dir="m">意味→用語</button></span></div><div class="prog"><div style="width:${card.i/card.list.length*100}%"></div></div><button class="fc" id="fc" aria-label="カードをめくる">${card.open?back:front+'<span class="note tap">タップして答えを見る</span>'}</button><div class="row" style="margin-top:12px">${card.open?`<button class="ghost" id="cNo">まだ</button><button id="cOk">覚えた</button>`:`<button id="cOpen">答えを見る</button>`}</div></div>`;
+  $("fc").onclick=()=>{if(!card.open){card.open=true;wcard()}};
+  if($("cOpen"))$("cOpen").onclick=()=>{card.open=true;wcard()};
+  if($("cOk"))$("cOk").onclick=()=>{S.g[g[0]]=1;card.ok++;save();tick();card.i++;card.open=false;words2()};
+  if($("cNo"))$("cNo").onclick=()=>{delete S.g[g[0]];save();tick();card.i++;card.open=false;words2()};
+}
+function words2(){const m=G.filter(g=>S.g[g[0]]).length;$("wSum").innerHTML=`<span>覚えた用語 <b>${m} / ${G.length}</b></span><div class="meter" style="flex:1;max-width:260px"><div style="width:${m/G.length*100}%"></div></div>`;wcard()}
+function wcmp(){
+  $("wBody").innerHTML=`<p class="note">試験の選択肢でよく並べられる、似た用語の組合せです。最後の行の「見分け方」を一言で言えるようにしましょう。</p><div class="cards">${CMP.map(c=>`<article class="card"><header><div><h3>${esc(c[0])}</h3></div></header><div class="diff cmpd">${c[1].map(r=>`<span class="t ap">${esc(r[0])}</span><span>${esc(r[1])}</span>`).join("")}</div><footer><b>見分け方:</b>${esc(c[2])}</footer></article>`).join("")}</div>`;
+}
+function wguide(){
+  $("wBody").innerHTML=`<div class="guide">${GUIDE.map(s=>`<section class="panel"><h3>${esc(s[0])}</h3><ul>${s[1].map(l=>`<li>${esc(l)}</li>`).join("")}</ul></section>`).join("")}</div><p class="note">制度や日程は変わることがあります。受験前に必ず IPA(情報処理推進機構)の公式サイトで最新情報を確認してください。</p>`;
+}
+$("wMode").onclick=e=>{const b=e.target.closest("[data-w]");if(b){wmode=b.dataset.w;card=null;words()}};
+$("wCats").onclick=e=>{const b=e.target.closest("[data-c]");if(b){wcat=b.dataset.c;words()}};
+$("wTg").onchange=e=>{const k=e.target.dataset.tg;if(k=="wa")wa=e.target.checked;if(k=="wk")wk=e.target.checked;if(k=="wu")wu=e.target.checked;words()};
+let wt;$("wSearch").oninput=e=>{clearTimeout(wt);wt=setTimeout(()=>{wq=e.target.value.trim();if(wmode!="list")wmode="list";words()},150)};
+$("wBody").addEventListener("click",e=>{
+  const b=e.target.closest("[data-got]");if(b){const k=b.dataset.got;S.g[k]?delete S.g[k]:S.g[k]=1;save();const it=b.closest(".gi");it.classList.toggle("got",!!S.g[k]);b.textContent=S.g[k]?"覚えた ✓":"覚えた";b.setAttribute("aria-pressed",S.g[k]?"true":"false");const m=G.filter(g=>S.g[g[0]]).length;$("wSum").querySelector("b").textContent=`${m} / ${G.length}`;$("wSum").querySelector(".meter div").style.width=m/G.length*100+"%";return}
+  const d=e.target.closest("[data-dir]");if(d&&card){card.dir=d.dataset.dir;card.open=false;wcard()}
+});
+addEventListener("keydown",e=>{
+  if(wmode!="card"||!card||!$("v-words").classList.contains("on")||e.target.matches("input,textarea"))return;
+  if(e.key==" "||e.key=="Enter"){if(!card.open&&$("cOpen")){e.preventDefault();$("cOpen").click()}}
+  else if(e.key=="ArrowRight"&&$("cOk")){$("cOk").click()}else if(e.key=="ArrowLeft"&&$("cNo")){$("cNo").click()}
+});
+
+/* ---------- 図解(動かして理解する) ---------- */
+let vsel="queue",vTimer=null;
+const stopT=()=>{if(vTimer){clearInterval(vTimer);vTimer=null}};
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const f2=x=>(Math.round(x*100)/100).toFixed(2),f3=x=>(Math.round(x*1000)/1000).toFixed(3);
+const seg=(id,opts,cur)=>`<div class="seg" id="${id}">${opts.map(o=>`<button class="${o[0]==cur?"on":""}" data-s="${o[0]}">${o[1]}</button>`).join("")}</div>`;
+
+const VIS=[
+{id:"queue",t:"待ち行列(M/M/1)",cat:"基礎理論",re:/M\/M\/1|待ち行列/,q:"基礎理論",
+ trip:"利用率が2倍になっても、待ち時間は2倍では済みません。窓口が混むほど、待ち時間は急激に増えます。",
+ key:["利用率 ρ = 到着率 × 平均サービス時間(窓口が使われている割合)","平均待ち時間 = ρ ÷ (1 − ρ) × 平均サービス時間","ρ が 0.5 → 0.8 → 0.9 なら、待ち時間はサービス時間の 1 → 4 → 9 倍","問題文が「待ち時間」か「応答時間(待ち+サービス)」かを必ず確認する"],r:queueV},
+{id:"avail",t:"稼働率(直列と並列)",cat:"システム構成",re:/稼働率|MTBF/,q:"システム構成",
+ trip:"並列のときに「足し算」をしてしまう人が多い部分です。並列は「全部が同時に壊れる確率」を1から引きます。",
+ key:["直列:すべて動いていないと止まる → A × B","並列:どれか1台動けばよい → 1 − (1−A)(1−B)","直列は台数が増えるほど下がり、並列は上がる","稼働率 = MTBF ÷ (MTBF + MTTR)"],r:availV},
+{id:"pipe",t:"パイプラインと分岐ハザード",cat:"コンピュータ",re:/パイプライン|ハザード/,q:"コンピュータ",
+ trip:"パイプラインは1命令を速くする技術ではありません。命令を少しずつずらして重ね、全体の処理量を増やす技術です。",
+ key:["所要クロック数 = ステージ数 + (命令数 − 1)","分岐命令の結果が出るまで次の命令が決まらず、先読みした命令を捨てる(制御ハザード)","対策:分岐予測、投機実行、遅延分岐","前の命令の結果待ちはデータハザード(対策:フォワーディング)"],r:pipeV},
+{id:"lru",t:"ページ置換(LRU と FIFO)",cat:"OS",re:/LRU|FIFO|ページ/,q:"OS",
+ trip:"LRU と FIFO を取り違えるのが典型的なミスです。「最後に使った時刻」なのか「読み込んだ時刻」なのかを区別します。",
+ key:["LRU:最後に参照してから最も時間がたったページを追い出す","FIFO:最も早く読み込んだページを追い出す(途中で参照されても順番は変わらない)","ヒットしたときの扱いが2つの方式の違いになる","参照列を1つずつ表に書いて追うのが確実"],r:lruV},
+{id:"subnet",t:"サブネットとアドレス計算",cat:"ネットワーク",re:/サブネット|ブロードキャスト|\/2[0-9]/,q:"ネットワーク",
+ trip:"/24 や /16 のような区切りは簡単ですが、/23 や /26 のようにオクテットの途中で区切れると混乱しがちです。境目のオクテットだけ2進数にして考えます。",
+ key:["プレフィックス長 = 先頭から何ビットがネットワーク部か","ホスト部をすべて0にするとネットワークアドレス、すべて1にするとブロードキャストアドレス","ホストに使える数 = 2^(ホスト部のビット数) − 2","境目のオクテットだけを2進数にすれば十分"],r:subnetV},
+{id:"pki",t:"暗号化とディジタル署名",cat:"セキュリティ",re:/署名|公開鍵|秘密鍵|暗号/,q:"セキュリティ",
+ trip:"「どちらの人の、どちらの鍵を使うか」が逆になりやすい部分です。目的が「秘密にする」のか「本人だと証明する」のかから考えます。",
+ key:["暗号化(秘密にする):受信者の公開鍵で暗号化 → 受信者の秘密鍵で復号","署名(本人を証明する):送信者の秘密鍵で署名 → 送信者の公開鍵で検証","秘密鍵は持ち主だけが持つ。だから「署名できる=本人」になる","署名は、メッセージ全体ではなくハッシュ値に対して行う"],r:pkiV},
+{id:"iso",t:"トランザクションの分離レベル",cat:"データベース",re:/分離レベル|ダーティ|ファントム|ノンリピータブル/,q:"データベース",
+ trip:"3つの異常の名前と中身が結びつかないと、分離レベルの表を丸暗記することになります。まず異常そのものを場面で理解しましょう。",
+ key:["ダーティリード:他のトランザクションがコミットしていない値を読む","ノンリピータブルリード:同じ行を2回読むと値が変わっている","ファントムリード:同じ条件で2回検索すると行が増えて(減って)いる","レベルを上げるほど防げる異常が増えるが、同時に実行できる処理は減る"],r:isoV},
+{id:"evm",t:"EVM(進捗とコストの管理)",cat:"マネジメント",re:/EVM|SPI|CPI|PV|EV=/,q:"マネジメント",
+ trip:"PV・EV・AC の3つの記号が覚えにくい部分です。どれも「お金の単位」で、EV(出来高)が主役。EV を PV と比べれば進捗、AC と比べればコストがわかります。",
+ key:["PV:今日までに終わる予定だった作業の予算","EV:今日までに実際に終わった作業の予算(出来高)","AC:今日までに実際にかかったコスト","SPI = EV ÷ PV、CPI = EV ÷ AC。1未満なら悪い"],r:evmV},
+{id:"csrf",t:"CSRF 攻撃とトークン対策",cat:"セキュリティ",re:/CSRF|クロスサイトリクエスト/,q:"セキュリティ",
+ trip:"ブラウザが Cookie を自動で送ってしまうことが攻撃の核心です。サーバは「本人が自分の操作で送ったのか」を Cookie だけでは区別できません。",
+ key:["罠サイトは、ログイン中の利用者のブラウザから正規サイトへリクエストを送らせる","Cookie(セッション)は自動で付くので、サーバは正規の操作と区別できない","対策:推測できないトークンをフォームに埋め込み、受信時に照合する","補助策:Cookie の SameSite 属性、重要な操作での再認証"],r:csrfV}
+];
+
+function visual(){
+  stopT();
+  const v=VIS.find(x=>x.id==vsel)||VIS[0];vsel=v.id;S.v[v.id]=1;save();
+  $("vList").innerHTML=VIS.map(x=>`<button class="vi ${x.id==vsel?"on":""}" data-vid="${x.id}"><small>${x.cat}</small><span>${x.t}</span>${S.v[x.id]?'<i class="ck" aria-label="見た">✓</i>':""}</button>`).join("");
+  const i=VIS.indexOf(v);
+  $("vStage").innerHTML=`<article class="stage"><header><small>${v.cat}・図解 ${i+1}/${VIS.length}</small><h3>${v.t}</h3></header><div class="trip"><b>初心者がつまずきやすいところ</b><p>${v.trip}</p></div><div id="vf"></div><div class="keyp"><b>ここを押さえる</b><ul>${v.key.map(k=>`<li>${esc(k)}</li>`).join("")}</ul></div><div class="row"><button id="vQ">関連する問題を解く</button><button class="ghost" id="vNext">次の図解へ →</button></div></article>`;
+  v.r($("vf"));
+  $("vQ").onclick=()=>{stopT();qcat=new Set([v.q]);go("quiz");start("all")};
+  $("vNext").onclick=()=>{vsel=VIS[(i+1)%VIS.length].id;visual();$("vStage").scrollIntoView({block:"start",behavior:RM?"auto":"smooth"})};
+  const on=$("vList").querySelector(".on");if(on&&on.scrollIntoView)on.scrollIntoView({block:"nearest",inline:"nearest"});
+}
+
+/* 待ち行列 */
+function queueV(el){
+  el.innerHTML=`<div class="ctl"><label>利用率 ρ <b id="qr"></b><input type="range" id="qs" min="0.05" max="0.95" step="0.05" value="0.8" aria-label="利用率"></label><label>平均サービス時間 <b id="qtv"></b><input type="range" id="qt" min="2" max="60" step="1" value="10" aria-label="平均サービス時間"></label></div>
+  <div class="two"><div><svg viewBox="0 0 420 250" class="vsvg" id="qsv" role="img" aria-label="利用率と待ち時間の関係のグラフ"></svg></div><div><p class="note">窓口のようす(平均の待ち人数)</p><div class="qline" id="qq"></div></div></div><p class="out" id="qo"></p>`;
+  const X=r=>50+r*350,Y=k=>215-Math.min(k,19)/19*190;
+  const draw=()=>{
+    const r=+$("qs").value,ts=+$("qt").value,k=r/(1-r),lq=r*r/(1-r);
+    $("qr").textContent=r.toFixed(2);$("qtv").textContent=ts+" 秒";
+    let p="";for(let x=0;x<=0.95001;x+=0.01)p+=(p?"L":"M")+X(x).toFixed(1)+","+Y(x/(1-x)).toFixed(1);
+    $("qsv").innerHTML=`<line class="ax" x1="50" y1="215" x2="405" y2="215"/><line class="ax" x1="50" y1="20" x2="50" y2="215"/>${[1,4,9].map(v=>`<line class="gd" x1="50" x2="400" y1="${Y(v)}" y2="${Y(v)}"/><text x="44" y="${Y(v)+4}" text-anchor="end">${v}倍</text>`).join("")}${[0,0.5,0.8,0.9,1].map(v=>`<text x="${X(v)}" y="236" text-anchor="middle">${v}</text>`).join("")}<text x="405" y="206" text-anchor="end">利用率 ρ</text><text x="56" y="16">待ち時間 ÷ サービス時間</text><path class="cv" d="${p}"/><line class="gd hl" x1="${X(r)}" x2="${X(r)}" y1="215" y2="${Y(k)}"/><circle class="pt" cx="${X(r)}" cy="${Y(k)}" r="8"/><text class="pl" x="${Math.min(X(r)+12,330)}" y="${Math.max(Y(k)-12,34)}">${k>19?"19倍超":k.toFixed(1)+"倍"}</text>`;
+    const n=Math.round(lq),shown=Math.min(n,18);
+    $("qq").innerHTML=`<span class="srv">窓口<small>使用率 ${Math.round(r*100)}%</small></span><span class="ppl">${Array.from({length:shown},(_,i)=>`<i style="animation-delay:${i*40}ms"></i>`).join("")}${n>18?`<em>…ほか ${n-18} 人</em>`:""}${n==0?"<em>ほぼ待ちなし</em>":""}</span>`;
+    $("qo").innerHTML=`平均待ち時間 = ${r.toFixed(2)} ÷ ${(1-r).toFixed(2)} × ${ts} 秒 = <b>${(k*ts).toFixed(1)} 秒</b>(サービス時間の ${k.toFixed(1)} 倍)。応答時間は待ち時間+サービス時間で ${(k*ts+ts).toFixed(1)} 秒です。`;
+  };
+  $("qs").oninput=draw;$("qt").oninput=draw;draw();
+}
+
+/* 稼働率 */
+function availV(el){
+  let mode="ser",fail={A:false,B:false};
+  el.innerHTML=`${seg("avM",[["ser","直列につなぐ"],["par","並列につなぐ"]],mode)}<div class="ctl"><label>装置Aの稼働率 <b id="aAv"></b><input type="range" id="aA" min="0.5" max="0.99" step="0.01" value="0.9" aria-label="装置Aの稼働率"></label><label>装置Bの稼働率 <b id="aBv"></b><input type="range" id="aB" min="0.5" max="0.99" step="0.01" value="0.9" aria-label="装置Bの稼働率"></label></div><p class="note">装置を押すと「故障」させられます。電気(データ)が出口まで届くか見てみましょう。</p><svg viewBox="0 0 420 200" class="vsvg net" id="asv" role="img" aria-label="装置の接続図"></svg><p class="status" id="ast"></p><p class="out" id="ao"></p>`;
+  const box=(d,x,y)=>`<g class="dev ${fail[d]?"bad":""}" data-d="${d}" tabindex="0" role="button" aria-label="装置${d}を${fail[d]?"修理":"故障させる"}"><rect x="${x}" y="${y}" width="80" height="50" rx="10"/><text x="${x+40}" y="${y+24}" text-anchor="middle" class="dn">装置${d}</text><text x="${x+40}" y="${y+42}" text-anchor="middle" class="ds">${fail[d]?"故障中":"稼働中"}</text>${fail[d]?`<path class="xx" d="M${x+8},${y+8}L${x+72},${y+42}M${x+72},${y+8}L${x+8},${y+42}"/>`:""}</g>`;
+  const L=(on,pts)=>`<polyline class="ln ${on?"on":""}" points="${pts}"/>`;
+  const draw=()=>{
+    const a=+$("aA").value,b=+$("aB").value;$("aAv").textContent=a.toFixed(2);$("aBv").textContent=b.toFixed(2);
+    const okA=!fail.A,okB=!fail.B,works=mode=="ser"?okA&&okB:okA||okB;
+    $("asv").innerHTML=mode=="ser"
+      ?`${L(works,"20,100 110,100")}${L(works&&okA,"190,100 230,100")}${L(works,"310,100 400,100")}${box("A",110,75)}${box("B",230,75)}<text x="20" y="88">入口</text><text x="400" y="88" text-anchor="end">出口</text>`
+      :`${L(works,"20,100 70,100")}${L(okA,"70,100 70,50 150,50")}${L(okB,"70,100 70,150 150,150")}${L(okA,"230,50 330,50 330,100")}${L(okB,"230,150 330,150 330,100")}${L(works,"330,100 400,100")}${box("A",150,25)}${box("B",150,125)}<text x="20" y="88">入口</text><text x="400" y="88" text-anchor="end">出口</text>`;
+    $("ast").className="status "+(works?"ok":"ng");
+    $("ast").textContent=works?"システムは動いています":"システムは止まっています";
+    const R=mode=="ser"?a*b:1-(1-a)*(1-b);
+    $("ao").innerHTML=(mode=="ser"?`直列の稼働率 = A × B = ${a.toFixed(2)} × ${b.toFixed(2)} = <b>${f3(R)}</b>`:`並列の稼働率 = 1 − (1 − A)(1 − B) = 1 − ${(1-a).toFixed(2)} × ${(1-b).toFixed(2)} = <b>${f3(R)}</b>`)+`<br><span class="note">1年(8,760時間)のうち、止まっている時間はおよそ ${Math.round((1-R)*8760)} 時間</span>`;
+  };
+  $("avM").onclick=e=>{const b=e.target.closest("[data-s]");if(!b)return;mode=b.dataset.s;$("avM").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x==b));draw()};
+  const tog=e=>{const g=e.target.closest("[data-d]");if(g){fail[g.dataset.d]=!fail[g.dataset.d];draw()}};
+  $("asv").onclick=tog;$("asv").onkeydown=e=>{if(e.key=="Enter"||e.key==" "){e.preventDefault();tog(e)}};
+  $("aA").oninput=draw;$("aB").oninput=draw;draw();
+}
+
+/* パイプライン */
+function pipeV(el){
+  const ST=["IF","ID","EX","MEM","WB"],SN=["命令フェッチ","解読","実行","メモリアクセス","書き戻し"];
+  let hz=false,t=0;
+  el.innerHTML=`${seg("pM",[["n","分岐なし"],["h","命令3が分岐命令(ハザード)"]],"n")}<div class="row" style="margin:6px 0 10px"><button id="pStep">1クロック進める</button><button class="ghost" id="pPlay">自動再生</button><button class="ghost" id="pReset">最初から</button></div><div class="scroll"><table class="pipe" id="pT"></table></div><div class="legend">${ST.map((s,i)=>`<span><i class="st${i}"></i>${s}:${SN[i]}</span>`).join("")}<span><i class="bub"></i>捨てた命令(空き)</span></div><p class="out" id="pO"></p>`;
+  const sched=()=>{const rows=[];for(let i=0;i<5;i++){const s=hz&&i>=3?i+2:i;rows.push({s,bub:hz&&i==3?[3,4]:[]})}return rows};
+  const total=()=>hz?11:9;
+  const draw=()=>{
+    const R=sched(),N=11;
+    let h=`<thead><tr><th>命令 \\ クロック</th>${Array.from({length:N},(_,c)=>`<th class="${c+1==t?"now":""}">${c+1}</th>`).join("")}</tr></thead><tbody>`;
+    R.forEach((r,i)=>{h+=`<tr><th>命令${i+1}${hz&&i==2?"<small>分岐</small>":""}</th>`;for(let c=0;c<N;c++){const k=c-r.s;let cls="",tx="";if(r.bub.includes(c)){cls="bub";tx=c==3?"IF":"ID"}else if(k>=0&&k<5){cls="st"+k;tx=ST[k]}const vis=c<t;h+=`<td class="${vis?cls:""} ${c+1==t?"now":""}">${vis?tx:""}</td>`}h+="</tr>"});
+    $("pT").innerHTML=h+"</tbody>";
+    const done=t>=total();
+    $("pO").innerHTML=done?`5命令が <b>${total()} クロック</b>で完了。1命令ずつ順に実行すると 5×5 = 25 クロックかかります。${hz?"分岐の結果(命令3の EX)が出るまで次の命令が決まらず、先に読み込んだ命令を捨てたため 2 クロック遅れました。":"所要クロック数 = ステージ数 5 +(命令数 5 − 1)= 9。"}`:`クロック ${t}:${t==0?"「1クロック進める」を押してください。":"同じクロックの中で、別々の命令が別々のステージを同時に処理しています。"}${hz&&(t==4||t==5)?" 命令3が分岐するとわかり、先読みした命令を捨てています。":""}`;
+  };
+  const step=()=>{if(t<total()){t++;draw()}else stopT()};
+  $("pStep").onclick=()=>{stopT();step()};
+  $("pPlay").onclick=()=>{stopT();if(t>=total())t=0;vTimer=setInterval(()=>{step();if(t>=total())stopT()},RM?250:650)};
+  $("pReset").onclick=()=>{stopT();t=0;draw()};
+  $("pM").onclick=e=>{const b=e.target.closest("[data-s]");if(!b)return;hz=b.dataset.s=="h";$("pM").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x==b));stopT();t=0;draw()};
+  draw();
+}
+
+/* LRU / FIFO */
+function lruV(el){
+  const PRE=[[1,2,3,1,4,2,5],[7,0,1,2,0,3,0,4,2,3]];
+  let mode="LRU",pi=0,t=0;
+  el.innerHTML=`${seg("lM",[["LRU","LRU"],["FIFO","FIFO"]],mode)}${seg("lP",[["0","参照列 A"],["1","参照列 B"]],"0")}<p class="note">ページ枠は3つ。最初は空です。</p><div class="row" style="margin:6px 0 10px"><button id="lStep">次のページを参照</button><button class="ghost" id="lAll">最後まで進める</button><button class="ghost" id="lReset">最初から</button></div><div class="scroll"><table class="lru" id="lT"></table></div><p class="out" id="lO"></p>`;
+  const sim=()=>{const refs=PRE[pi];let fr=[null,null,null];const used={},ld={},out=[];refs.forEach((p,i)=>{const hit=fr.includes(p);let victim=null,slot;if(hit)slot=fr.indexOf(p);else{slot=fr.indexOf(null);if(slot<0){const key=mode=="LRU"?used:ld;slot=0;fr.forEach((q,j)=>{if(key[q]<key[fr[slot]])slot=j});victim=fr[slot]}fr=fr.slice();fr[slot]=p;ld[p]=i}used[p]=i;out.push({p,hit,victim,slot,fr:fr.slice(),used:{...used},ld:{...ld}})});return out};
+  const draw=()=>{
+    const O=sim(),n=O.length;
+    let h=`<tr><th>参照</th>${O.map((o,i)=>`<th class="${i==t-1?"now":""}">${i<t?o.p:"・"}</th>`).join("")}</tr>`;
+    for(let s=0;s<3;s++)h+=`<tr><th>枠${s+1}</th>${O.map((o,i)=>{if(i>=t)return"<td></td>";const v=o.fr[s],cur=i==t-1&&o.slot==s;return`<td class="${cur?(o.hit?"hit":"flt"):""}">${v==null?"":v}${cur&&o.victim!=null?`<s>${o.victim}</s>`:""}</td>`}).join("")}</tr>`;
+    h+=`<tr><th>結果</th>${O.map((o,i)=>`<td class="rs ${i<t?(o.hit?"h":"f"):""}">${i<t?(o.hit?"ヒット":"PF"):""}</td>`).join("")}</tr>`;
+    $("lT").innerHTML=h;
+    const faults=O.slice(0,t).filter(o=>!o.hit).length;
+    if(t==0){$("lO").innerHTML="「次のページを参照」を押して1つずつ進めましょう。";return}
+    const o=O[t-1];let msg;
+    if(o.hit)msg=`ページ ${o.p} は主記憶にあります(ヒット)。${mode=="LRU"?"LRU では「最後に使った時刻」が今に更新されます。":"FIFO では、ヒットしても追い出す順番は変わりません。"}`;
+    else if(o.victim==null)msg=`ページ ${o.p} がないので、空いている枠に読み込みます(ページフォールト)。`;
+    else msg=`ページ ${o.p} がありません(ページフォールト)。${mode=="LRU"?"最後に使ってから最も時間がたった":"最も早く読み込まれた"}ページ ${o.victim} を追い出します。`;
+    const order=o.fr.filter(v=>v!=null).slice().sort((a,b)=>(mode=="LRU"?o.used:o.ld)[a]-(mode=="LRU"?o.used:o.ld)[b]);
+    $("lO").innerHTML=`${msg}<br><span class="note">次に追い出される順:${order.join(" → ")}</span><br>ページフォールト:<b>${faults} 回</b>${t==n?"(最終結果)":""}`;
+  };
+  $("lStep").onclick=()=>{if(t<PRE[pi].length){t++;draw()}};
+  $("lAll").onclick=()=>{t=PRE[pi].length;draw()};
+  $("lReset").onclick=()=>{t=0;draw()};
+  $("lM").onclick=e=>{const b=e.target.closest("[data-s]");if(!b)return;mode=b.dataset.s;$("lM").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x==b));draw()};
+  $("lP").onclick=e=>{const b=e.target.closest("[data-s]");if(!b)return;pi=+b.dataset.s;t=0;$("lP").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x==b));draw()};
+  draw();
+}
+
+/* サブネット */
+function subnetV(el){
+  el.innerHTML=`<div class="ctl"><label>IPアドレス<input type="text" id="sIp" value="172.16.18.77" inputmode="decimal" autocomplete="off"></label><label>プレフィックス長 <b id="sPv"></b><input type="range" id="sP" min="8" max="30" value="23" aria-label="プレフィックス長"></label></div><div class="bits" id="sB"></div><div class="legend"><span><i class="bn"></i>ネットワーク部</span><span><i class="bh"></i>ホスト部</span></div><div id="sO"></div>`;
+  const draw=()=>{
+    const p=+$("sP").value;$("sPv").textContent="/"+p;
+    const m=$("sIp").value.trim().match(/^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/);
+    if(!m||m.slice(1).some(x=>+x>255)){$("sB").innerHTML="";$("sO").innerHTML=`<p class="out">0〜255 の数を4つ、ピリオドで区切って入力してください(例:192.168.10.5)。</p>`;return}
+    const oc=m.slice(1).map(Number),ip=((oc[0]<<24)>>>0)+(oc[1]<<16)+(oc[2]<<8)+oc[3];
+    const mask=(0xFFFFFFFF<<(32-p))>>>0,net=(ip&mask)>>>0,bc=(net|(~mask>>>0))>>>0;
+    const d=x=>[24,16,8,0].map(s=>(x>>>s)&255).join(".");
+    const bo=Math.floor(p/8);
+    $("sB").innerHTML=oc.map((v,o)=>`<div class="oct ${o==bo&&p%8?"edge":""}"><div class="bs">${v.toString(2).padStart(8,"0").split("").map((b,i)=>`<span class="${o*8+i<p?"n":"h"}">${b}</span>`).join("")}</div><div class="dv">第${o+1}オクテット = ${v}</div></div>`).join("");
+    const hb=32-p,edge=p%8?`<p class="note">境目は第${bo+1}オクテットです。この部分の上位 ${p%8} ビットだけを残すと ${(ip>>>(24-bo*8))&255&((0xFF<<(8-p%8))&255)}、下位 ${8-p%8} ビットをすべて1にすると ${(bc>>>(24-bo*8))&255} になります。</p>`:`<p class="note">オクテットの境目で区切れているので、2進数にしなくても計算できます。</p>`;
+    $("sO").innerHTML=`${edge}<table class="kv"><tr><th>サブネットマスク</th><td>${d(mask)}</td></tr><tr><th>ネットワークアドレス</th><td>${d(net)}</td></tr><tr><th>ブロードキャストアドレス</th><td>${d(bc)}</td></tr><tr><th>ホストに使える範囲</th><td>${hb>=2?d(net+1)+" 〜 "+d(bc-1):"—"}</td></tr><tr><th>ホストに使える数</th><td><b>${hb>=2?(2**hb-2).toLocaleString():0}</b>(2^${hb} − 2)</td></tr></table>`;
+  };
+  $("sP").oninput=draw;$("sIp").oninput=draw;draw();
+}
+
+/* 暗号化と署名 */
+function pkiV(el){
+  let mode="enc",st=0;
+  const key=(who,kind)=>`<span class="key ${who} ${kind}" data-k="${who}-${kind}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="12" r="4"/><path d="M11 12h10M17 12v4M20 12v3"/></svg>${who=="a"?"A":"B"}の${kind=="pub"?"公開鍵":"秘密鍵"}</span>`;
+  el.innerHTML=`${seg("kM",[["enc","暗号化(内容を秘密にする)"],["sig","ディジタル署名(本人だと証明する)"]],mode)}<div class="pki"><div class="who"><b>Aさん(送信者)</b>${key("a","pub")}${key("a","pri")}</div><div class="wire"><div class="env" id="kE"><span id="kEt">平文</span></div><div class="line"></div><small>インターネット</small></div><div class="who"><b>Bさん(受信者)</b>${key("b","pub")}${key("b","pri")}</div></div><ol class="steps" id="kS"></ol><div class="row"><button id="kN">次の手順へ</button><button class="ghost" id="kR">最初から</button></div><p class="out" id="kO"></p>`;
+  const SC={enc:[["b-pub","A さんは、B さんが公開している<b>B の公開鍵</b>で平文を暗号化する","暗号文"],["","暗号文を送る。途中で盗まれても、B の秘密鍵がないと読めない","暗号文"],["b-pri","B さんは、自分だけが持つ<b>B の秘密鍵</b>で復号する","平文"]],
+    sig:[["a-pri","A さんは、メッセージのハッシュ値を<b>A の秘密鍵</b>で署名する","本文+署名"],["","メッセージと署名をいっしょに送る","本文+署名"],["a-pub","B さんは、<b>A の公開鍵</b>で署名を検証し、受け取った本文のハッシュ値と一致するか確かめる","検証OK"]]};
+  const draw=()=>{
+    const s=SC[mode];
+    $("kS").innerHTML=s.map((x,i)=>`<li class="${i<st?"done":""} ${i==st-1?"cur":""}">${x[1]}</li>`).join("");
+    el.querySelectorAll(".key").forEach(k=>k.classList.toggle("use",st>0&&s[st-1][0]==k.dataset.k));
+    el.querySelectorAll(".key").forEach(k=>k.classList.toggle("dim",st>0&&!s.some(x=>x[0]==k.dataset.k)));
+    const e=$("kE");e.style.left=st>=2?"calc(100% - 92px)":"0px";
+    $("kEt").textContent=st==0?(mode=="enc"?"平文":"本文"):s[st-1][2];
+    $("kO").innerHTML=st<3?(st==0?"「次の手順へ」を押すと、どの鍵を使うかが光ります。":""):(mode=="enc"?"使ったのは<b>受信者 B の鍵ペア</b>。B の公開鍵は誰でも使えますが、開けられるのは B だけです。":"使ったのは<b>送信者 A の鍵ペア</b>。A の秘密鍵は A しか持っていないので、検証できれば A 本人が送り、改ざんもされていないとわかります。");
+  };
+  $("kN").onclick=()=>{if(st<3){st++;draw()}};$("kR").onclick=()=>{st=0;draw()};
+  $("kM").onclick=e=>{const b=e.target.closest("[data-s]");if(!b)return;mode=b.dataset.s;st=0;$("kM").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x==b));draw()};
+  draw();
+}
+
+/* 分離レベル */
+function isoV(el){
+  const LV=["READ UNCOMMITTED","READ COMMITTED","REPEATABLE READ","SERIALIZABLE"],AN=["ダーティリード","ノンリピータブルリード","ファントムリード"];
+  const OCC=[[1,1,1],[0,1,1],[0,0,1],[0,0,0]];
+  const SCN=[
+    [["T2","在庫を 10 → 5 に更新(まだコミットしていない)"],["T1","在庫を読む → 5"],["T2","ロールバックして 10 に戻す"],["T1","実在しなかった値 5 をもとに処理してしまった"]],
+    [["T1","在庫を読む → 10"],["T2","在庫を 5 に更新してコミット"],["T1","同じ行をもう一度読む → 5"],["T1","1つのトランザクションの中で値が変わってしまった"]],
+    [["T1","在庫が5未満の商品を数える → 3件"],["T2","在庫2の商品を追加してコミット"],["T1","同じ条件でもう一度数える → 4件"],["T1","幻(ファントム)のように行が増えた"]]];
+  let lv=1,an=1;
+  el.innerHTML=`<p class="note">行を押すと分離レベル、列の見出しを押すと異常の場面を切り替えられます。</p><div class="scroll"><table class="iso" id="iT"></table></div><div class="scn" id="iS"></div>`;
+  const draw=()=>{
+    $("iT").innerHTML=`<tr><th>分離レベル</th>${AN.map((a,i)=>`<th><button class="${i==an?"on":""}" data-an="${i}">${a}</button></th>`).join("")}</tr>`+LV.map((l,i)=>`<tr class="${i==lv?"sel":""}" data-lv="${i}"><th><button data-lv="${i}">${l}</button></th>${OCC[i].map((o,j)=>`<td class="${o?"oc":"pv"} ${j==an?"col":""}">${o?"起こる":"防げる"}</td>`).join("")}</tr>`).join("");
+    const o=OCC[lv][an];
+    $("iS").innerHTML=`<h4>${AN[an]}の場面</h4><div class="lanes"><b>T1</b><b>T2</b>${SCN[an].map((s,i)=>`<div class="lc ${s[0]=="T1"?"l1":"l2"} ${i==3?"last":""}" style="grid-row:${i+2}">${esc(s[1])}</div>`).join("")}</div><p class="verdict ${o?"ng":"ok"}">${LV[lv]} では、この異常は<b>${o?"起こります":"起こりません"}</b>。</p>`;
+  };
+  $("iT").onclick=e=>{const a=e.target.closest("[data-an]"),l=e.target.closest("[data-lv]");if(a)an=+a.dataset.an;else if(l)lv=+l.dataset.lv;draw()};
+  draw();
+}
+
+/* EVM */
+function evmV(el){
+  el.innerHTML=`<div class="ctl"><label>現在の時点 <b id="eTv"></b><input type="range" id="eT" min="1" max="10" value="6" aria-label="現在の時点"></label><label>作業の進み具合 <b id="ePv"></b><input type="range" id="eP" min="0.6" max="1.2" step="0.05" value="0.8" aria-label="作業の進み具合"></label><label>お金の使い方 <b id="eCv"></b><input type="range" id="eC" min="0.8" max="1.4" step="0.05" value="1.15" aria-label="コストのかかり方"></label></div><svg viewBox="0 0 420 250" class="vsvg" id="eS" role="img" aria-label="PV、EV、ACの推移グラフ"></svg><div class="legend"><span><i class="lpv"></i>PV 計画</span><span><i class="lev"></i>EV 出来高</span><span><i class="lac"></i>AC 実コスト</span></div><div class="kpi4" id="eO"></div>`;
+  const pv=t=>{const x=t/10;return 100*(3*x*x-2*x*x*x)},X=t=>50+t*35,Y=v=>215-v/130*195;
+  const draw=()=>{
+    const T=+$("eT").value,P=+$("eP").value,C=+$("eC").value;
+    $("eTv").textContent=T+" か月目";$("ePv").textContent=P<1?"計画より遅い":P>1?"計画より速い":"計画どおり";$("eCv").textContent=C>1?"予算より多く使っている":C<1?"予算より節約":"予算どおり";
+    const path=(f,to)=>{let s="";for(let t=0;t<=to+0.001;t+=0.25)s+=(s?"L":"M")+X(t).toFixed(1)+","+Y(f(t)).toFixed(1);return s};
+    const ev=t=>Math.min(100,pv(t)*P),ac=t=>ev(t)*C;
+    const PV=pv(T),EV=ev(T),AC=ac(T);let evy=0;
+    $("eS").innerHTML=`<line class="ax" x1="50" y1="215" x2="405" y2="215"/><line class="ax" x1="50" y1="20" x2="50" y2="215"/><line class="gd" x1="50" x2="400" y1="${Y(100)}" y2="${Y(100)}"/><text x="44" y="${Y(100)+4}" text-anchor="end">BAC</text>${[0,5,10].map(v=>`<text x="${X(v)}" y="236" text-anchor="middle">${v}</text>`).join("")}<text x="405" y="206" text-anchor="end">月</text><path class="cpv" d="${path(pv,10)}"/><path class="cac" d="${path(ac,T)}"/><path class="cev" d="${path(ev,T)}"/><line class="now" x1="${X(T)}" x2="${X(T)}" y1="20" y2="215"/>${[[PV,"PV","tpv"],[EV,"EV","tev"],[AC,"AC","tac"]].sort((a,b)=>b[0]-a[0]).map((d,i)=>{let y=Y(d[0]);if(i>0)y=Math.max(y,evy+20);evy=y;return`<circle class="d${d[2]}" cx="${X(T)}" cy="${Y(d[0])}" r="5"/><text class="${d[2]}" style="font-size:15px" x="${X(T)+(T>7?-12:12)}" y="${y+4}" text-anchor="${T>7?"end":"start"}">${d[1]} ${d[0].toFixed(0)}</text>`}).join("")}`;
+    const spi=EV/PV,cpi=EV/AC;
+    $("eO").innerHTML=[["SV(スケジュール差異)",`EV − PV = ${(EV-PV).toFixed(0)}`,EV-PV<0?"遅れている":"進んでいる",EV-PV<0],["CV(コスト差異)",`EV − AC = ${(EV-AC).toFixed(0)}`,EV-AC<0?"予算超過":"予算内",EV-AC<0],["SPI",`EV ÷ PV = ${f2(spi)}`,spi<1?"1未満=遅れ":"1以上=順調",spi<1],["CPI",`EV ÷ AC = ${f2(cpi)}`,cpi<1?"1未満=超過":"1以上=順調",cpi<1]].map(k=>`<div class="kc ${k[3]?"bad":"good"}"><small>${k[0]}</small><b>${k[1]}</b><span>${k[2]}</span></div>`).join("")+`<p class="note" style="grid-column:1/-1">このままの効率で進むと、完成時の総コスト(EAC)は BAC ÷ CPI = 100 ÷ ${f2(cpi)} ≒ ${(100/cpi).toFixed(0)} になる見込みです。</p>`;
+  };
+  ["eT","eP","eC"].forEach(i=>$(i).oninput=draw);draw();
+}
+
+/* CSRF */
+function csrfV(el){
+  let tok=false,st=0;
+  const S5=()=>[[0,2,"ログインする","銀行サイトがセッション Cookie を発行"+(tok?"。フォームには推測できないトークンを埋め込む":"")],[0,1,"罠サイトを開いてしまう","メールや SNS のリンクから"],[1,0,"罠のページが返ってくる","送金フォームを自動で送信するスクリプト入り"],[0,2,"送金リクエストが送られる","ブラウザは Cookie を自動で付けて送る"+(tok?"。罠サイトはトークンを知らないので付けられない":"")],[2,2,tok?"トークンがないので拒否":"本人の操作だと判断して送金してしまう",tok?"攻撃は失敗":"攻撃が成立"]];
+  el.innerHTML=`${seg("cM",[["off","対策なし"],["on","トークンで対策"]],"off")}<div class="seq"><div class="lane">利用者のブラウザ</div><div class="lane">罠サイト</div><div class="lane">銀行サイト</div><div class="msgs" id="cS"></div></div><div class="row"><button id="cN">次へ</button><button class="ghost" id="cR">最初から</button></div>`;
+  const draw=()=>{
+    const s=S5();
+    $("cS").innerHTML=s.map((m,i)=>{if(i>=st)return"";const a=Math.min(m[0],m[1]),b=Math.max(m[0],m[1]),self=m[0]==m[1],last=i==4;return`<div class="msg ${i==st-1?"cur":""}"><div class="arr ${self?"self":m[1]>m[0]?"r":"l"} ${last?(tok?"ok":"ng"):""}" style="grid-column:${a+1}/${b+2}"><b>${i+1}. ${m[2]}</b><small>${m[3]}</small></div></div>`}).join("")+(st==0?`<p class="note" style="grid-column:1/-1;text-align:center;margin:18px 0">「次へ」を押して、攻撃の流れを1つずつ見てみましょう。</p>`:"");
+    $("cN").disabled=st>=5;
+  };
+  $("cN").onclick=()=>{if(st<5){st++;draw()}};$("cR").onclick=()=>{st=0;draw()};
+  $("cM").onclick=e=>{const b=e.target.closest("[data-s]");if(!b)return;tok=b.dataset.s=="on";st=0;$("cM").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x==b));draw()};
+  draw();
+}
+$("vList").onclick=e=>{const b=e.target.closest("[data-vid]");if(b){vsel=b.dataset.vid;visual()}};
+
+/* ---------- 共有 ---------- */
+let toastT;const toast=m=>{let t=$("toast");if(!t){t=document.createElement("div");t.id="toast";t.className="toast";t.setAttribute("role","status");document.body.appendChild(t)}t.textContent=m;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>t.hidden=true,2600)};
+$("shareBtn").onclick=async()=>{
+  const url=location.origin+location.pathname,title="応用情報 ステップアップ演習",text="応用情報技術者試験の対策アプリ。図解・用語図鑑・演習つきで、無料・登録不要・スマホOK";
+  if(navigator.share){try{await navigator.share({title,text,url});return}catch(e){if(e&&e.name=="AbortError")return}}
+  try{await navigator.clipboard.writeText(text+"\n"+url);toast("リンクをコピーしました。Discord などに貼り付けてください")}catch(_){toast(url)}
+};
+
 /* ---------- バックアップ ---------- */
 $("bkCopy").onclick=async()=>{const code="AP1:"+btoa(unescape(encodeURIComponent(JSON.stringify(S))));$("bkIn").value=code;try{await navigator.clipboard.writeText(code);$("bkMsg").textContent="コピーしました"}catch(_){$("bkIn").select();$("bkMsg").textContent="下の欄のコードを長押ししてコピーしてください"}};
 let bkArm=false;
 $("bkLoad").onclick=()=>{const t=$("bkIn").value.trim();try{if(!t.startsWith("AP1:"))throw 0;const o=JSON.parse(decodeURIComponent(escape(atob(t.slice(4)))));if(typeof o!=="object"||!o.q)throw 0;
   if(!bkArm){bkArm=true;$("bkMsg").textContent="今の記録は上書きされます。もう一度押すと復元します";setTimeout(()=>bkArm=false,5000);return}
-  S=Object.assign({q:{},f:{},d:{ok:0,n:0},dk:{},e:{},su:{},days:{},goal:10,exam:""},o);save();bkArm=false;$("bkMsg").textContent="復元しました";$("bkIn").value="";home()}catch(_){$("bkMsg").textContent="コードを読み取れませんでした"}};
+  S=Object.assign({q:{},f:{},d:{ok:0,n:0},dk:{},e:{},su:{},g:{},v:{},days:{},goal:10,exam:""},o);save();bkArm=false;$("bkMsg").textContent="復元しました";$("bkIn").value="";home()}catch(_){$("bkMsg").textContent="コードを読み取れませんでした"}};
 
 /* ---------- ホーム画面に追加 ---------- */
 {
@@ -574,11 +1308,18 @@ $("bkLoad").onclick=()=>{const t=$("bkIn").value.trim();try{if(!t.startsWith("AP
 }
 
 /* ---------- ルーティング ---------- */
-const RT={home,stepup,quiz:()=>{if(!run&&$("qPlay").hidden!==false){$("qSetup").hidden=false}qsetup()},drill:()=>{if(!cur)drill()},essay:()=>{if(!$("eIn"))essay()}};
+const RT={home,stepup,visual:()=>visual(),words:()=>words(),quiz:()=>{if(!run&&$("qPlay").hidden!==false){$("qSetup").hidden=false}qsetup()},drill:()=>{if(!cur)drill()},essay:()=>{if(!$("eIn"))essay()}};
+const LASTSUB={learn:"stepup",solve:"quiz"};
 function route(){
   const v=(location.hash||"#home").slice(1);const k=RT[v]?v:"home";
   document.querySelectorAll(".view").forEach(s=>s.classList.toggle("on",s.id=="v-"+k));
-  document.querySelectorAll("#nav a").forEach(a=>a.classList.toggle("on",a.dataset.v==k));
+  stopT();
+  const GRP={home:"home",stepup:"learn",visual:"learn",quiz:"solve",drill:"solve",essay:"solve",words:"words"},g=GRP[k];
+  const SUBS={learn:[["stepup","差分ノート","FEとの違いを読む"],["visual","図解","動かして理解する"]],solve:[["quiz","科目A演習","四肢択一で解く"],["drill","計算ドリル","公式を使いこなす"],["essay","科目B記述","書いて答える"]]};
+  if(SUBS[g])LASTSUB[g]=k;
+  document.querySelectorAll("#nav a").forEach(a=>{a.classList.toggle("on",a.dataset.g==g);if(LASTSUB[a.dataset.g])a.setAttribute("href","#"+LASTSUB[a.dataset.g]);if(a.dataset.g==g)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
+  $("sub").hidden=!SUBS[g];
+  if(SUBS[g])$("sub").innerHTML=SUBS[g].map((x,i)=>`<a href="#${x[0]}" class="${x[0]==k?"on":""}"><i>${i+1}</i><b>${x[1]}</b><small>${x[2]}</small></a>`).join("");
   RT[k]();pill();scrollTo(0,0);
 }
 addEventListener("hashchange",route);route();
