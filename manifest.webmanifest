@@ -1,0 +1,16 @@
+{
+  "name": "応用情報 ステップアップ演習",
+  "short_name": "応用情報",
+  "description": "基本情報の次に、応用情報技術者試験の対策をする学習アプリ",
+  "lang": "ja",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1240e0",
+  "theme_color": "#1240e0",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
