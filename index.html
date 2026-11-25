@@ -181,7 +181,7 @@ footer.site{padding-bottom:calc(110px + env(safe-area-inset-bottom))}
 }
 @media(prefers-reduced-motion:no-preference){.track div,.meter div,.prog div{transition:width .5s ease}.exp{animation:in .25s ease}@keyframes in{from{opacity:0;transform:translateY(4px)}}}
 .cuegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px;margin:14px 0}.cueitem{padding:14px 16px}.cueitem p{margin:8px 0;color:var(--mute);font-size:14px}.cuephrase{display:block;color:var(--co2);line-height:1.45}.cueitem .kw{margin:8px 0 0}.cueitem .kw span{background:var(--bg);font-weight:600}
-.calc-guide{margin:12px 0 16px}.calc-guide>summary{font-weight:700;cursor:pointer}.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:10px;margin-top:14px}.calc-step{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px}.calc-step b{color:var(--co2)}.calc-step p{margin:6px 0;color:var(--mute);font-size:14px;line-height:1.5}.calc-step p.calc-formula{color:var(--ink);font-weight:700}.calc-step p:last-child{margin-bottom:0}
+.essay-guide{margin:12px 0 16px}.essay-guide>summary{font-weight:700;cursor:pointer}.essay-guide-body{margin-top:14px}.eg-steps{margin:0 0 14px;padding-left:1.5em}.eg-steps li{padding:5px 0}.eg-steps li span{display:block;color:var(--mute);font-size:14px}.eg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:10px}.eg-card{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px}.eg-card b{color:var(--co2)}.eg-card p{margin:6px 0;color:var(--mute);font-size:14px}.eg-card span{font-size:13px;font-weight:600}.calc-guide{margin:12px 0 16px}.calc-guide>summary{font-weight:700;cursor:pointer}.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:10px;margin-top:14px}.calc-step{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px}.calc-step b{color:var(--co2)}.calc-step p{margin:6px 0;color:var(--mute);font-size:14px;line-height:1.5}.calc-step p.calc-formula{color:var(--ink);font-weight:700}.calc-step p:last-child{margin-bottom:0}
 /* ---- 追加:ナビ・図解・用語 ---- */
 [hidden]{display:none!important}
 .hs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}.hs .chip{flex:none}
@@ -437,6 +437,26 @@ mark{background:#ffe36b;color:#0b0f1a;border-radius:2px}
 <section class="view" id="v-essay">
   <h2>科目B(午後)記述トレーニング</h2>
   <p class="lead">知っていることを、決められた字数で、本文の条件を根拠に書く練習です。書いてから模範解答と照らし合わせ、採点キーワードが入っているかを確認しましょう。</p>
+  <details class="panel essay-guide">
+    <summary>記述問題の書き方を先に確認</summary>
+    <div class="essay-guide-body">
+      <ol class="eg-steps">
+        <li><b>設問の最後を見る</b><span>理由・目的・対策など、何を答える問題かを先に決めます。</span></li>
+        <li><b>本文から根拠を拾う</b><span>人・対象・条件・困っていることに印を付け、本文の状況に合わせます。</span></li>
+        <li><b>答えを一文で組み立てる</b><span>結論を先に書き、「何をする／なぜ／どうなる」を必要な分だけ足します。</span></li>
+        <li><b>字数と聞かれたことを確認</b><span>答えが設問に直接返事しているか、字数内か、主語や対象が曖昧でないか見直します。</span></li>
+      </ol>
+      <div class="eg-grid">
+        <section class="eg-card"><b>「理由・なぜ」</b><p>原因や条件を書く。「何のためにしたか」ではなく、そうなった理由を答えます。</p><span>型の例：〜だから。</span></section>
+        <section class="eg-card"><b>「目的」</b><p>その処理や仕組みで実現したいことを書きます。</p><span>型の例：〜を防ぐため。</span></section>
+        <section class="eg-card"><b>「対策」</b><p>誰が、何に、どんな操作をするかを具体的に書きます。</p><span>型の例：〜が〜を確認し、〜する。</span></section>
+        <section class="eg-card"><b>「効果・利点」</b><p>対策や仕組みの後に、何が改善するかを書きます。</p><span>型の例：〜により、〜を減らせる。</span></section>
+        <section class="eg-card"><b>「問題点・リスク」</b><p>本文の条件で起こる困りごとや、失うものを具体化します。</p><span>型の例：〜すると、〜できなくなる。</span></section>
+        <section class="eg-card"><b>「注意点」</b><p>実施するときに必要な配慮や、逆に増える負担を書きます。</p><span>型の例：〜に伴い、〜が必要になる。</span></section>
+      </div>
+      <p class="note">これは答えの形を作るための足場です。型をそのまま当てはめず、本文の用語や条件を使って自分の答えにしてください。</p>
+    </div>
+  </details>
   <div class="chips" id="eChips"></div>
   <div class="qbox" id="eBox"></div>
 </section>
