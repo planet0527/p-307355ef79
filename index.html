@@ -181,6 +181,7 @@ footer.site{padding-bottom:calc(110px + env(safe-area-inset-bottom))}
 }
 @media(prefers-reduced-motion:no-preference){.track div,.meter div,.prog div{transition:width .5s ease}.exp{animation:in .25s ease}@keyframes in{from{opacity:0;transform:translateY(4px)}}}
 .cuegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px;margin:14px 0}.cueitem{padding:14px 16px}.cueitem p{margin:8px 0;color:var(--mute);font-size:14px}.cuephrase{display:block;color:var(--co2);line-height:1.45}.cueitem .kw{margin:8px 0 0}.cueitem .kw span{background:var(--bg);font-weight:600}
+.calc-guide{margin:12px 0 16px}.calc-guide>summary{font-weight:700;cursor:pointer}.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:10px;margin-top:14px}.calc-step{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px}.calc-step b{color:var(--co2)}.calc-step p{margin:6px 0;color:var(--mute);font-size:14px;line-height:1.5}.calc-step p.calc-formula{color:var(--ink);font-weight:700}.calc-step p:last-child{margin-bottom:0}
 /* ---- 追加:ナビ・図解・用語 ---- */
 [hidden]{display:none!important}
 .hs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}.hs .chip{flex:none}
@@ -428,6 +429,7 @@ mark{background:#ffe36b;color:#0b0f1a;border-radius:2px}
 <section class="view" id="v-drill">
   <h2>計算ドリル</h2>
   <p class="lead">科目Aで毎回のように出る計算問題です。数値は毎回変わります。公式を確かめてから解き、間違えたら手順を見直してもう一問解きましょう。</p>
+  <details class="panel calc-guide"><summary>8種類の計算パターンを先に見る</summary><div id="calcGuide" class="calc-grid"></div></details>
   <div class="chips" id="dChips"></div>
   <div class="qbox panel" id="dBox"></div>
 </section>
@@ -565,6 +567,16 @@ const r1=x=>Math.round(x*10)/10,r2=x=>Math.round(x*100)/100,r3=x=>Math.round(x*1
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const $=id=>document.getElementById(id);
 
+const DR_GUIDE=[
+["稼働率","MTBF(故障と故障の間)とMTTR(修理時間)を探す","MTBF ÷ (MTBF + MTTR)","MTBF 900時間、MTTR 100時間 → 900 ÷ 1,000 = 0.9 (90%)"],
+["直列・並列","「全部動く必要がある」か「どれか1台でよい」かを読む","直列: A×B ／ 並列: 1−(1−A)(1−B)","稼働率90%の機械2台が並列 → 1−0.1×0.1=0.99 (99%)"],
+["待ち行列","到着率とサービス時間の単位をそろえる。ρが1以上なら待ちが増え続ける","ρ=到着率×サービス時間 ／ 待ち時間=ρ÷(1−ρ)×サービス時間","毎秒0.03件、1件10秒 → ρ=0.3、待ち時間は約4.3秒"],
+["キャッシュ","ヒット率を割合に直し、速い記憶と遅い記憶の時間を重みづけする","実効時間=ヒット率×キャッシュ時間+(1−ヒット率)×主記憶時間","ヒット率90%、10nsと80ns → 0.9×10+0.1×80=17ns"],
+["サブネット","IPv4のプレフィックス長を32から引き、ホスト部のビット数を出す","使えるホスト数=2^(32−プレフィックス長)−2","/26 → ホスト部6ビット → 2^6−2=62台"],
+["EVM","PV=計画、EV=完了した仕事の価値、AC=実際に使った費用","CPI=EV÷AC ／ SPI=EV÷PV","EV 90、AC 120 → CPI 0.75 (費用超過)。EV 90、PV 100 → SPI 0.9 (遅れ)"],
+["損益分岐点","売上に占める変動費の割合を出し、残りを固定費回収に使う","損益分岐点売上=固定費÷(1−変動費率)","売上1,000万円・変動費600万円・固定費200万円 → 200÷0.4=500万円"],
+["SLA停止時間","保証稼働率の残りが停止できる割合。先に期間全体を分に直す","停止時間=運用時間×(100%−稼働率)","30日・稼働率99.9% → 30×24×60×0.001=43.2分"]
+];
 const FM={"稼働率":"稼働率 = MTBF ÷ (MTBF + MTTR)","直列・並列":"直列 = A×B、並列 = 1 − (1−A)(1−B)","待ち行列":"ρ = 到着率 × 平均サービス時間、Wq = ρ ÷ (1−ρ) × 平均サービス時間","キャッシュ":"実効アクセス時間 = ヒット率×キャッシュ + (1−ヒット率)×主記憶","サブネット":"ホスト数 = 2^(32−プレフィックス長) − 2","EVM":"CPI = EV ÷ AC、SPI = EV ÷ PV(1未満なら悪化)","損益分岐点":"損益分岐点売上高 = 固定費 ÷ (1 − 変動費 ÷ 売上高)","SLA停止時間":"許容停止時間 = 運用時間 × (1 − 稼働率)"};
 let S={q:{},f:{},d:{ok:0,n:0},dk:{},e:{},su:{},g:{},v:{},days:{},goal:10,exam:""};
 try{const t=localStorage.getItem("ap-step-v1");if(t)S=Object.assign(S,JSON.parse(t))}catch(_){}
@@ -701,6 +713,7 @@ function result(){
 /* ---------- 計算ドリル ---------- */
 let dk=Object.keys(DR)[0],cur=null;
 function drill(){
+  $("calcGuide").innerHTML=DR_GUIDE.map(([name,cue,formula,example])=>`<article class="calc-step"><b>${esc(name)}</b><p>${esc(cue)}</p><p class="calc-formula">${esc(formula)}</p><p>例: ${esc(example)}</p></article>`).join("");
   $("dChips").innerHTML=Object.keys(DR).map(k=>{const s=S.dk[k];return`<button class="chip ${k==dk?"on":""}" data-k="${k}">${k}${s&&s.ok?" ✓":""}</button>`}).join("");
   cur=DR[dk]();const s=S.dk[dk]||{n:0,ok:0};
   $("dBox").innerHTML=`<div class="qmeta"><span>${dk}</span><span>${s.n?`この計算 ${s.ok}/${s.n} 正解`:"はじめての計算"}</span></div><details><summary class="formula">公式を確認する</summary><p class="formula"><b>${esc(FM[dk])}</b></p></details><p class="qtext">${esc(cur.q)}</p><form id="dForm" class="ans"><input type="text" inputmode="decimal" id="dIn" autocomplete="off" aria-label="解答"><span class="unit">${cur.u}</span><button>答え合わせ</button></form><div id="dExp"></div>`;
