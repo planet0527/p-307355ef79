@@ -322,6 +322,7 @@ input[type=search]{font:inherit;font-size:16px;width:100%;padding:12px 14px;bord
 .tag{font-size:11px;padding:1px 8px;border-radius:10px;background:var(--co);color:#fff;font-weight:600}.tag.s{background:transparent;color:var(--co2);border:1px solid var(--co2)}
 .gf{font-size:13px;color:var(--co2);margin-top:2px;overflow-wrap:anywhere}
 .gi p{margin:6px 0 8px;font-size:15px}.usecase{margin:2px 0 8px;border-top:1px solid var(--line);padding-top:6px}.usecase summary{cursor:pointer;color:var(--co2);font-size:13px;font-weight:650;min-height:32px;display:flex;align-items:center}.usecase p{font-size:13px;color:var(--mute);margin:4px 0 0;line-height:1.65}
+.usecase-card{width:100%;box-sizing:border-box;text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px;margin-top:8px}.usecase-card b{font-size:12px;color:var(--co2)}.usecase-card p{font-size:13px;line-height:1.55;margin:4px 0 0;color:var(--mute)}
 .mini{min-height:36px;font-size:13px;padding:0 12px;margin-top:auto;align-self:flex-start}.wActions{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;align-items:flex-start}.wActions .mini{margin-top:4px}.wdpanel{width:100%;margin-top:8px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--zone)}.wdpanel h4{margin:0 0 5px;font-size:15px}.wdpanel>p{font-size:13px;margin:4px 0 8px}.wdflow{display:flex;align-items:stretch;gap:6px;overflow-x:auto;padding:4px 0 8px}.wdnode{min-width:112px;flex:1;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:10px;border:1px solid var(--line);border-radius:9px;background:var(--bg);text-align:center;overflow-wrap:anywhere}.wdnode b{font-size:13px}.wdnode small{font-size:11px;color:var(--mute)}.wdarrow{align-self:center;color:var(--co2);font-weight:700}.wdnote{border-left:3px solid var(--co);padding-left:8px;color:var(--mute)}
 .gi.got .mini{background:var(--ok);border-color:var(--ok);color:#fff}
 mark{background:#ffe36b;color:#0b0f1a;border-radius:2px}
@@ -446,7 +447,7 @@ mark{background:#ffe36b;color:#0b0f1a;border-radius:2px}
   <p class="lead">略語の正式名と意味を分野ごとに確認できます。言葉だけでつかみにくい用語は「図で解説」から図で見て、単語カードで覚えましょう。</p>
   <div class="seg" id="wMode" role="tablist" aria-label="用語学習モード" style="display:flex"></div>
   <div class="sumline" id="wSum"></div>
-  <div id="wFil"><input type="search" id="wSearch" placeholder="用語・略語・意味で検索(例:SPF、認可、待ち時間)" aria-label="用語を検索"><div class="chips hs" id="wCats"></div><div class="row" id="wTg"></div></div>
+  <div id="wFil"><input type="search" id="wSearch" placeholder="用語・略語・意味・使う場面で検索(例:SPF、認可、待ち時間)" aria-label="用語を検索"><div class="chips hs" id="wCats"></div><div class="row" id="wTg"></div></div>
   <div id="wBody"></div>
 </section>
 </main>
@@ -1009,7 +1010,7 @@ function wordDiagramControl(g){
   const open=wordDiagram==k;
   return '<div class="wActions"><button type="button" class="ghost mini" data-diag="'+esc(k)+'" aria-expanded="'+open+'">'+(WORD_VIS[k]?'動く図解を見る ↗':open?'図解を閉じる −':'図で解説')+'</button>'+(open&&WORD_DIAGRAMS[k]?renderWordDiagram(k):'')+'</div>';
 }
-const wFilter=()=>G.filter(g=>(!wcat||g[3]==wcat)&&(!wa||g[4].includes("a"))&&(!wk||g[4].includes("k"))&&(!wu||!S.g[g[0]])&&(!wq||(g[0]+" "+g[1]+" "+g[2]).toLowerCase().includes(wq.toLowerCase())));
+const wFilter=()=>G.filter(g=>(!wcat||g[3]==wcat)&&(!wa||g[4].includes("a"))&&(!wk||g[4].includes("k"))&&(!wu||!S.g[g[0]])&&(!wq||(g[0]+" "+g[1]+" "+g[2]+" "+WORD_USE[g[0]]).toLowerCase().includes(wq.toLowerCase())));
 const hl=t=>{const s=esc(t);if(!wq)return s;const q=esc(wq).replace(/[.*+?^${}()|[\]\\]/g,"\\$&");return s.replace(new RegExp(q,"gi"),m=>`<mark>${m}</mark>`)};
 function words(){
   const m=G.filter(g=>S.g[g[0]]).length;
@@ -1033,7 +1034,7 @@ function wcard(reset){
   if(card.i>=card.list.length){$("wBody").innerHTML=`<div class="panel" style="max-width:640px"><h3>${card.list.length} 枚を一巡しました</h3><p>今回「覚えた」にしたのは ${card.ok} 枚です。</p><div class="row"><button id="cAgain">まだの用語でもう一巡</button><button class="ghost" id="cAll">条件どおりにもう一巡</button></div></div>`;$("cAgain").onclick=()=>{wu=true;words()};$("cAll").onclick=()=>wcard(true);return}
   const g=card.list[card.i],t=card.dir=="t";
   const front=t?`<div class="cf-t">${esc(g[0])}</div><div class="note">${g[3]}</div>`:`<p class="cf-m">${esc(g[2])}</p><div class="note">${g[3]}</div>`;
-  const back=`<div class="cf-t sm">${esc(g[0])}</div><div class="gf">${esc(g[1])}</div><p>${esc(g[2])}</p>`;
+  const back=`<div class="cf-t sm">${esc(g[0])}</div><div class="gf">${esc(g[1])}</div><p>${esc(g[2])}</p><div class="usecase-card"><b>使う場面・具体例</b><p>${esc(WORD_USE[g[0]])}</p></div>`;
   $("wBody").innerHTML=`<div style="max-width:640px"><div class="qmeta"><span>${card.i+1} / ${card.list.length}</span><span class="row"><button class="chip ${t?"on":""}" data-dir="t">用語→意味</button><button class="chip ${t?"":"on"}" data-dir="m">意味→用語</button></span></div><div class="prog"><div style="width:${card.i/card.list.length*100}%"></div></div><button class="fc" id="fc" aria-label="カードをめくる">${card.open?back:front+'<span class="note tap">タップして答えを見る</span>'}</button><div class="row" style="margin-top:12px">${card.open?`<button class="ghost" id="cNo">まだ</button><button id="cOk">覚えた</button>`:`<button id="cOpen">答えを見る</button>`}</div></div>`;
   $("fc").onclick=()=>{if(!card.open){card.open=true;wcard()}};
   if($("cOpen"))$("cOpen").onclick=()=>{card.open=true;wcard()};
