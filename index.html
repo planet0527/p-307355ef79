@@ -181,7 +181,7 @@ footer.site{padding-bottom:calc(110px + env(safe-area-inset-bottom))}
 }
 @media(prefers-reduced-motion:no-preference){.track div,.meter div,.prog div{transition:width .5s ease}.exp{animation:in .25s ease}@keyframes in{from{opacity:0;transform:translateY(4px)}}}
 .cuegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px;margin:14px 0}.cueitem{padding:14px 16px}.cueitem p{margin:8px 0;color:var(--mute);font-size:14px}.cuephrase{display:block;color:var(--co2);line-height:1.45}.cueitem .kw{margin:8px 0 0}.cueitem .kw span{background:var(--bg);font-weight:600}
-.qguide{margin:12px 0 16px}.qguide>summary{font-weight:700;cursor:pointer}.essay-guide{margin:12px 0 16px}.essay-guide>summary{font-weight:700;cursor:pointer}.essay-guide-body{margin-top:14px}.eg-steps{margin:0 0 14px;padding-left:1.5em}.eg-steps li{padding:5px 0}.eg-steps li span{display:block;color:var(--mute);font-size:14px}.eg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:10px}.eg-card{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px}.eg-card b{color:var(--co2)}.eg-card p{margin:6px 0;color:var(--mute);font-size:14px}.eg-card span{font-size:13px;font-weight:600}.calc-guide{margin:12px 0 16px}.calc-guide>summary{font-weight:700;cursor:pointer}.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:10px;margin-top:14px}.calc-step{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px}.calc-step b{color:var(--co2)}.calc-step p{margin:6px 0;color:var(--mute);font-size:14px;line-height:1.5}.calc-step p.calc-formula{color:var(--ink);font-weight:700}.calc-step p:last-child{margin-bottom:0}
+.qreview{margin:12px 0 16px}.qreview>summary{font-weight:700;cursor:pointer}.qguide{margin:12px 0 16px}.qguide>summary{font-weight:700;cursor:pointer}.essay-guide{margin:12px 0 16px}.essay-guide>summary{font-weight:700;cursor:pointer}.essay-guide-body{margin-top:14px}.eg-steps{margin:0 0 14px;padding-left:1.5em}.eg-steps li{padding:5px 0}.eg-steps li span{display:block;color:var(--mute);font-size:14px}.eg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:10px}.eg-card{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px}.eg-card b{color:var(--co2)}.eg-card p{margin:6px 0;color:var(--mute);font-size:14px}.eg-card span{font-size:13px;font-weight:600}.calc-guide{margin:12px 0 16px}.calc-guide>summary{font-weight:700;cursor:pointer}.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:10px;margin-top:14px}.calc-step{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px}.calc-step b{color:var(--co2)}.calc-step p{margin:6px 0;color:var(--mute);font-size:14px;line-height:1.5}.calc-step p.calc-formula{color:var(--ink);font-weight:700}.calc-step p:last-child{margin-bottom:0}
 /* ---- 追加:ナビ・図解・用語 ---- */
 [hidden]{display:none!important}
 .hs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}.hs .chip{flex:none}
@@ -428,6 +428,19 @@ mark{background:#ffe36b;color:#0b0f1a;border-radius:2px}
           <section class="eg-card"><b>似た選択肢が並ぶ</b><p>主語・対象・向き・例外条件を一つずつ比べ、本文に合うものを選びます。</p></section>
           <section class="eg-card"><b>自信がない問題</b><p>いったん選んで「要復習」に印を付け、答え合わせ後に迷った理由も確認します。</p></section>
         </div>
+      </div>
+    </details>
+    <details class="panel qreview">
+      <summary>答え合わせの後、次の復習先を決める</summary>
+      <div class="essay-guide-body">
+        <div class="eg-grid">
+          <section class="eg-card"><b>用語があいまいだった</b><p>用語図鑑で「かんたんに言うと」と使う場面を読み直します。</p></section>
+          <section class="eg-card"><b>似た用語で迷った</b><p>用語図鑑の「混同しやすい用語」で、違いを一言で確認します。</p></section>
+          <section class="eg-card"><b>設問を読み違えた</b><p>設問の最後と「正しい／誤っている」などの指示語を見直します。</p></section>
+          <section class="eg-card"><b>計算を間違えた</b><p>計算ドリルの公式まとめに戻り、数字の意味と単位を確かめて解き直します。</p></section>
+          <section class="eg-card"><b>正解したけれど自信がない</b><p>問題中に「要復習」の印を付け、「苦手・要復習」で再挑戦します。</p></section>
+        </div>
+        <p class="note"><b>ひとことメモの型：</b>「正解の根拠は＿＿。自分は＿＿を見落とした。次は＿＿を確認する。」</p>
       </div>
     </details>
     <div class="note">分野(複数選べます)</div>
