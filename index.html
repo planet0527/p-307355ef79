@@ -1766,7 +1766,7 @@ function quickV(el){
  $("qsNext").onclick=next;$("qsReset").onclick=()=>{reset();draw()};reset();draw();
 }
 function cacheV(el){
- const n=4,seq=[0,4,0,8,1,5,1],lines=Array(n).fill(null);let step=0,log=[];
+ const n=4,seq=[0,0,4,8,1,1,5],lines=Array(n).fill(null);let step=0,log=[];
  el.innerHTML='<p class="note">主記憶は16ブロック、キャッシュは4行の例です。ブロック番号を4で割った余りがキャッシュ行になります。</p><div class="cache-main" id="cacheMain"></div><h4>キャッシュ(4行)</h4><div id="cacheRows"></div><div class="row"><button type="button" id="cacheNext">次のアクセス</button><button type="button" class="ghost" id="cacheReset">最初から</button></div><p class="out" id="cacheExplain" aria-live="polite"></p>';
  const draw=(msg)=>{const cur=step?seq[step-1]:null;const row=cur==null?null:cur%n;$("cacheMain").innerHTML=Array.from({length:16},(_,b)=>'<div class="mem-block '+(b==cur?'selected ':'')+'line-'+(b%n)+'"><b>'+b+'</b><small>行 '+(b%n)+'</small></div>').join("");$("cacheRows").innerHTML=lines.map((b,i)=>'<div class="cache-row"><b>行 '+i+'</b><span class="cache-slot line-'+i+'">'+(b==null?"空":("ブロック "+b))+'</span>'+(row==i?'<strong class="'+(log[log.length-1]?.hit?"hit":"miss")+'">'+(log[log.length-1]?.hit?"ヒット":"ミス")+'</strong>':"")+'</div>').join("");$("cacheNext").disabled=step>=seq.length;$("cacheNext").textContent=step>=seq.length?"一巡しました":"次のアクセス"+(step<seq.length?" ("+seq[step]+")":"");$("cacheExplain").textContent=msg||"「次のアクセス」を押して、ブロックの格納先とヒット/ミスを確認します。";};
  const access=()=>{if(step>=seq.length)return;const b=seq[step],line=b%n,old=lines[line],hit=old===b;lines[line]=b;log.push({b,line,old,hit});step++;draw("ブロック "+b+" は "+b+" mod 4 = 行 "+line+" を使います。"+(hit?"すでにあったのでヒットです。":old==null?"空き行へ読み込むためミスです。":"行 "+line+" にあったブロック "+old+" を置き換えるためミスです。"))};
