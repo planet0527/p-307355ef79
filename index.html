@@ -338,6 +338,24 @@ mark{background:#ffe36b;color:#0b0f1a;border-radius:2px}
 @media(max-width:860px){.vwrap{grid-template-columns:minmax(0,1fr)}.vlist{display:flex;overflow-x:auto;position:static;padding-bottom:4px}.vi{flex:none;width:168px}}
 @media(max-width:600px){.subnav{margin-bottom:16px}.subnav a{min-width:112px;padding:8px 10px}.subnav a small{display:none}.share span{display:none}.share{padding:0 10px;margin-bottom:10px}
  .strip h1{font-size:22px}.top{align-items:center}.pipe th,.pipe td{min-width:38px}.lru th,.lru td{min-width:32px}}
+
+.guide-pin{position:sticky;top:8px;z-index:5;background:var(--bg);border:1px solid var(--co2);border-radius:12px;padding:8px 12px;margin:0 0 16px;box-shadow:0 4px 12px rgba(11,15,26,.12)}
+.guide-pin-head{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}.guide-pin-head b{color:var(--co2);font-size:14px}.guide-pin-head span{font-size:12px;color:var(--mute)}
+.guide-pin-links{display:flex;gap:6px;overflow-x:auto;padding:1px 1px 3px;scrollbar-width:thin}.guide-pin-links .mini{flex:none;min-height:36px;padding:0 10px;font-size:13px;white-space:nowrap}
+.guide-filters{display:flex;gap:6px;overflow-x:auto;padding:2px 1px 8px;margin:4px 0 10px;scrollbar-width:thin}.guide-filters .chip{flex:none;white-space:nowrap}
+.guide-count{font-size:13px;color:var(--mute);margin:0 0 8px}
+.guide-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:10px}
+.guide-card{align-self:start;background:var(--zone);border:1px solid var(--line);border-radius:12px;scroll-margin-top:110px}
+.guide-card[open]{border-color:var(--co2)}
+.guide-card>summary{list-style:none;cursor:pointer;min-height:58px;padding:12px 14px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;font-weight:700}
+.guide-card>summary::-webkit-details-marker{display:none}
+.guide-card>summary:after{content:"＋";color:var(--co2);font-size:18px;grid-column:2;grid-row:1}
+.guide-card[open]>summary:after{content:"−"}
+.guide-card .guide-title{grid-column:1;grid-row:1;line-height:1.35}
+.guide-card .guide-meta{grid-column:1;grid-row:2;font-size:12px;color:var(--mute);font-weight:500}
+.guide-card ul{margin:0;padding:0 18px 14px 34px}.guide-card li{margin:8px 0;line-height:1.65}
+.guide-source-note{font-size:13px;color:var(--mute);margin:16px 0 0}
+@media(max-width:600px){.guide-pin{top:4px;padding:7px 9px}.guide-pin-head{margin-bottom:4px}.guide-pin-links .mini{font-size:12px}.guide-card>summary{min-height:54px}}
 </style>
 </head>
 <body>
@@ -351,6 +369,7 @@ mark{background:#ffe36b;color:#0b0f1a;border-radius:2px}
     <a href="#stepup" data-g="learn"><svg viewBox="0 0 24 24"><path d="M2 5h7a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H2zM22 5h-7a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h8z"/></svg>学ぶ</a>
     <a href="#quiz" data-g="solve"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/></svg>解く</a>
     <a href="#words" data-g="words"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>用語</a>
+    <a href="#guide" data-g="guide"><svg viewBox="0 0 24 24"><path d="M5 6h14M5 12h14M5 18h14"/></svg>ガイド</a>
   </nav>
 </div>
 <main>
@@ -536,6 +555,20 @@ mark{background:#ffe36b;color:#0b0f1a;border-radius:2px}
   <div class="sumline" id="wSum"></div>
   <div id="wFil"><input type="search" id="wSearch" placeholder="用語・略語・意味・使う場面で検索(例:検知、認可、待ち時間)" aria-label="用語を検索"><div class="chips hs" id="wCats"></div><div class="row" id="wTg"></div></div>
   <div id="wBody"></div>
+</section>
+<section class="view" id="v-guide">
+  <h2>学習ガイド</h2>
+  <p class="lead">学習の進め方や問題の解き方をテーマ別に整理しました。要点からすぐ確認でき、詳しい説明は必要なときだけ開けます。</p>
+  <aside class="guide-pin" aria-label="大事な要点へのショートカット">
+    <div class="guide-pin-head"><b>大事な要点</b><span>スクロール中もここから確認</span></div>
+    <div class="guide-pin-links">
+      <button type="button" class="ghost mini" data-guide-jump="問題文の読み解き方">設問と条件を読む</button>
+      <button type="button" class="ghost mini" data-guide-jump="科目Bの本文を読む順番">本文から根拠を探す</button>
+      <button type="button" class="ghost mini" data-guide-jump="用語を仕組みで覚える">用語を理解する</button>
+      <button type="button" class="ghost mini" data-guide-jump="忘れにくくする復習サイクル">忘れにくく復習</button>
+    </div>
+  </aside>
+  <div id="guideBody"></div>
 </section>
 </main>
 <footer class="site">問題と解説は学習用に独自に作成したものです。試験の最新情報は IPA(情報処理推進機構)の公式サイトで確認してください。</footer>
@@ -1125,7 +1158,7 @@ const CMP_CUE={
 };
 /* ---------- 用語画面 ---------- */
 let wmode="list",wq="",wcat="",wa=false,wk=false,wu=false,card=null,wordDiagram="";
-const CMODE=[["list","用語図鑑"],["card","単語カード"],["cmp","混同しやすい用語"],["guide","試験ガイド"],["cues","問題文の合図"]];
+const CMODE=[["list","用語図鑑"],["card","単語カード"],["cmp","混同しやすい用語"],["cues","問題文の合図"]];
 const CUES=[
 ["「誤検知を減らしたい」「当たりと判定した中に間違いが多い」","「陽性」と判定したものが、どれだけ正しかったかを見る場面です。","適合率(Precision)"],
 ["「見逃しを減らしたい」「対象を漏れなく見つけたい」","本当に対象だったものを、どれだけ拾えたかを見る場面です。","再現率(Recall)"],
@@ -1238,7 +1271,7 @@ function words(){
   $("wSum").innerHTML=`<span>覚えた用語 <b>${m} / ${G.length}</b></span><div class="meter" style="flex:1;max-width:260px"><div style="width:${m/G.length*100}%"></div></div>`;
   $("wCats").innerHTML=`<button class="chip ${wcat?"":"on"}" data-c="">すべての分野</button>`+CATS.map(c=>`<button class="chip ${c==wcat?"on":""}" data-c="${c}">${c}</button>`).join("");
   $("wTg").innerHTML=[["wa","略語のみ",wa],["wk","AP重点のみ",wk],["wu","まだ覚えていない用語のみ",wu]].map(t=>`<label class="flag"><input type="checkbox" data-tg="${t[0]}" ${t[2]?"checked":""}>${t[1]}</label>`).join("");
-  if(wmode=="list")wlist();else if(wmode=="card")wcard(true);else if(wmode=="cmp")wcmp();else if(wmode=="cues")wcues();else wguide();
+  if(wmode=="list")wlist();else if(wmode=="card")wcard(true);else if(wmode=="cmp")wcmp();else if(wmode=="cues")wcues();else wlist();
 }
 function wlist(){
   const L=wFilter();
@@ -1267,9 +1300,22 @@ function wcmp(){
 function wcues(){
   $("wBody").innerHTML=`<p class="lead">問題文の言い回しから、まず確認したい用語を探す早見表です。キーワードだけで決めつけず、問題全体の条件も合わせて読みましょう。</p><div class="cuegrid">${CUES.map(([cue,why,terms])=>`<article class="panel cueitem"><b class="cuephrase">${esc(cue)}</b><p>${esc(why)}</p><div class="kw"><span>${esc(terms)}</span></div></article>`).join("")}</div><p class="note">これは答えを決める暗記表ではなく、考え始めるための手がかりです。数値・対象・条件も必ず確認してください。</p>`;
 }
-function wguide(){
-  $("wBody").innerHTML=`<div class="guide">${GUIDE.map(s=>`<section class="panel"><h3>${esc(s[0])}</h3><ul>${s[1].map(l=>`<li>${esc(l)}</li>`).join("")}</ul></section>`).join("")}</div><p class="note">制度や日程は変わることがあります。受験前に必ず IPA(情報処理推進機構)の公式サイトで最新情報を確認してください。</p>`;
+
+let guideFilter="すべて",guideJumpTo="";
+const GUIDE_GROUP={"試験の全体像":"試験全体","科目Aの解き方":"科目A","科目Bの選び方":"科目B","科目Bの問題を選ぶ手順":"科目B","記述の書き方":"科目B","学習の進め方の例":"学習・復習","問題文の読み解き方":"科目A","計算問題の解き方":"用語・計算","間違いを次につなげる":"学習・復習","科目Bの本文を読む順番":"科目B","セキュリティ設問の考え方":"セキュリティ","忘れにくくする復習サイクル":"学習・復習","用語を仕組みで覚える":"用語・計算","本番の時間配分を決める（2026年度形式）":"試験全体","セキュリティ攻撃を弱点から対策へ結びつける":"セキュリティ","擬似言語を一行ずつ追う":"科目A"};
+const GUIDE_FILTERS=["すべて","学習・復習","試験全体","科目A","科目B","セキュリティ","用語・計算"];
+function guidePage(){
+  const body=$("guideBody");if(!body)return;
+  const list=GUIDE.filter(([title])=>guideFilter=="すべて"||GUIDE_GROUP[title]==guideFilter);
+  body.innerHTML=`<div class="guide-filters" role="group" aria-label="ガイドのテーマ">${GUIDE_FILTERS.map(f=>`<button type="button" class="chip ${guideFilter==f?"on":""}" data-guide-filter="${esc(f)}" aria-pressed="${guideFilter==f}">${esc(f)}</button>`).join("")}</div><p class="guide-count">${list.length}件のガイド · タイトルを押すと詳しい説明が開きます</p><div class="guide-cards">${list.map(([title,lines])=>{const idx=GUIDE.findIndex(g=>g[0]==title);return `<details class="guide-card" id="guide-item-${idx}" data-guide-title="${esc(title)}"><summary><span class="guide-title">${esc(title)}</span><span class="guide-meta">${esc(GUIDE_GROUP[title]||"その他")} · ${lines.length}項目</span></summary><ul>${lines.map(line=>`<li>${esc(line)}</li>`).join("")}</ul></details>`}).join("")}</div><p class="guide-source-note">制度や日程は変わることがあります。受験前に IPA(情報処理推進機構)の公式サイトで最新情報を確認してください。</p>`;
+  if(guideJumpTo){const target=[...body.querySelectorAll(".guide-card")].find(el=>el.dataset.guideTitle==guideJumpTo);if(target){target.open=true;requestAnimationFrame(()=>target.scrollIntoView({block:"start",behavior:RM?"auto":"smooth"}))}guideJumpTo="";}
 }
+$("v-guide").addEventListener("click",e=>{
+  const f=e.target.closest("[data-guide-filter]");if(f){guideFilter=f.dataset.guideFilter;guidePage();return}
+  const j=e.target.closest("[data-guide-jump]");if(j){guideJumpTo=j.dataset.guideJump;guideFilter=GUIDE_GROUP[guideJumpTo]||"すべて";guidePage()}
+});
+
+function wguide(){guidePage()}
 $("wMode").onclick=e=>{const b=e.target.closest("[data-w]");if(b){wmode=b.dataset.w;card=null;words()}};
 $("wCats").onclick=e=>{const b=e.target.closest("[data-c]");if(b){wcat=b.dataset.c;words()}};
 $("wMode").onkeydown=e=>{if(!["ArrowLeft","ArrowRight"].includes(e.key))return;const tabs=[...$("wMode").querySelectorAll("[role=tab]")],i=tabs.indexOf(document.activeElement);if(i<0)return;e.preventDefault();const next=tabs[(i+(e.key=="ArrowRight"?1:-1)+tabs.length)%tabs.length];next.focus();next.click()};
@@ -1543,13 +1589,13 @@ $("shareBtn").onclick=async()=>{
 }
 
 /* ---------- ルーティング ---------- */
-const RT={home,stepup,visual:()=>visual(),words:()=>words(),quiz:()=>{if(!run&&$("qPlay").hidden!==false){$("qSetup").hidden=false}qsetup()},drill:()=>{if(!cur)drill()},essay:()=>{if(!$("eIn"))essay()}};
+const RT={home,stepup,visual:()=>visual(),words:()=>words(),guide:()=>guidePage(),quiz:()=>{if(!run&&$("qPlay").hidden!==false){$("qSetup").hidden=false}qsetup()},drill:()=>{if(!cur)drill()},essay:()=>{if(!$("eIn"))essay()}};
 const LASTSUB={learn:"stepup",solve:"quiz"};
 function route(){
   const v=(location.hash||"#home").slice(1);const k=RT[v]?v:"home";
   document.querySelectorAll(".view").forEach(s=>s.classList.toggle("on",s.id=="v-"+k));
   stopT();
-  const GRP={home:"home",stepup:"learn",visual:"learn",quiz:"solve",drill:"solve",essay:"solve",words:"words"},g=GRP[k];
+  const GRP={home:"home",stepup:"learn",visual:"learn",quiz:"solve",drill:"solve",essay:"solve",words:"words",guide:"guide"},g=GRP[k];
   const SUBS={learn:[["stepup","差分ノート","FEとの違いを読む"],["visual","図解","動かして理解する"]],solve:[["quiz","科目A演習","四肢択一で解く"],["drill","計算ドリル","公式を使いこなす"],["essay","科目B記述","書いて答える"]]};
   if(SUBS[g])LASTSUB[g]=k;
   document.querySelectorAll("#nav a").forEach(a=>{a.classList.toggle("on",a.dataset.g==g);if(LASTSUB[a.dataset.g])a.setAttribute("href","#"+LASTSUB[a.dataset.g]);if(a.dataset.g==g)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
