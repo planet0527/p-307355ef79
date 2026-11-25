@@ -343,7 +343,7 @@ mark{background:#ffe36b;color:#0b0f1a;border-radius:2px}
 .guide-pin-head{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}.guide-pin-head b{color:var(--co2);font-size:14px}.guide-pin-head span{font-size:12px;color:var(--mute)}
 .guide-pin-links{display:flex;gap:6px;overflow-x:auto;padding:1px 1px 3px;scrollbar-width:thin}.guide-pin-links .mini{flex:none;min-height:36px;padding:0 10px;font-size:13px;white-space:nowrap}
 .guide-filters{display:flex;gap:6px;overflow-x:auto;padding:2px 1px 8px;margin:4px 0 10px;scrollbar-width:thin}.guide-filters .chip{flex:none;white-space:nowrap}
-.guide-count{font-size:13px;color:var(--mute);margin:0 0 8px}
+.guide-search-label{display:block;font-size:13px;font-weight:600;margin:10px 0 6px}.guide-count{font-size:13px;color:var(--mute);margin:0 0 8px}.guide-empty{padding:18px;background:var(--zone);border:1px dashed var(--line);border-radius:12px;color:var(--mute)}
 .guide-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:10px}
 .guide-card{align-self:start;background:var(--zone);border:1px solid var(--line);border-radius:12px;scroll-margin-top:110px}
 .guide-card[open]{border-color:var(--co2)}
@@ -570,6 +570,8 @@ mark{background:#ffe36b;color:#0b0f1a;border-radius:2px}
       <button type="button" class="ghost mini" data-guide-jump="正答率の見方と復習先">正答率から復習</button>
     </div>
   </aside>
+  <label class="guide-search-label" for="guideSearch">ガイドを検索</label>
+  <input type="search" id="guideSearch" placeholder="例：科目B、復習、計算" aria-label="ガイドを検索">
   <div id="guideBody"></div>
 </section>
 </main>
@@ -1310,15 +1312,25 @@ const GUIDE_GROUP={"試験の全体像":"試験全体","科目Aの解き方":"�
 const GUIDE_FILTERS=["すべて","学習・復習","試験全体","科目A","科目B","セキュリティ","用語・計算"];
 function guidePage(){
   const body=$("guideBody");if(!body)return;
-  const list=GUIDE.filter(([title])=>guideFilter=="すべて"||GUIDE_GROUP[title]==guideFilter);
-  body.innerHTML=`<div class="guide-filters" role="group" aria-label="ガイドのテーマ">${GUIDE_FILTERS.map(f=>`<button type="button" class="chip ${guideFilter==f?"on":""}" data-guide-filter="${esc(f)}" aria-pressed="${guideFilter==f}">${esc(f)}</button>`).join("")}</div><p class="guide-count">${list.length}件のガイド · 要点は一覧に表示、タイトルを押すと続きを確認できます</p><div class="guide-cards">${list.map(([title,lines])=>{const idx=GUIDE.findIndex(g=>g[0]==title);const rest=lines.slice(1);return `<details class="guide-card" id="guide-item-${idx}" data-guide-title="${esc(title)}"><summary><span class="guide-title">${esc(title)}</span><span class="guide-meta">${esc(GUIDE_GROUP[title]||"その他")} · ${lines.length}項目</span><span class="guide-preview">${esc(lines[0]||"")}</span>${rest.length?'<span class="guide-more-label">続きの手順を見る</span>':""}</summary>${rest.length?`<ul>${rest.map(line=>`<li>${esc(line)}</li>`).join("")}</ul>`:""}</details>`}).join("")}</div><p class="guide-source-note">制度や日程は変わることがあります。受験前に IPA(情報処理推進機構)の公式サイトで最新情報を確認してください。</p>`;
+  const q=guideQuery.toLocaleLowerCase();
+  const list=GUIDE.filter(([title,lines])=>{
+    const inGroup=guideFilter=="すべて"||GUIDE_GROUP[title]==guideFilter;
+    const searchable=(title+" "+(GUIDE_GROUP[title]||"")+" "+lines.join(" ")).toLocaleLowerCase();
+    return inGroup&&(!q||searchable.includes(q));
+  });
+  const cards=list.map(([title,lines])=>{
+    const idx=GUIDE.findIndex(g=>g[0]==title),rest=lines.slice(1);
+    return `<details class="guide-card" id="guide-item-${idx}" data-guide-title="${esc(title)}"><summary><span class="guide-title">${esc(title)}</span><span class="guide-meta">${esc(GUIDE_GROUP[title]||"その他")} · ${lines.length}項目</span><span class="guide-preview">${esc(lines[0]||"")}</span>${rest.length?'<span class="guide-more-label">続きの手順を見る</span>':""}</summary>${rest.length?`<ul>${rest.map(line=>`<li>${esc(line)}</li>`).join("")}</ul>`:""}</details>`;
+  }).join("");
+  body.innerHTML=`<div class="guide-filters" role="group" aria-label="ガイドのテーマ">${GUIDE_FILTERS.map(f=>`<button type="button" class="chip ${guideFilter==f?"on":""}" data-guide-filter="${esc(f)}" aria-pressed="${guideFilter==f}">${esc(f)}</button>`).join("")}</div><p class="guide-count">${list.length}件のガイド · 要点は一覧に表示、タイトルを押すと続きを確認できます</p>${list.length?`<div class="guide-cards">${cards}</div>`:'<p class="guide-empty">該当するガイドがありません。言葉を短くするか、テーマを「すべて」にして探してみてください。</p>'}<p class="guide-source-note">制度や日程は変わることがあります。受験前に IPA(情報処理推進機構)の公式サイトで最新情報を確認してください。</p>`;
   if(guideJumpTo){const target=[...body.querySelectorAll(".guide-card")].find(el=>el.dataset.guideTitle==guideJumpTo);if(target){target.open=true;requestAnimationFrame(()=>target.scrollIntoView({block:"start",behavior:RM?"auto":"smooth"}))}guideJumpTo="";}
 }
 $("v-guide").addEventListener("click",e=>{
   const f=e.target.closest("[data-guide-filter]");if(f){guideFilter=f.dataset.guideFilter;guidePage();return}
-  const j=e.target.closest("[data-guide-jump]");if(j){guideJumpTo=j.dataset.guideJump;guideFilter=GUIDE_GROUP[guideJumpTo]||"すべて";guidePage()}
+  const j=e.target.closest("[data-guide-jump]");if(j){guideJumpTo=j.dataset.guideJump;guideFilter=GUIDE_GROUP[guideJumpTo]||"すべて";guideQuery="";$("guideSearch").value="";guidePage()}
 });
-
+let guideQuery="";
+$("guideSearch").oninput=e=>{guideQuery=e.target.value.trim();guidePage()};
 function wguide(){guidePage()}
 $("wMode").onclick=e=>{const b=e.target.closest("[data-w]");if(b){wmode=b.dataset.w;card=null;words()}};
 $("wCats").onclick=e=>{const b=e.target.closest("[data-c]");if(b){wcat=b.dataset.c;words()}};
