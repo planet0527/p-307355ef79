@@ -705,8 +705,9 @@ function drill(){
   $("dForm").onsubmit=ev=>{ev.preventDefault();check()};
 }
 function check(){
-  const v=parseFloat($("dIn").value.replace(/[０-９．]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0)).replace(/[,，]/g,""));
-  if(isNaN(v)){$("dExp").innerHTML=`<p class="note">数値を入力してください。</p>`;return}
+  const raw=$("dIn").value.trim().replace(/[０-９．＋－，]/g,c=>c=="．"?".":c=="＋"?"+":c=="－"?"-":c=="，"?",":String.fromCharCode(c.charCodeAt(0)-0xFEE0));
+  if(!/^[+-]?(?:(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d*)?|\.\d+)$/.test(raw)){$("dExp").innerHTML=`<p class="note">数値だけを入力してください(例: 1,234.5)。</p>`;return}
+  const v=Number(raw.replace(/,/g,""));
   const good=Math.abs(v-cur.a)<=Math.max(Math.abs(cur.a)*0.005,0.0011);
   S.d.n++;if(good)S.d.ok++;const s=S.dk[dk]||{n:0,ok:0};s.n++;if(good)s.ok++;S.dk[dk]=s;save();tick();
   $("dExp").innerHTML=`<div class="exp"><b class="${good?"ok":"ng"}">${good?"正解":"不正解"}</b>(正解:${cur.a}${cur.u})<br>${esc(cur.s)}</div><div class="row" style="margin-top:12px"><button id="dNext">次の問題</button></div>`;
