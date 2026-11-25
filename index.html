@@ -1302,7 +1302,7 @@ function wcard(reset){
   if($("cOk"))$("cOk").onclick=()=>{S.g[g[0]]=1;card.ok++;save();card.i++;card.open=false;words2()};
   if($("cNo"))$("cNo").onclick=()=>{delete S.g[g[0]];save();card.i++;card.open=false;words2()};
 }
-function words2(){const m=G.filter(g=>S.g[g[0]]).length;$("wSum").innerHTML=`<span>覚えた用語 <b>${m} / ${G.length}</b></span><div class="meter" style="flex:1;max-width:260px"><div style="width:${m/G.length*100}%"></div></div>`;wcard()}
+function words2(){const m=G.filter(g=>S.g[g[0]]).length;$("wSum").innerHTML=`<span>覚えた用語 <b>${m} / ${G.length}</b></span><span>あとで見る <b>${G.filter(g=>S.w[g[0]]).length}</b></span><div class="meter" style="flex:1;max-width:260px"><div style="width:${m/G.length*100}%"></div></div>`;wcard()}
 function wcmp(){
   $("wBody").innerHTML=`<p class="note">問題文の合図を見つけたら、似た用語を切り分けます。「これが出たらどれ？」を先に確認してから違いを読みましょう。</p><div class="cards">${CMP.map(c=>`<article class="card"><header><div><h3>${esc(c[0])}</h3></div></header><div class="cmpcue"><b>問題文にこの合図が出たら</b><p>${esc(CMP_CUE[c[0]]||c[2])}</p></div><div class="diff cmpd">${c[1].map(r=>`<span class="t ap">${esc(r[0])}</span><span>${esc(r[1])}</span>`).join("")}</div><footer><b>見分け方:</b>${esc(c[2])}</footer></article>`).join("")}</div>`;
 }
@@ -1338,7 +1338,7 @@ function wguide(){guidePage()}
 $("wMode").onclick=e=>{const b=e.target.closest("[data-w]");if(b){wmode=b.dataset.w;card=null;words()}};
 $("wCats").onclick=e=>{const b=e.target.closest("[data-c]");if(b){wcat=b.dataset.c;words()}};
 $("wMode").onkeydown=e=>{if(!["ArrowLeft","ArrowRight"].includes(e.key))return;const tabs=[...$("wMode").querySelectorAll("[role=tab]")],i=tabs.indexOf(document.activeElement);if(i<0)return;e.preventDefault();const next=tabs[(i+(e.key=="ArrowRight"?1:-1)+tabs.length)%tabs.length];next.focus();next.click()};
-$("wTg").onchange=e=>{const k=e.target.dataset.tg;if(k=="wa")wa=e.target.checked;if(k=="wk")wk=e.target.checked;if(k=="wu")wu=e.target.checked;if(k=="wr")wr=e.target.checked;words()}};
+$("wTg").onchange=e=>{const k=e.target.dataset.tg;if(k=="wa")wa=e.target.checked;if(k=="wk")wk=e.target.checked;if(k=="wu")wu=e.target.checked;if(k=="wr")wr=e.target.checked;words()};
 let wt;$("wSearch").oninput=e=>{clearTimeout(wt);wt=setTimeout(()=>{wq=e.target.value.trim();if(wmode!="list")wmode="list";words()},150)};
 $("wBody").addEventListener("click",e=>{
   const d=e.target.closest("[data-diag]");if(d){const k=d.dataset.diag;if(WORD_VIS[k]){vsel=WORD_VIS[k];go("visual")}else{wordDiagram=wordDiagram==k?"":k;wlist();if(wordDiagram){const p=$("wBody").querySelector(".wdpanel");if(p)p.scrollIntoView({block:"nearest",behavior:RM?"auto":"smooth"})}}return}
