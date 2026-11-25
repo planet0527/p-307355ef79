@@ -182,6 +182,7 @@ footer.site{padding-bottom:calc(110px + env(safe-area-inset-bottom))}
 @media(prefers-reduced-motion:no-preference){.track div,.meter div,.prog div{transition:width .5s ease}.exp{animation:in .25s ease}@keyframes in{from{opacity:0;transform:translateY(4px)}}}
 .cuegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px;margin:14px 0}.cueitem{padding:14px 16px}.cueitem p{margin:8px 0;color:var(--mute);font-size:14px}.cuephrase{display:block;color:var(--co2);line-height:1.45}.cueitem .kw{margin:8px 0 0}.cueitem .kw span{background:var(--bg);font-weight:600}
 .study-plan{margin:0 0 20px}.study-plan>summary{font-weight:700;cursor:pointer}.study-plan .eg-card a{font-size:13px;font-weight:600;color:var(--co2)}.qreview{margin:12px 0 16px}.qreview>summary{font-weight:700;cursor:pointer}.qguide{margin:12px 0 16px}.qguide>summary{font-weight:700;cursor:pointer}.essay-guide{margin:12px 0 16px}.essay-guide>summary{font-weight:700;cursor:pointer}.essay-guide-body{margin-top:14px}.eg-steps{margin:0 0 14px;padding-left:1.5em}.eg-steps li{padding:5px 0}.eg-steps li span{display:block;color:var(--mute);font-size:14px}.eg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:10px}.eg-card{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px}.eg-card b{color:var(--co2)}.eg-card p{margin:6px 0;color:var(--mute);font-size:14px}.eg-card span{font-size:13px;font-weight:600}.calc-guide{margin:12px 0 16px}.calc-guide>summary{font-weight:700;cursor:pointer}.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:10px;margin-top:14px}.calc-step{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px}.calc-step b{color:var(--co2)}.calc-step p{margin:6px 0;color:var(--mute);font-size:14px;line-height:1.5}.calc-step p.calc-formula{color:var(--ink);font-weight:700}.calc-step p:last-child{margin-bottom:0}
+.netseq,.handshake{display:grid;gap:8px;margin:14px 0}.netseq-actors,.handshake-head{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.netseq-actors b,.handshake-head b{text-align:center;padding:10px 8px;border:1px solid var(--line);border-radius:9px;background:var(--zone);font-size:13px}.handshake-head{grid-template-columns:1fr 1fr}.netseq-step{display:grid;grid-template-columns:30px minmax(0,1fr);gap:9px;align-items:start;padding:10px;border:1px solid var(--line);border-radius:9px;opacity:.55}.netseq-step.passed,.handshake-msg.passed{opacity:.8}.netseq-step.current,.handshake-msg.current{opacity:1;border-color:var(--co2);background:var(--zone)}.netseq-num{width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:var(--co);color:white;font-weight:700}.netseq-step b{font-size:14px}.netseq-step p{margin:3px 0 0;color:var(--mute);font-size:14px}.handshake-msg{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:center;padding:9px;border:1px solid var(--line);border-radius:9px;opacity:.55}.handshake-msg small{text-align:center;color:var(--mute)}.handshake-arrow{color:var(--co2);font-weight:700}.handshake-arrow.reverse{text-align:right}.handshake-msg:nth-child(2){grid-row:2}.handshake-msg:nth-child(3){grid-row:3}.handshake-msg:nth-child(4){grid-row:4}.handshake-msg:nth-child(2) .handshake-arrow:after{content:"━━━━━━━━▶";display:block;font-size:12px}.handshake-msg:nth-child(3) .handshake-arrow:after{content:"◀━━━━━━━━";display:block;text-align:right;font-size:12px}.handshake-msg:nth-child(4) .handshake-arrow:after{content:"━━━━━━━━▶";display:block;font-size:12px}@media(max-width:560px){.netseq-actors b,.handshake-head b{font-size:11px;padding:8px 4px}.handshake-msg{grid-template-columns:1fr}.handshake-msg small{text-align:left}.handshake-arrow.reverse{text-align:left}.handshake-msg:nth-child(3) .handshake-arrow:after{ text-align:left}}
 .voice-setting{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:var(--mute);font-size:13px}.voice-setting input{width:120px;min-height:32px;accent-color:var(--co2)}.voice-setting output{font-variant-numeric:tabular-nums;min-width:3em;color:var(--ink);font-weight:600}
 .wordmemo{margin-top:8px;border-top:1px dashed var(--line);padding-top:6px}.wordmemo summary{cursor:pointer;color:var(--co2);font-size:14px;font-weight:600}.wordmemo textarea{min-height:74px;margin-top:6px;font-size:14px}.wordmemo small{display:block;margin-top:3px}
 .week-panel{margin:0 0 20px}.week-panel h3{margin-bottom:2px}.week-bars{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin:12px 0 0;padding:0;list-style:none}.week-bars li{display:grid;justify-items:center;gap:3px;font-size:12px;color:var(--mute)}.week-bars .week-date{font-size:11px}.week-bars .week-track{height:68px;width:min(100%,42px);border-radius:6px;background:var(--bg);border:1px solid var(--line);display:flex;align-items:flex-end;overflow:hidden}.week-bars .week-track i{display:block;width:100%;min-height:0;background:var(--co2);border-radius:5px 5px 0 0}.week-bars li.today{color:var(--ink);font-weight:700}.week-bars li.today .week-track{border-color:var(--co2)}.week-bars li em{font-style:normal;font-variant-numeric:tabular-nums;color:var(--ink)}
@@ -1398,6 +1399,12 @@ const VIS=[
 {id:"evm",t:"EVM(進捗とコストの管理)",cat:"マネジメント",re:/EVM|SPI|CPI|PV|EV=/,q:"マネジメント",
  trip:"PV・EV・AC の3つの記号が覚えにくい部分です。どれも「お金の単位」で、EV(出来高)が主役。EV を PV と比べれば進捗、AC と比べればコストがわかります。",
  key:["PV:今日までに終わる予定だった作業の予算","EV:今日までに実際に終わった作業の予算(出来高)","AC:今日までに実際にかかったコスト","SPI = EV ÷ PV、CPI = EV ÷ AC。1未満なら悪い"],r:evmV},
+{id:"dns",t:"DNS 名前解決の流れ",cat:"ネットワーク",re:/DNS|名前解決|ドメイン名/,q:"ネットワーク",
+ trip:"DNS は、ドメイン名を IP アドレスに変換する仕組みです。利用者の端末が最初から世界中の DNS サーバを順番に訪ねるのではなく、再帰 DNS サーバが代わりに調べます。",
+ key:["端末はまず再帰 DNS サーバへ問い合わせる","キャッシュがなければ、再帰 DNS サーバがルート→TLD→権威 DNS の順にたどる","権威 DNS が持つ IP アドレスを受け取り、端末へ返す","答えは一定時間キャッシュされ、次の問い合わせを速くする"],r:dnsV},
+{id:"tcp",t:"TCP の3ウェイハンドシェイク",cat:"ネットワーク",re:/TCP|ハンドシェイク|SYN|コネクション確立/,q:"ネットワーク",
+ trip:"TCP はデータを送る前に、送信側と受信側の両方が通信を始められることを確認します。SYN と ACK の意味を矢印に沿って追うと覚えやすくなります。",
+ key:["1回目 SYN:クライアントが「接続したい」と伝える","2回目 SYN+ACK:サーバが「受け取った。こちらも接続したい」と返す","3回目 ACK:クライアントが確認し、接続が確立する","この往復で双方が通信可能な状態と初期シーケンス番号を確認する"],r:tcpV},
 {id:"csrf",t:"CSRF 攻撃とトークン対策",cat:"セキュリティ",re:/CSRF|クロスサイトリクエスト/,q:"セキュリティ",
  trip:"ブラウザが Cookie を自動で送ってしまうことが攻撃の核心です。サーバは「本人が自分の操作で送ったのか」を Cookie だけでは区別できません。",
  key:["罠サイトは、ログイン中の利用者のブラウザから正規サイトへリクエストを送らせる","Cookie(セッション)は自動で付くので、サーバは正規の操作と区別できない","対策:推測できないトークンをフォームに埋め込み、受信時に照合する","補助策:Cookie の SameSite 属性、重要な操作での再認証"],r:csrfV}
@@ -1580,6 +1587,48 @@ function evmV(el){
     $("eO").innerHTML=[["SV(スケジュール差異)",`EV − PV = ${(EV-PV).toFixed(0)}`,EV-PV<0?"遅れている":"進んでいる",EV-PV<0],["CV(コスト差異)",`EV − AC = ${(EV-AC).toFixed(0)}`,EV-AC<0?"予算超過":"予算内",EV-AC<0],["SPI",`EV ÷ PV = ${f2(spi)}`,spi<1?"1未満=遅れ":"1以上=順調",spi<1],["CPI",`EV ÷ AC = ${f2(cpi)}`,cpi<1?"1未満=超過":"1以上=順調",cpi<1]].map(k=>`<div class="kc ${k[3]?"bad":"good"}"><small>${k[0]}</small><b>${k[1]}</b><span>${k[2]}</span></div>`).join("")+`<p class="note" style="grid-column:1/-1">このままの効率で進むと、完成時の総コスト(EAC)は BAC ÷ CPI = 100 ÷ ${f2(cpi)} ≒ ${(100/cpi).toFixed(0)} になる見込みです。</p>`;
   };
   ["eT","eP","eC"].forEach(i=>$(i).oninput=draw);draw();
+}
+
+/* DNS 名前解決 */
+function dnsV(el){
+  const steps=[
+    ["利用者の端末","再帰 DNS サーバ","このドメインの IP を教えて","端末は知りたい名前を、いつも使う DNS サーバに尋ねます。"],
+    ["再帰 DNS サーバ","ルート DNS","このドメインを管理する TLD はどこ？","キャッシュがなければ、再帰 DNS サーバがインターネット上の案内役に尋ねます。"],
+    ["ルート DNS","再帰 DNS サーバ",".jp の DNS へ進んで","ルート DNS は答えそのものではなく、次に尋ねる場所を案内します。"],
+    ["再帰 DNS サーバ","TLD DNS","planet0527.github.io の担当は？","TLD DNS も、ドメインを管理する権威 DNS の場所を案内します。"],
+    ["権威 DNS","再帰 DNS サーバ","IP アドレスはこの値です","権威 DNS が、そのドメインについて正式な記録を返します。"],
+    ["再帰 DNS サーバ","利用者の端末","IP アドレスを返す","端末は受け取った IP アドレスを使って Web サーバへ接続します。答えは TTL の間キャッシュされます。"]
+  ];
+  let step=0;
+  el.innerHTML='<p class="note">「次の問い合わせ」を押すと、再帰 DNS サーバが名前をたどる様子を1段ずつ見られます。</p><div class="netseq" id="dnsFlow"></div><div class="row"><button type="button" id="dnsNext">次の問い合わせ</button><button type="button" class="ghost" id="dnsReset">最初から</button></div><p class="out" id="dnsExplain" aria-live="polite"></p>';
+  const draw=()=>{
+    $("dnsFlow").innerHTML='<div class="netseq-actors"><b>利用者の端末</b><b>再帰 DNS サーバ</b><b>DNS の案内役</b></div>'+steps.map((s,i)=>'<div class="netseq-step '+(i<step?'passed ':'')+(i==step-1?'current':'')+'"><span class="netseq-num">'+(i+1)+'</span><div><b>'+esc(s[0])+' → '+esc(s[1])+'</b><p>'+esc(s[2])+'</p></div></div>').join("");
+    $("dnsNext").disabled=step>=steps.length;
+    $("dnsNext").textContent=step>=steps.length?"名前解決完了":"次の問い合わせ";
+    $("dnsExplain").innerHTML=step?'<b>いまの動き：</b>'+esc(steps[step-1][3]):'最初の状態です。端末が再帰 DNS サーバに問い合わせるところから始めます。';
+  };
+  $("dnsNext").onclick=()=>{if(step<steps.length){step++;draw()}};
+  $("dnsReset").onclick=()=>{step=0;draw()};
+  draw();
+}
+/* TCP 接続の確立 */
+function tcpV(el){
+  const steps=[
+    ["クライアント","サーバ","SYN","接続を始めたい。初期シーケンス番号 x を送る。"],
+    ["サーバ","クライアント","SYN + ACK","SYN を受け取った(ACK番号 x+1)。サーバ側の番号 y も知らせる。"],
+    ["クライアント","サーバ","ACK","サーバの SYN を受け取った(ACK番号 y+1)。これで接続成立。"]
+  ];
+  let step=0;
+  el.innerHTML='<p class="note">矢印を1本ずつ表示します。SYN は接続開始の合図、ACK は受信確認です。</p><div class="handshake" id="tcpFlow"></div><div class="row"><button type="button" id="tcpNext">次のメッセージ</button><button type="button" class="ghost" id="tcpReset">最初から</button></div><p class="out" id="tcpExplain" aria-live="polite"></p>';
+  const draw=()=>{
+    $("tcpFlow").innerHTML='<div class="handshake-head"><b>クライアント</b><b>サーバ</b></div>'+steps.map((s,i)=>'<div class="handshake-msg '+(i<step?'passed ':'')+(i==step-1?'current':'')+'"><span class="handshake-arrow '+(s[0]=="サーバ"?'reverse':'')+'">'+(i<step?'●':'○')+' '+s[2]+'</span><small>'+esc(s[0])+' → '+esc(s[1])+'</small></div>').join("");
+    $("tcpNext").disabled=step>=steps.length;
+    $("tcpNext").textContent=step>=steps.length?"接続が確立しました":"次のメッセージ";
+    $("tcpExplain").innerHTML=step?'<b>'+esc(steps[step-1][2])+'：</b>'+esc(steps[step-1][3]):'まだ接続していません。最初の SYN を送ります。';
+  };
+  $("tcpNext").onclick=()=>{if(step<steps.length){step++;draw()}};
+  $("tcpReset").onclick=()=>{step=0;draw()};
+  draw();
 }
 
 /* CSRF */
