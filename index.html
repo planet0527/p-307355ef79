@@ -2070,11 +2070,12 @@ function huffmanV(el){
     const forest=roots.slice().sort((a,b)=>a.tie-b.tie);
     $("hfQ").innerHTML=`<b>候補の重み</b> `+roots.slice().sort((a,b)=>a.w-b.w||a.tie-b.tie).map(n=>`<span>${n.leaf?n.sym:"まとまり"}:${n.w}</span>`).join("");
     const orderedLeaves=forest.flatMap(leafList),slot=new Map(orderedLeaves.map((n,i)=>[n,i]));
-    let svg="",offset=0;
+    let svg="";
+    const nodeX=n=>leafList(n).reduce((sum,l)=>sum+75+slot.get(l)*82,0)/leafList(n).length;
     const drawNode=(n,depth)=>{
-      const ls=leafList(n),xs=ls.map(l=>75+slot.get(l)*82),x=xs.reduce((a,b)=>a+b,0)/xs.length,y=30+depth*58;
+      const x=nodeX(n),y=30+depth*58;
       if(!n.leaf){
-        const lx=75+slot.get(leafList(n.left)[0])*82,rx=75+slot.get(leafList(n.right)[0])*82,ly=y+58;
+        const lx=nodeX(n.left),rx=nodeX(n.right),ly=y+58;
         svg+=`<line class="hf-edge" x1="${x}" y1="${y+17}" x2="${lx}" y2="${ly-16}"/><line class="hf-edge" x1="${x}" y1="${y+17}" x2="${rx}" y2="${ly-16}"/><text class="hf-bit" x="${(x+lx)/2-8}" y="${(y+ly)/2}">0</text><text class="hf-bit" x="${(x+rx)/2+8}" y="${(y+ly)/2}">1</text>`;
         drawNode(n.left,depth+1);drawNode(n.right,depth+1);
       }
